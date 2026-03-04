@@ -5,7 +5,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <PackageId>BoDraw</PackageId>
-    <Version>1.0.1</Version>
+    <Version>1.0.5</Version>
     <Authors>Matthias Baitsch</Authors>
     <Description>Simple library for drawings</Description>
     <PackageLicense>MIT</PackageLicense>
