@@ -1,16 +1,21 @@
 using Avalonia;
+using Avalonia.Controls;
 
 namespace bodraw;
 
 public class BoDraw
 {
     private Drawing drawing = new Drawing();
+    private AppBuilder appBuilder;
 
     public BoDraw()
     {
-        // AppBuilder.Configure<App>()
-        //     .UsePlatformDetect()
-        //     .SetupWithoutStarting();
+        this.appBuilder = AppBuilder.Configure<App>()
+            .UsePlatformDetect()
+            .WithInterFont()
+            .LogToTrace()
+            .UsePlatformDetect()
+            .SetupWithoutStarting();
     }
 
     public void Add(Shape s)
@@ -25,12 +30,6 @@ public class BoDraw
 
     public void Show()
     {
-        AppBuilder.Configure(
-                () => new App(this.drawing)
-            )
-            .UsePlatformDetect()
-            .WithInterFont()
-            .LogToTrace().
-            StartWithClassicDesktopLifetime([]);
+        this.appBuilder.Instance!.Run(new MainWindow(this.drawing));
     }
 }

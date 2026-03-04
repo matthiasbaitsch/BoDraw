@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using System.Numerics;
 using Avalonia;
 using Avalonia.Media;
 
@@ -9,20 +7,31 @@ public class Polyline : Shape
 {
     private readonly List<Point> points = [];
 
-    // public Pen Pen = new Pen(Brushes.Black, lineCap: PenLineCap.Round, lineJoin: PenLineJoin.Round);
+    public Pen Pen = new Pen(new SolidColorBrush(Avalonia.Media.Colors.Black), lineCap: PenLineCap.Round, lineJoin: PenLineJoin.Round);
 
-    // public Color Color
-    // {
-    //     get
-    //     {
-    //         return ((SolidColorBrush?)this.pen.Brush)!.Color;
-    //     }
-    //     set
-    //     {
-    //         ((SolidColorBrush?)this.pen.Brush)!.Color = value;
-    //     }
+    public Color Color
+    {
+        get
+        {
+            return ((SolidColorBrush?)this.Pen.Brush)!.Color;
+        }
+        set
+        {
+            ((SolidColorBrush?)this.Pen.Brush)!.Color = value;
+        }
+    }
 
-    // }
+    public double Thickness
+    {
+        get
+        {
+            return this.Pen.Thickness;
+        }
+        set
+        {
+            this.Pen.Thickness = value;
+        }
+    }
 
     public override Rect Bounds
     {
@@ -53,10 +62,6 @@ public class Polyline : Shape
 
     public override void Draw(DrawingContext ctx)
     {
-        Pen pen = new Pen(new SolidColorBrush(Color.Parse("hotpink")), 0.5,
-            lineCap: PenLineCap.Round, lineJoin: PenLineJoin.Round);
-
-
         if (this.points.Count < 2) { return; }
         var geo = new StreamGeometry();
         using (var sgc = geo.Open())
@@ -66,7 +71,7 @@ public class Polyline : Shape
                 sgc.LineTo(this.points[i]);
             sgc.EndFigure(false);
         }
-        ctx.DrawGeometry(null, pen, geo);
+        ctx.DrawGeometry(null, this.Pen, geo);
     }
 }
 
