@@ -6,6 +6,7 @@ dotnet_diagnostic.CS8600.severity = error
 dotnet_diagnostic.CS8097.severity = none
 
 dotnet_diagnostic.IDE0009.severity = warning
+dotnet_diagnostic.IDE0017.severity = none
 dotnet_diagnostic.IDE0044.severity = none
 dotnet_diagnostic.IDE0090.severity = none
 dotnet_diagnostic.IDE0130.severity = none
