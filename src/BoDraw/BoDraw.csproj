@@ -7,10 +7,10 @@
     <PackageId>BoDraw</PackageId>
     <Version>1.0.1</Version>
     <Authors>Matthias Baitsch</Authors>
-    <Description>Test Yo</Description>
+    <Description>Simple library for drawings</Description>
     <PackageLicense>MIT</PackageLicense>
-    <PackageProjectUrl>https://github.com/you/mylibrary</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/you/mylibrary</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/matthiasbaitsch/BoDraw</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/matthiasbaitsch/BoDraw</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
