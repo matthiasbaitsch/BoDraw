@@ -22,7 +22,9 @@ jobs:
         run: cd src/BoDraw && dotnet build --configuration Release --no-restore
 
       - name: Pack
-        run: cd src/BoDraw && dotnet pack --configuration Release --no-build --output ./nupkg
+        run: |
+            VERSION=${{ github.event.release.tag_name }}
+            cd src/BoDraw && dotnet pack --configuration Release --no-build --output ./nupkg -p:Version=${VERSION#v}
 
       - name: Push to NuGet
         run: cd src/BoDraw && dotnet nuget push ./nupkg/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
