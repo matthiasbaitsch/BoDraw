@@ -1,0 +1,16 @@
+[*.cs]
+
+dotnet_diagnostic.CA1050.severity = none
+
+dotnet_diagnostic.CS8600.severity = error
+dotnet_diagnostic.CS8097.severity = none
+
+dotnet_diagnostic.IDE0009.severity = warning
+dotnet_diagnostic.IDE0044.severity = none
+dotnet_diagnostic.IDE0090.severity = none
+dotnet_diagnostic.IDE0130.severity = none
+dotnet_diagnostic.IDE0290.severity = none
+
+dotnet_style_qualification_for_field = true
+dotnet_style_qualification_for_method = true
+
