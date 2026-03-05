@@ -14,7 +14,7 @@ public class Drawing
         double sh = sourceBounds.Height;
 
         // Target
-        double padding = pf * Math.Min(targetBounds.Height, targetBounds.Height);
+        double padding = pf * Math.Min(targetBounds.Width, targetBounds.Height);
         double tw = targetBounds.Width - 2 * padding;
         double th = targetBounds.Height - 2 * padding;
 
@@ -48,13 +48,13 @@ public class Drawing
     public void Draw(DrawingContext ctx, Rect targetBounds)
     {
         ctx.FillRectangle(new SolidColorBrush(this.Background), targetBounds);
-        ctx.PushTransform(CreateTransform(this.Bounds, targetBounds, this.PaddingFactor));
 
-        foreach (Shape s in this.Shapes)
+        using (ctx.PushTransform(CreateTransform(this.Bounds, targetBounds, this.PaddingFactor)))
         {
-            s.Draw(ctx);
+            foreach (Shape s in this.Shapes)
+            {
+                s.Draw(ctx);
+            }
         }
-
-        ctx.Dispose();
     }
 }
