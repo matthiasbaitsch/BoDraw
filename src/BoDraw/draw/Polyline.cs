@@ -37,14 +37,23 @@ public class Polyline : Shape
     {
         get
         {
-            double xmin = this.points[0].X;
-            double xmax = xmin;
-            double ymin = this.points[0].Y;
-            double ymax = ymin;
 
-            foreach (Point p in this.points)
+            if (this.points.Count == 0)
             {
+                return new Rect(0, 0, 0, 0);
+            }
 
+            Point p;
+
+            p = this.points[0];
+            double xmin = p.X;
+            double xmax = p.X;
+            double ymin = p.Y;
+            double ymax = p.Y;
+
+            for (int i = 1; i < this.points.Count; i++)
+            {
+                p = this.points[i];
                 xmin = Math.Min(xmin, p.X);
                 xmax = Math.Max(xmax, p.X);
                 ymin = Math.Min(ymin, p.Y);
