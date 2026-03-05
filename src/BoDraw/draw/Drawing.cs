@@ -30,7 +30,7 @@ public class Drawing
         .Append(Matrix.CreateTranslation(targetBounds.Center));
     }
 
-    public Color BackgroundColor = Color.Parse("wheat");
+    public Color BackgroundColor = Colors.WhiteSmoke;
 
     public double PaddingFactor = 0.025;
 

@@ -5,8 +5,8 @@ namespace bodraw;
 
 public class BoDraw
 {
-    private Drawing drawing = new Drawing();
     private AppBuilder appBuilder;
+    private Drawing drawing = new Drawing();
 
     public BoDraw()
     {
@@ -14,7 +14,6 @@ public class BoDraw
             .UsePlatformDetect()
             .WithInterFont()
             .LogToTrace()
-            .UsePlatformDetect()
             .SetupWithoutStarting();
     }
 
