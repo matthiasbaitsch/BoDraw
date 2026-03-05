@@ -1,6 +1,4 @@
 using Avalonia;
-using Avalonia.Layout;
-using Avalonia.Controls;
 using Avalonia.Media.Imaging;
 
 using Microsoft.AspNetCore.Html;
@@ -19,18 +17,16 @@ public class BoDrawBoard : BoDrawBase
     public BoDrawBoard()
     {
         this.Canvas = new BoDrawCanvas();
-        this.Canvas.HorizontalAlignment = HorizontalAlignment.Stretch;
-        this.Canvas.VerticalAlignment = VerticalAlignment.Stretch;
     }
 
     public IHtmlContent Show()
     {
-        var window = new Window { Width = this.Size.Width, Height = this.Size.Height };
-        var bitmap = new RenderTargetBitmap(this.Size);
-        var ms = new MemoryStream();
+        using var ms = new MemoryStream();
+        using var bitmap = new RenderTargetBitmap(this.Size);
 
-        window.Content = this.Canvas;
-        window.Show();
+        this.Canvas.Measure(new Size(this.Size.Width, this.Size.Height));
+        this.Canvas.Arrange(new Rect(0, 0, this.Size.Width, this.Size.Height));
+
         bitmap.Render(this.Canvas);
         bitmap.Save(ms);
         ms.Position = 0;
