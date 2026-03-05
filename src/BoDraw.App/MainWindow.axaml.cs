@@ -4,11 +4,8 @@ namespace bodraw;
 
 public partial class MainWindow : Window
 {
-    public MainWindow() { }
-
-    public MainWindow(Drawing drawing)
+    public MainWindow()
     {
         this.InitializeComponent();
-        this.Canvas.Drawing = drawing;
     }
 }

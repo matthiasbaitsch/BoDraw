@@ -1,8 +1,10 @@
 <Solution>
   <Folder Name="/demo/">
+    <Project Path="demo/BoDraw.App.Demo/BoDraw.App.Demo.csproj" />
     <Project Path="demo/BoDraw.Demo/BoDraw.Demo.csproj" />
   </Folder>
   <Folder Name="/src/">
+    <Project Path="src/BoDraw.App/BoDraw.App.csproj" />
     <Project Path="src/BoDraw/BoDraw.csproj" />
   </Folder>
   <Folder Name="/tests/">

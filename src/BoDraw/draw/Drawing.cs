@@ -9,8 +9,6 @@ public class Drawing
 
     public static Matrix CreateTransform(Rect sourceBounds, Rect targetBounds, double pf)
     {
-        Console.WriteLine("Source: " + sourceBounds + " Target: " + targetBounds);
-
         // Source
         double sw = sourceBounds.Width;
         double sh = sourceBounds.Height;
@@ -30,11 +28,9 @@ public class Drawing
         .Append(Matrix.CreateTranslation(targetBounds.Center));
     }
 
-    public Color BackgroundColor = Colors.WhiteSmoke;
-
-    public double PaddingFactor = 0.025;
-
     public List<Shape> Shapes = [];
+    public double PaddingFactor = 0.025;
+    public Color Background = Colors.WhiteSmoke;
 
     public Rect Bounds
     {
@@ -51,7 +47,7 @@ public class Drawing
 
     public void Draw(DrawingContext ctx, Rect targetBounds)
     {
-        ctx.FillRectangle(new SolidColorBrush(this.BackgroundColor), targetBounds);
+        ctx.FillRectangle(new SolidColorBrush(this.Background), targetBounds);
         ctx.PushTransform(CreateTransform(this.Bounds, targetBounds, this.PaddingFactor));
 
         foreach (Shape s in this.Shapes)

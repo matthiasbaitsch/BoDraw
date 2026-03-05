@@ -3,7 +3,8 @@
     "editor.formatOnSave": true,
     "files.exclude": {
         "**/bin": true,
-        "**/obj": true
+        "**/obj": true,
+        "**/nupkg": true
     },
     "chat.disableAIFeatures": true
 }

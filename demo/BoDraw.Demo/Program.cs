@@ -1,24 +1,21 @@
-﻿using bodraw;
+﻿using Avalonia;
+using System;
 
-BoDraw bd = new BoDraw();
+namespace BoDraw.Demo;
 
-Polyline l1 = new Polyline();
-l1.AddPoint(200, 200);
-l1.AddPoint(0, 0);
-l1.AddPoint(100, -100);
-l1.AddPoint(200, 0);
-l1.AddPoint(0, 0);
-l1.AddPoint(0, 200);
-l1.AddPoint(200, 200);
-l1.AddPoint(200, 0);
-l1.AddPoint(0, 200);
-l1.Thickness = 2.5;
-l1.Color = Colors.HotPink;
-bd.Add(l1);
+class Program
+{
+    // Initialization code. Don't use any Avalonia, third-party APIs or any
+    // SynchronizationContext-reliant code before AppMain is called: things aren't initialized
+    // yet and stuff might break.
+    [STAThread]
+    public static void Main(string[] args) => BuildAvaloniaApp()
+        .StartWithClassicDesktopLifetime(args);
 
-Polyline l2 = new Polyline();
-l2.AddPoint(-10, 210);
-l2.AddPoint(210, 210);
-bd.Add(l2);
-
-bd.Show();
+    // Avalonia configuration, don't remove; also used by visual designer.
+    public static AppBuilder BuildAvaloniaApp()
+        => AppBuilder.Configure<App>()
+            .UsePlatformDetect()
+            .WithInterFont()
+            .LogToTrace();
+}
