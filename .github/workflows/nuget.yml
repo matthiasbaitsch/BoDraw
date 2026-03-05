@@ -39,3 +39,6 @@ jobs:
 
       - name: Push to NuGet
         run: cd src/BoDraw && dotnet nuget push ./nupkg/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
+
+      - name: Push App to NuGet
+        run: cd src/BoDraw.App && dotnet nuget push ./nupkg/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
