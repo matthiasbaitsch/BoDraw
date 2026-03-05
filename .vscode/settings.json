@@ -4,7 +4,7 @@
     "files.exclude": {
         "**/bin": true,
         "**/obj": true,
-        "**/nupkg": true
+        // "**/nupkg": true
     },
     "chat.disableAIFeatures": true
 }

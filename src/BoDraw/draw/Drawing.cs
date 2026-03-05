@@ -54,5 +54,7 @@ public class Drawing
         {
             s.Draw(ctx);
         }
+
+        ctx.Dispose();
     }
 }

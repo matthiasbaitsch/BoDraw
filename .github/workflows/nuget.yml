@@ -2,7 +2,7 @@ name: Publish to NuGet
 
 on:
   release:
-    types: [published] # triggers when you publish a GitHub release
+    types: [published]
 
 jobs:
   publish:
@@ -10,35 +10,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v4
+      - uses: actions/setup-dotnet@v4
         with:
           dotnet-version: "10.0"
-
-      - name: Restore
-        run: cd src/BoDraw && dotnet restore
-
-      - name: Restore App
-        run: cd src/BoDraw.App && dotnet restore
-
-      - name: Build
-        run: cd src/BoDraw && dotnet build --configuration Release --no-restore
-
-      - name: Build App
-        run: cd src/BoDraw.App && dotnet build --configuration Release --no-restore
 
       - name: Pack
         run: |
           VERSION=${{ github.event.release.tag_name }}
-          cd src/BoDraw && dotnet pack --configuration Release --no-build --output ./nupkg -p:Version=${VERSION#v}
-
-      - name: Pack App
-        run: |
-          VERSION=${{ github.event.release.tag_name }}
-          cd src/BoDraw.App && dotnet pack --configuration Release --no-build --output ./nupkg -p:Version=${VERSION#v}
+          dotnet pack src/BoDraw/BoDraw.csproj -c Release -p:Version=${VERSION#v} -o ./nupkg
+          dotnet pack src/BoDraw.App/BoDraw.App.csproj -c Release -p:Version=${VERSION#v} -o ./nupkg
+          dotnet pack src/BoDraw.Interactive/BoDraw.Interactive.csproj -c Release -p:Version=${VERSION#v} -o ./nupkg
 
       - name: Push to NuGet
-        run: cd src/BoDraw && dotnet nuget push ./nupkg/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
-
-      - name: Push App to NuGet
-        run: cd src/BoDraw.App && dotnet nuget push ./nupkg/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
+        run: dotnet nuget push ./nupkg/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json

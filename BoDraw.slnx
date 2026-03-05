@@ -5,6 +5,7 @@
   </Folder>
   <Folder Name="/src/">
     <Project Path="src/BoDraw.App/BoDraw.App.csproj" />
+    <Project Path="src/BoDraw.Interactive/BoDraw.Interactive.csproj" />
     <Project Path="src/BoDraw/BoDraw.csproj" />
   </Folder>
   <Folder Name="/tests/">

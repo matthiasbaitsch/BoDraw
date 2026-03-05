@@ -1,34 +1,17 @@
-using Avalonia;
 using Avalonia.Controls;
-using Avalonia.Media;
+using System.Diagnostics.CodeAnalysis;
 
 namespace bodraw;
 
-public class BoDrawApp : IBoDraw
+public class BoDrawApp : BoDrawBase
 {
     private MainWindow mw;
-    private BoDrawCanvas canvas;
 
+    [SetsRequiredMembers]
     public BoDrawApp()
     {
         this.mw = new MainWindow();
-        this.canvas = this.mw.Canvas;
-    }
-
-    public Color Background
-    {
-        get { return this.canvas.Background; }
-        set { this.canvas.Background = value; }
-    }
-
-    public void Add(params Shape[] shapes)
-    {
-        this.canvas!.Add(shapes);
-    }
-
-    public void Clear()
-    {
-        this.canvas!.Clear();
+        this.Canvas = this.mw.Canvas;
     }
 
     public void Show()
