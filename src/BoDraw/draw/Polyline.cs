@@ -69,18 +69,24 @@ public class Polyline : Shape
         this.points.Add(new Point((float)x, (float)y));
     }
 
-    public override void Draw(DrawingContext ctx)
+    public override void Draw(double a, DrawingContext ctx)
     {
         if (this.points.Count < 2) { return; }
+
+        // Construct geometry
         var geo = new StreamGeometry();
         using (var sgc = geo.Open())
         {
             sgc.BeginFigure(this.points[0], false);
             for (int i = 1; i < this.points.Count; i++)
+            {
                 sgc.LineTo(this.points[i]);
+            }
             sgc.EndFigure(false);
         }
-        ctx.DrawGeometry(null, this.Pen, geo);
+
+        // Draw geometry
+        ctx.DrawGeometry(null, Shape.ScalePen(a, this.Pen), geo);
     }
 }
 

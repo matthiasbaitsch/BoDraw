@@ -7,7 +7,7 @@ namespace bodraw;
 public class Drawing
 {
 
-    public static Matrix CreateTransform(Rect sourceBounds, Rect targetBounds, double pf)
+    private static double ComputeScalingFactor(Rect sourceBounds, Rect targetBounds, double pf)
     {
         // Source
         double sw = sourceBounds.Width;
@@ -19,12 +19,17 @@ public class Drawing
         double th = targetBounds.Height - 2 * padding;
 
         // Scaling factor
-        double s = Math.Min(tw / sw, th / sh);
+        return Math.Min(tw / sw, th / sh);
+    }
+
+    public static Matrix CreateTransform(Rect sourceBounds, Rect targetBounds, double pf)
+    {
+        double a = ComputeScalingFactor(sourceBounds, targetBounds, pf);
 
         // Transform: Move to center, scale, move to new center
         return
                 Matrix.CreateTranslation(-sourceBounds.Center)
-        .Append(Matrix.CreateScale(s, -s))
+        .Append(Matrix.CreateScale(a, -a))
         .Append(Matrix.CreateTranslation(targetBounds.Center));
     }
 
@@ -47,13 +52,17 @@ public class Drawing
 
     public void Draw(DrawingContext ctx, Rect targetBounds)
     {
+        double a = Drawing.ComputeScalingFactor(this.Bounds, targetBounds, this.PaddingFactor);
+
+        // Fill background
         ctx.FillRectangle(new SolidColorBrush(this.Background), targetBounds);
 
-        using (ctx.PushTransform(CreateTransform(this.Bounds, targetBounds, this.PaddingFactor)))
+        // Draw shapes
+        using (ctx.PushTransform(Drawing.CreateTransform(this.Bounds, targetBounds, this.PaddingFactor)))
         {
             foreach (Shape s in this.Shapes)
             {
-                s.Draw(ctx);
+                s.Draw(a, ctx);
             }
         }
     }
