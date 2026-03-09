@@ -24,7 +24,7 @@ public class Drawing
         // Transform: Move to center, scale, move to new center
         return
                 Matrix.CreateTranslation(-sourceBounds.Center)
-        .Append(Matrix.CreateScale(s, s))
+        .Append(Matrix.CreateScale(s, -s))
         .Append(Matrix.CreateTranslation(targetBounds.Center));
     }
 
