@@ -6,6 +6,13 @@ namespace BoDraw.Tests;
 public class DrawingTests
 {
     [Fact]
+    public void TestBoundsEmpty()
+    {
+        Drawing d = new Drawing();
+        Assert.Equal(new Rect(0, 0, 0, 0), d.Bounds);
+    }
+
+    [Fact]
     public void TestCreateTransform()
     {
         // [5, 10] x [105, 210]

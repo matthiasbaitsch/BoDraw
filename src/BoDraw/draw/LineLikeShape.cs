@@ -1,11 +1,10 @@
-using Avalonia;
 using Avalonia.Media;
 
-using bodraw;
+namespace bodraw;
 
 public abstract class LineLikeShape : Shape
 {
-    public Pen Pen = new Pen(new SolidColorBrush(Avalonia.Media.Colors.Black), lineCap: PenLineCap.Round, lineJoin: PenLineJoin.Round);
+    public Pen Pen = new Pen(new SolidColorBrush(Colors.Black), lineCap: PenLineCap.Round, lineJoin: PenLineJoin.Round);
 
     public Color Color
     {
@@ -31,9 +30,9 @@ public abstract class LineLikeShape : Shape
         }
     }
 
-    public override sealed void Draw(double a, DrawingContext ctx)
+    internal override sealed void Draw(double scale, DrawingContext ctx)
     {
-        this.Draw(ctx, Shape.ScalePen(a, this.Pen)!);
+        this.Draw(ctx, Shape.ScalePen(scale, this.Pen)!);
     }
 
     protected abstract void Draw(DrawingContext ctx, Pen pen);

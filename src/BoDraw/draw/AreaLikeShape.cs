@@ -1,11 +1,11 @@
 using Avalonia.Media;
 
-using bodraw;
+namespace bodraw;
 
 public abstract class AreaLikeShape : Shape
 {
-    public Brush? Brush = new SolidColorBrush(bodraw.Colors.LightGray);
-    public Pen? Pen = new Pen(new SolidColorBrush(bodraw.Colors.Black), lineCap: PenLineCap.Round, lineJoin: PenLineJoin.Round);
+    public Brush? Brush = new SolidColorBrush(Colors.LightGray);
+    public Pen? Pen = new Pen(new SolidColorBrush(Colors.Black), lineCap: PenLineCap.Round, lineJoin: PenLineJoin.Round);
 
     public Color? FillColor
     {
@@ -60,9 +60,9 @@ public abstract class AreaLikeShape : Shape
         set { this.Pen!.Thickness = value; }
     }
 
-    public override sealed void Draw(double a, DrawingContext ctx)
+    internal override sealed void Draw(double scale, DrawingContext ctx)
     {
-        this.Draw(ctx, this.Brush, Shape.ScalePen(a, this.Pen));
+        this.Draw(ctx, this.Brush, Shape.ScalePen(scale, this.Pen));
     }
 
     protected abstract void Draw(DrawingContext ctx, Brush? brush, Pen? pen);

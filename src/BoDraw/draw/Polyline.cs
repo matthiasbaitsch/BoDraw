@@ -40,7 +40,7 @@ public class Polyline : LineLikeShape
 
     public void AddPoint(double x, double y)
     {
-        this.points.Add(new Point((float)x, (float)y));
+        this.points.Add(new Point(x, y));
     }
 
     protected override void Draw(DrawingContext ctx, Pen pen)

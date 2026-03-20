@@ -14,11 +14,11 @@ public abstract class BoDrawBase : IBoDraw
 
     public void Add(params Shape[] shapes)
     {
-        this.Canvas!.Add(shapes);
+        this.Canvas.Add(shapes);
     }
 
     public void Clear()
     {
-        this.Canvas!.Clear();
+        this.Canvas.Clear();
     }
 }

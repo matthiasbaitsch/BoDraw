@@ -1,4 +1,3 @@
-using System.Dynamic;
 using Avalonia;
 using Avalonia.Media;
 
@@ -6,7 +5,7 @@ namespace bodraw;
 
 public abstract class Shape
 {
-    internal static Pen? ScalePen(double a, Pen? pen)
+    internal static Pen? ScalePen(double scale, Pen? pen)
     {
         if (pen == null)
         {
@@ -15,7 +14,7 @@ public abstract class Shape
 
         return new Pen(
             pen.Brush,
-            pen.Thickness / a,
+            pen.Thickness / scale,
             pen.DashStyle,
             pen.LineCap,
             pen.LineJoin,
@@ -23,7 +22,7 @@ public abstract class Shape
         );
     }
 
-    public abstract void Draw(double a, DrawingContext ctx);
+    internal abstract void Draw(double scale, DrawingContext ctx);
 
     public abstract Rect Bounds { get; }
 }

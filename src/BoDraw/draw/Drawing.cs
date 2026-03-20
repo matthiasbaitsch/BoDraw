@@ -7,14 +7,14 @@ namespace bodraw;
 public class Drawing
 {
 
-    private static double ComputeScalingFactor(Rect sourceBounds, Rect targetBounds, double pf)
+    private static double ComputeScalingFactor(Rect sourceBounds, Rect targetBounds, double paddingFactor)
     {
         // Source
         double sw = sourceBounds.Width;
         double sh = sourceBounds.Height;
 
         // Target
-        double padding = pf * Math.Min(targetBounds.Width, targetBounds.Height);
+        double padding = paddingFactor * Math.Min(targetBounds.Width, targetBounds.Height);
         double tw = targetBounds.Width - 2 * padding;
         double th = targetBounds.Height - 2 * padding;
 
@@ -24,12 +24,12 @@ public class Drawing
 
     public static Matrix CreateTransform(Rect sourceBounds, Rect targetBounds, double pf)
     {
-        double a = ComputeScalingFactor(sourceBounds, targetBounds, pf);
+        double scale = ComputeScalingFactor(sourceBounds, targetBounds, pf);
 
         // Transform: Move to center, scale, move to new center
         return
                 Matrix.CreateTranslation(-sourceBounds.Center)
-        .Append(Matrix.CreateScale(a, -a))
+        .Append(Matrix.CreateScale(scale, -scale))
         .Append(Matrix.CreateTranslation(targetBounds.Center));
     }
 
@@ -52,17 +52,22 @@ public class Drawing
 
     public void Draw(DrawingContext ctx, Rect targetBounds)
     {
-        double a = Drawing.ComputeScalingFactor(this.Bounds, targetBounds, this.PaddingFactor);
-
         // Fill background
         ctx.FillRectangle(new SolidColorBrush(this.Background), targetBounds);
 
+        // Quick return
+        if (this.Shapes.Count == 0) { return; }
+
+        // Compute scaling factor
+        Rect sourceBounds = this.Bounds;
+        double scale = Drawing.ComputeScalingFactor(sourceBounds, targetBounds, this.PaddingFactor);
+
         // Draw shapes
-        using (ctx.PushTransform(Drawing.CreateTransform(this.Bounds, targetBounds, this.PaddingFactor)))
+        using (ctx.PushTransform(Drawing.CreateTransform(sourceBounds, targetBounds, this.PaddingFactor)))
         {
             foreach (Shape s in this.Shapes)
             {
-                s.Draw(a, ctx);
+                s.Draw(scale, ctx);
             }
         }
     }
