@@ -3,35 +3,9 @@ using Avalonia.Media;
 
 namespace bodraw;
 
-public class Polyline : Shape
+public class Polyline : LineLikeShape
 {
     private readonly List<Point> points = [];
-
-    public Pen Pen = new Pen(new SolidColorBrush(Avalonia.Media.Colors.Black), lineCap: PenLineCap.Round, lineJoin: PenLineJoin.Round);
-
-    public Color Color
-    {
-        get
-        {
-            return ((SolidColorBrush?)this.Pen.Brush)!.Color;
-        }
-        set
-        {
-            ((SolidColorBrush?)this.Pen.Brush)!.Color = value;
-        }
-    }
-
-    public double Thickness
-    {
-        get
-        {
-            return this.Pen.Thickness;
-        }
-        set
-        {
-            this.Pen.Thickness = value;
-        }
-    }
 
     public override Rect Bounds
     {
@@ -69,8 +43,9 @@ public class Polyline : Shape
         this.points.Add(new Point((float)x, (float)y));
     }
 
-    public override void Draw(double a, DrawingContext ctx)
+    protected override void Draw(DrawingContext ctx, Pen pen)
     {
+        // Quick return
         if (this.points.Count < 2) { return; }
 
         // Construct geometry
@@ -86,7 +61,7 @@ public class Polyline : Shape
         }
 
         // Draw geometry
-        ctx.DrawGeometry(null, Shape.ScalePen(a, this.Pen), geo);
+        ctx.DrawGeometry(null, pen, geo);
     }
 }
 

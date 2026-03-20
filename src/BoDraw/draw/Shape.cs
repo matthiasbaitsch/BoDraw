@@ -6,8 +6,13 @@ namespace bodraw;
 
 public abstract class Shape
 {
-    internal static Pen ScalePen(double a, Pen pen)
+    internal static Pen? ScalePen(double a, Pen? pen)
     {
+        if (pen == null)
+        {
+            return null;
+        }
+
         return new Pen(
             pen.Brush,
             pen.Thickness / a,
