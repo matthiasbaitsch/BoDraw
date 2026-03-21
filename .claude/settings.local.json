@@ -2,7 +2,12 @@
   "permissions": {
     "allow": [
       "WebSearch",
-      "Bash(docfx docfx.json)"
+      "Bash(docfx docfx.json)",
+      "Bash(gh api:*)",
+      "Bash(gh run:*)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" https://matthiasbaitsch.github.io/BoDraw/)",
+      "Bash(curl -s https://matthiasbaitsch.github.io/BoDraw/)",
+      "Bash(ls _site/index*)"
     ]
   }
 }

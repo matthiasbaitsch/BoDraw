@@ -2,8 +2,6 @@
 **/bin
 **/nupkg
 
-src/BoDraw/push.sh
-
 # DocFX generated files
 _site/
 api/
