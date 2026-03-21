@@ -44,6 +44,17 @@ pl2.AddPoint(-40, -10);
 Ellipse e1 = new Ellipse(100, 300, 10, 5);
 e1.FillColor = Colors.BlanchedAlmond;
 
+Text t1 = new Text("Hochschule Bochum", 100, 230);
+t1.Color = Colors.SteelBlue;
+t1.HJust = 0.5;
+t1.VJust = 0.5;
+Circle tc1 = new Circle(100, 230, 1);
+tc1.FillColor = Colors.Red;
+
+Text t2 = new Text("Ein ganz einfaches Zeichenpaket", 10, 50, 18);
+Circle tc2 = new Circle(10, 50, 1);
+tc2.FillColor = Colors.Red;
+
 BoDrawApp bd = new BoDrawApp();
-bd.Add(r1, r2, r3, l1, l2, pl1, pl2, e1);
+bd.Add(r1, r2, r3, l1, l2, pl1, pl2, e1, t1, tc1, t2, tc2);
 bd.Show();

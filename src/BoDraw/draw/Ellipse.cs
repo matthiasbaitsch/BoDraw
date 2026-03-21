@@ -5,7 +5,7 @@ namespace bodraw;
 
 public class Ellipse : AreaLikeShape
 {
-    private Rect rect;
+    private readonly Rect rect;
 
     public Ellipse(double x, double y, double r1, double r2)
     {
@@ -18,4 +18,9 @@ public class Ellipse : AreaLikeShape
     {
         ctx.DrawEllipse(brush, pen, this.rect);
     }
+}
+
+public class Circle : Ellipse
+{
+    public Circle(double x, double y, double r) : base(x, y, r, r) { }
 }
