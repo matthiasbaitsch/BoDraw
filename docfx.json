@@ -3,7 +3,7 @@
     {
       "src": [
         {
-          "files": ["src/BoDraw/**/*.cs"],
+          "files": ["src/BoDraw/BoDraw.csproj"],
           "src": "."
         }
       ],
