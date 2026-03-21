@@ -6,6 +6,10 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace bodraw;
 
+/// <summary>
+/// Jupyter/.NET Interactive entry point. Renders the drawing to a PNG and returns it as an
+/// <see cref="IHtmlContent"/> inline image when <see cref="Show"/> is called.
+/// </summary>
 public class BoDrawBoard : BoDrawBase
 {
 

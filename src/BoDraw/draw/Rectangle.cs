@@ -3,6 +3,9 @@ using Avalonia.Media;
 
 namespace bodraw;
 
+/// <summary>
+/// An axis-aligned rectangle defined by two corner points.
+/// </summary>
 public class Rectangle : AreaLikeShape
 {
     private Rect rectangle;

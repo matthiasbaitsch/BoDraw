@@ -2,6 +2,10 @@ using Avalonia.Media;
 
 namespace bodraw;
 
+/// <summary>
+/// Abstract base class for line-like shapes (e.g. <see cref="Line"/>, <see cref="Polyline"/>).
+/// Provides <see cref="Color"/> and <see cref="Thickness"/> properties backed by an Avalonia <see cref="Pen"/>.
+/// </summary>
 public abstract class LineLikeShape : Shape
 {
     public Pen Pen = new Pen(new SolidColorBrush(Colors.Black), lineCap: PenLineCap.Round, lineJoin: PenLineJoin.Round);

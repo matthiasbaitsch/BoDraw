@@ -4,6 +4,10 @@ using Avalonia.Media;
 
 namespace bodraw;
 
+/// <summary>
+/// Holds a collection of <see cref="Shape"/> objects and renders them onto a target rectangle,
+/// automatically scaling and centering the content.
+/// </summary>
 public class Drawing
 {
 

@@ -1,0 +1,33 @@
+{
+  "metadata": [
+    {
+      "src": [
+        {
+          "files": ["src/BoDraw/**/*.cs"],
+          "src": "."
+        }
+      ],
+      "dest": "api",
+      "includePrivateMembers": false,
+      "disableGitFeatures": false
+    }
+  ],
+  "build": {
+    "content": [
+      {
+        "files": ["api/**.yml", "api/index.md"]
+      },
+      {
+        "files": ["docs/**.md", "docs/**/toc.yml", "toc.yml", "*.md"]
+      }
+    ],
+    "dest": "_site",
+    "globalMetadata": {
+      "_appName": "BoDraw",
+      "_appTitle": "BoDraw",
+      "_enableSearch": true,
+      "_appFooter": "BoDraw – MIT License | <a href='https://github.com/matthiasbaitsch/BoDraw'>GitHub</a>"
+    },
+    "template": ["default", "modern"]
+  }
+}

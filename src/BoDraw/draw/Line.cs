@@ -3,6 +3,9 @@ using Avalonia.Media;
 
 namespace bodraw;
 
+/// <summary>
+/// A straight line segment between two points.
+/// </summary>
 public class Line : LineLikeShape
 {
 

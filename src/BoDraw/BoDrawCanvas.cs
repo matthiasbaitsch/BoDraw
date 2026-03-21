@@ -4,6 +4,10 @@ using Avalonia.Media;
 
 namespace bodraw;
 
+/// <summary>
+/// An Avalonia <see cref="Control"/> that hosts a <see cref="Drawing"/> and implements <see cref="IBoDraw"/>.
+/// Renders all shapes by delegating to <see cref="Drawing.Draw"/>.
+/// </summary>
 public class BoDrawCanvas : Control, IBoDraw
 {
 

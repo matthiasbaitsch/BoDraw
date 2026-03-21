@@ -3,6 +3,9 @@ using Avalonia.Media;
 
 namespace bodraw;
 
+/// <summary>
+/// An ellipse defined by a center point and two radii.
+/// </summary>
 public class Ellipse : AreaLikeShape
 {
     private readonly Rect rect;
@@ -20,6 +23,9 @@ public class Ellipse : AreaLikeShape
     }
 }
 
+/// <summary>
+/// A circle defined by a center point and a single radius.
+/// </summary>
 public class Circle : Ellipse
 {
     public Circle(double x, double y, double r) : base(x, y, r, r) { }

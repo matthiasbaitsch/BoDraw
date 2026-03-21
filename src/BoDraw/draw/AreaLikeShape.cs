@@ -2,6 +2,11 @@ using Avalonia.Media;
 
 namespace bodraw;
 
+/// <summary>
+/// Abstract base class for filled area shapes (e.g. <see cref="Rectangle"/>, <see cref="Ellipse"/>).
+/// Provides <see cref="FillColor"/>, <see cref="LineColor"/>, and <see cref="LineThickness"/> properties
+/// backed by an Avalonia <see cref="Brush"/> and <see cref="Pen"/>.
+/// </summary>
 public abstract class AreaLikeShape : Shape
 {
     public Brush? Brush = new SolidColorBrush(Colors.LightGray);

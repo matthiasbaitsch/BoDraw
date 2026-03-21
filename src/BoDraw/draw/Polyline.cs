@@ -3,6 +3,10 @@ using Avalonia.Media;
 
 namespace bodraw;
 
+/// <summary>
+/// A connected sequence of line segments defined by an ordered list of points.
+/// Points are added via <see cref="AddPoint"/>.
+/// </summary>
 public class Polyline : LineLikeShape
 {
     private readonly List<Point> points = [];

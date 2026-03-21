@@ -4,6 +4,10 @@ using Avalonia.Media.Imaging;
 
 namespace bodraw;
 
+/// <summary>
+/// A raster image loaded from a file and placed at a given position with a specified width.
+/// The height is derived from the image's aspect ratio when not explicitly set.
+/// </summary>
 public class Image : SimpleShape
 {
     private Rect bounds;

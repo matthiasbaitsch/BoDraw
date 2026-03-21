@@ -3,6 +3,9 @@ using Avalonia.Media;
 
 namespace bodraw;
 
+/// <summary>
+/// Abstract base class for all drawable shapes.
+/// </summary>
 public abstract class Shape
 {
     internal static Pen? ScalePen(double scale, Pen? pen)

@@ -3,6 +3,10 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace bodraw;
 
+/// <summary>
+/// Desktop application entry point. Opens an Avalonia <see cref="MainWindow"/> and runs the
+/// event loop when <see cref="Show"/> is called.
+/// </summary>
 public class BoDrawApp : BoDrawBase
 {
     private MainWindow mw;

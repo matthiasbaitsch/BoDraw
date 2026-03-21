@@ -4,6 +4,10 @@ using Avalonia.Media;
 
 namespace bodraw;
 
+/// <summary>
+/// A text label placed at a given position. Supports horizontal and vertical justification
+/// via <see cref="HJust"/> and <see cref="VJust"/>.
+/// </summary>
 public class Text : SimpleShape
 {
     public string Content { get; set; }
