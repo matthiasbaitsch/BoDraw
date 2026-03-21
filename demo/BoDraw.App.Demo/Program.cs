@@ -55,6 +55,18 @@ Text t2 = new Text("Ein ganz einfaches Zeichenpaket", 10, 50, 18);
 Circle tc2 = new Circle(10, 50, 1);
 tc2.FillColor = Colors.Red;
 
+Image img1 = new Image("demo/BoDraw.App.Demo/assets/hs-bo_logo_en.png", -300, 200, 200);
+Image img2 = new Image("demo/BoDraw.App.Demo/assets/IMG_3755.jpeg", -300, 0, 100);
+img2.Height = 100;
+
 BoDrawApp bd = new BoDrawApp();
-bd.Add(r1, r2, r3, l1, l2, pl1, pl2, e1, t1, tc1, t2, tc2);
+bd.Add(
+    r1, r2, r3,
+    l1, l2,
+    pl1, pl2,
+    e1,
+    t1, tc1,
+    t2, tc2,
+    img1, img2
+);
 bd.Show();
