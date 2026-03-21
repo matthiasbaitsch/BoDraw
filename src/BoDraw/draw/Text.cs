@@ -4,7 +4,7 @@ using Avalonia.Media;
 
 namespace bodraw;
 
-public class Text : Shape
+public class Text : SimpleShape
 {
     public string Content { get; set; }
     public Point Position { get; set; }
@@ -34,7 +34,7 @@ public class Text : Shape
         }
     }
 
-    internal override void Draw(double _, DrawingContext ctx)
+    protected override void Draw(DrawingContext ctx)
     {
         var bounds = this.Bounds;
         var transform = Matrix.CreateTranslation(bounds.X, -bounds.Y - bounds.Height).Append(Matrix.CreateScale(1, -1));

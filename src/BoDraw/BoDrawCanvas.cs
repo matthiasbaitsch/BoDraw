@@ -21,11 +21,13 @@ public class BoDrawCanvas : Control, IBoDraw
         {
             this.Drawing.Shapes.Add(s);
         }
+        this.InvalidateVisual();
     }
 
     public void Clear()
     {
         this.Drawing.Shapes.Clear();
+        this.InvalidateVisual();
     }
 
     public override void Render(DrawingContext ctx)

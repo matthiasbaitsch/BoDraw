@@ -26,7 +26,7 @@ public abstract class AreaLikeShape : Shape
             }
             else
             {
-                ((SolidColorBrush)this.Brush!).Color = (Color)value;
+                this.Brush = new SolidColorBrush((Color)value);
             }
         }
     }
@@ -49,7 +49,18 @@ public abstract class AreaLikeShape : Shape
             }
             else
             {
-                ((SolidColorBrush?)this.Pen!.Brush)!.Color = (Color)value;
+                if (this.Pen == null)
+                {
+                    this.Pen = new Pen(
+                        new SolidColorBrush((Color)value),
+                        lineCap: PenLineCap.Round,
+                        lineJoin: PenLineJoin.Round
+                    );
+                }
+                else
+                {
+                    ((SolidColorBrush?)this.Pen!.Brush)!.Color = (Color)value;
+                }
             }
         }
     }
