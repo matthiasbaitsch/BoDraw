@@ -41,6 +41,13 @@ pl2.AddPoint(240, 310);
 pl2.AddPoint(-40, 310);
 pl2.AddPoint(-40, -10);
 
+Polygon pg1 = new Polygon();
+pg1.AddPoint(10, 300);
+pg1.AddPoint(60, 290);
+pg1.AddPoint(50, 280);
+pg1.AddPoint(0, 270);
+pg1.FillColor = Colors.SlateBlue;
+
 Ellipse e1 = new Ellipse(100, 300, 10, 5);
 e1.FillColor = Colors.BlanchedAlmond;
 
@@ -64,6 +71,7 @@ bd.Add(
     r1, r2, r3,
     l1, l2,
     pl1, pl2,
+    pg1,
     e1,
     t1, tc1,
     t2, tc2,
