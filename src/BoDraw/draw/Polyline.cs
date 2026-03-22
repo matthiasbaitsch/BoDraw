@@ -15,15 +15,12 @@ public class Polyline : LineLikeShape
     {
         get
         {
-
             if (this.points.Count == 0)
             {
                 return new Rect(0, 0, 0, 0);
             }
 
-            Point p;
-
-            p = this.points[0];
+            Point p = this.points[0];
             double xmin = p.X;
             double xmax = p.X;
             double ymin = p.Y;
