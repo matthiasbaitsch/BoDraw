@@ -1,4 +1,4 @@
-using bodraw;
+using BoDraw;
 using Avalonia.Controls;
 
 namespace BoDraw.Demo;

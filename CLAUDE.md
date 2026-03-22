@@ -25,7 +25,7 @@ dotnet run --project demo/BoDraw.App.Demo
 
 BoDraw is a simple drawing library with three layers:
 
-- **`src/BoDraw`** — Core library (no UI dependency beyond Avalonia base). Contains the `Shape` hierarchy and `Drawing`. Namespace: `bodraw`.
+- **`src/BoDraw`** — Core library (no UI dependency beyond Avalonia base). Contains the `Shape` hierarchy and `Drawing`. Namespace: `BoDraw`.
 - **`src/BoDraw.App`** — Avalonia desktop wrapper. `BoDrawApp` opens a `MainWindow` and runs the Avalonia event loop. Entry point for scripts via `bd.Show()`.
 - **`src/BoDraw.Interactive`** — Jupyter/.NET Interactive wrapper. `BoDrawBoard.Show()` renders to a PNG and returns `IHtmlContent` for notebook display.
 
@@ -60,7 +60,7 @@ using (ctx.PushTransform(transform)) { ... }
 
 ### Colors
 
-`Colors` in `src/BoDraw/draw/Colors.cs` re-exports Avalonia's named colors under the `bodraw` namespace so students don't need to import `Avalonia.Media`.
+`Colors` in `src/BoDraw/draw/Colors.cs` re-exports Avalonia's named colors under the `BoDraw` namespace so students don't need to import `Avalonia.Media`.
 
 ### Tests
 

@@ -1,7 +1,7 @@
 using Avalonia.Controls;
 using System.Diagnostics.CodeAnalysis;
 
-namespace bodraw;
+namespace BoDraw;
 
 /// <summary>
 /// Desktop application entry point. Opens an Avalonia <see cref="MainWindow"/> and runs the

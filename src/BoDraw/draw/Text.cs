@@ -2,7 +2,7 @@ using System.Globalization;
 using Avalonia;
 using Avalonia.Media;
 
-namespace bodraw;
+namespace BoDraw;
 
 /// <summary>
 /// A text label placed at a given position. Supports horizontal and vertical justification

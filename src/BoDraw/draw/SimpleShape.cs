@@ -2,7 +2,7 @@
 using Avalonia;
 using Avalonia.Media;
 
-namespace bodraw;
+namespace BoDraw;
 
 /// <summary>
 /// Abstract base class for shapes that manage their own rendering without a pen or brush

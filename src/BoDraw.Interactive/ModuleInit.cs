@@ -2,7 +2,7 @@ using Avalonia;
 using Avalonia.Headless;
 using System.Runtime.CompilerServices;
 
-namespace bodraw;
+namespace BoDraw;
 
 
 class App : Application { public override void Initialize() { } }

@@ -1,4 +1,4 @@
-﻿using bodraw;
+﻿using BoDraw;
 
 Rectangle r1 = new Rectangle(-60, -30, 260, 330);
 r1.LineThickness = 6;

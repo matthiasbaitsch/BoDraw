@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Avalonia;
 using Avalonia.Media;
 
-namespace bodraw;
+namespace BoDraw;
 
 /// <summary>
 /// Holds a collection of <see cref="Shape"/> objects and renders them onto a target rectangle,

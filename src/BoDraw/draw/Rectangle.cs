@@ -1,7 +1,7 @@
 using Avalonia;
 using Avalonia.Media;
 
-namespace bodraw;
+namespace BoDraw;
 
 /// <summary>
 /// An axis-aligned rectangle defined by two corner points.

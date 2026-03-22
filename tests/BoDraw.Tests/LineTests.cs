@@ -1,5 +1,5 @@
 using Avalonia;
-using bodraw;
+using BoDraw;
 
 namespace BoDraw.Tests;
 

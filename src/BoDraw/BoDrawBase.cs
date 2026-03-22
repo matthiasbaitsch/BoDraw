@@ -1,6 +1,6 @@
 using Avalonia.Media;
 
-namespace bodraw;
+namespace BoDraw;
 
 /// <summary>
 /// Abstract base class that implements <see cref="IBoDraw"/> by delegating to a <see cref="BoDrawCanvas"/>.

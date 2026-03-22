@@ -2,7 +2,7 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Media;
 
-namespace bodraw;
+namespace BoDraw;
 
 /// <summary>
 /// An Avalonia <see cref="Control"/> that hosts a <see cref="Drawing"/> and implements <see cref="IBoDraw"/>.

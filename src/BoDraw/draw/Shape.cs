@@ -1,7 +1,7 @@
 using Avalonia;
 using Avalonia.Media;
 
-namespace bodraw;
+namespace BoDraw;
 
 /// <summary>
 /// Abstract base class for all drawable shapes.

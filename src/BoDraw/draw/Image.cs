@@ -2,7 +2,7 @@ using Avalonia;
 using Avalonia.Media;
 using Avalonia.Media.Imaging;
 
-namespace bodraw;
+namespace BoDraw;
 
 /// <summary>
 /// A raster image loaded from a file and placed at a given position with a specified width.

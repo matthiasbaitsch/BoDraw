@@ -1,7 +1,7 @@
 using Avalonia;
 using Avalonia.Media;
 
-namespace bodraw;
+namespace BoDraw;
 
 /// <summary>
 /// A polygon defined by an ordered list of points.

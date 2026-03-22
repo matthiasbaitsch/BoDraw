@@ -1,7 +1,7 @@
 using Avalonia;
 using Avalonia.Media;
 
-namespace bodraw;
+namespace BoDraw;
 
 /// <summary>
 /// An ellipse defined by a center point and two radii.

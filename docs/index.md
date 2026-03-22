@@ -14,7 +14,7 @@ It is designed for interactive use in scripts, Jupyter notebooks, and desktop ap
 ## Quick start
 
 ```csharp
-using bodraw;
+using BoDraw;
 
 var bd = new BoDrawApp();
 bd.Add(

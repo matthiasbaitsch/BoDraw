@@ -1,7 +1,7 @@
 using Avalonia;
 using System.Runtime.CompilerServices;
 
-namespace bodraw;
+namespace BoDraw;
 
 public static class ModuleInit
 {

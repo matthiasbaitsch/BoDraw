@@ -1,6 +1,6 @@
 using Avalonia.Media;
 
-namespace bodraw;
+namespace BoDraw;
 
 /// <summary>
 /// Defines the public API for a BoDraw drawing surface.

@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Html;
 using System.Diagnostics.CodeAnalysis;
 
 
-namespace bodraw;
+namespace BoDraw;
 
 /// <summary>
 /// Jupyter/.NET Interactive entry point. Renders the drawing to a PNG and returns it as an

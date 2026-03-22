@@ -1,7 +1,7 @@
 using Avalonia;
 using Avalonia.Media;
 
-namespace bodraw;
+namespace BoDraw;
 
 internal class PolyHelper
 {

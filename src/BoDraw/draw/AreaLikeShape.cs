@@ -1,6 +1,6 @@
 using Avalonia.Media;
 
-namespace bodraw;
+namespace BoDraw;
 
 /// <summary>
 /// Abstract base class for filled area shapes (e.g. <see cref="Rectangle"/>, <see cref="Ellipse"/>).

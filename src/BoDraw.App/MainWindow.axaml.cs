@@ -1,6 +1,6 @@
 using Avalonia.Controls;
 
-namespace bodraw;
+namespace BoDraw;
 
 public partial class MainWindow : Window
 {

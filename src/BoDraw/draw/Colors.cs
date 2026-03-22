@@ -1,6 +1,6 @@
 using Avalonia.Media;
 
-namespace bodraw;
+namespace BoDraw;
 
 // Copied from Avalonia to avoid confusion for students
 

@@ -1,6 +1,6 @@
 using Avalonia.Media;
 
-namespace bodraw;
+namespace BoDraw;
 
 /// <summary>
 /// Abstract base class for line-like shapes (e.g. <see cref="Line"/>, <see cref="Polyline"/>).
