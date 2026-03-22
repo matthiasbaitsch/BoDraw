@@ -3,6 +3,10 @@ using Avalonia.Media;
 
 namespace bodraw;
 
+/// <summary>
+/// A polygon defined by an ordered list of points.
+/// Points are added via <see cref="AddPoint"/>.
+/// </summary>
 public class Polygon : AreaLikeShape
 {
     private readonly PolyHelper helper = new PolyHelper();
