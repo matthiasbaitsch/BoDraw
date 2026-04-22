@@ -10,6 +10,20 @@ namespace BoDraw;
 /// </summary>
 public class Image : SimpleShape
 {
+    private static string ResolveImage(string imagePath)
+    {
+        string[] prefixes = ["../../../..", "../../..", "../..", ".."];
+        foreach (string p in prefixes)
+        {
+            string ip = Path.Combine(p, imagePath);
+            if (File.Exists(ip))
+            {
+                return ip;
+            }
+        }
+        return imagePath;
+    }
+
     private Rect bounds;
     private readonly Bitmap bitmap;
 
@@ -44,9 +58,9 @@ public class Image : SimpleShape
 
     public override Rect Bounds => this.bounds;
 
-    public Image(string filePath, double x, double y, double width, double height = 0)
+    public Image(string imagePath, double x, double y, double width, double height = 0)
     {
-        this.bitmap = new Bitmap(filePath);
+        this.bitmap = new Bitmap(ResolveImage(imagePath));
         if (height == 0)
         {
             var size = this.bitmap.Size;
@@ -58,8 +72,9 @@ public class Image : SimpleShape
     protected override void Draw(DrawingContext ctx)
     {
         // Counter-transform the global Y-flip so the image renders right-side up
-        var transform = Matrix.CreateTranslation(this.Bounds.X, -this.Bounds.Y - this.Bounds.Height)
-            .Append(Matrix.CreateScale(1, -1));
+        var transform = Matrix.
+            CreateTranslation(this.Bounds.X, -this.Bounds.Y - this.Bounds.Height).
+            Append(Matrix.CreateScale(1, -1));
 
         using (ctx.PushTransform(transform))
         {
