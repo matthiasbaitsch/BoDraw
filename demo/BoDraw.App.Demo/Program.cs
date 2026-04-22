@@ -1,80 +1,14 @@
 ﻿using BoDraw;
 
-Rectangle r1 = new Rectangle(-60, -30, 260, 330);
-r1.LineThickness = 6;
-r1.LineColor = Colors.SteelBlue;
+Image image = new Image("assets/hs-bo_logo_en.png", 0, 0, 400);
+Text text = new Text("BoDraw ist ein einfaches Zeichenpaket...", -20, -40);
+Rectangle rectangle = new Rectangle(-20, -20, image.Width + 20, image.Height + 20);
 
-Rectangle r2 = new Rectangle(-80, -20, -20, 80);
-r2.LineThickness = 2;
-r2.LineColor = Colors.PaleGreen;
-r2.FillColor = null;
-
-Rectangle r3 = new Rectangle(-80, 85, -20, 185);
-r3.LineColor = null;
-r3.FillColor = Colors.Orange;
-
-Line l1 = new Line(-50, -20, -50, 320);
-l1.Thickness = 4;
-l1.Color = Colors.Tomato;
-
-Line l2 = new Line(250, -20, 250, 320);
-l2.Thickness = 4;
-l2.Color = Colors.Tomato;
-
-Polyline pl1 = new Polyline();
-pl1.AddPoint(200, 0);
-pl1.AddPoint(0, 200);
-pl1.AddPoint(100, 300);
-pl1.AddPoint(200, 200);
-pl1.AddPoint(0, 200);
-pl1.AddPoint(0, 0);
-pl1.AddPoint(200, 0);
-pl1.AddPoint(200, 200);
-pl1.AddPoint(0, 0);
-pl1.Thickness = 2.5;
-pl1.Color = Colors.HotPink;
-
-Polyline pl2 = new Polyline();
-pl2.AddPoint(-40, -10);
-pl2.AddPoint(240, -10);
-pl2.AddPoint(240, 310);
-pl2.AddPoint(-40, 310);
-pl2.AddPoint(-40, -10);
-
-Polygon pg1 = new Polygon();
-pg1.AddPoint(10, 300);
-pg1.AddPoint(60, 290);
-pg1.AddPoint(50, 280);
-pg1.AddPoint(0, 270);
-pg1.FillColor = Colors.SlateBlue;
-
-Ellipse e1 = new Ellipse(100, 300, 10, 5);
-e1.FillColor = Colors.BlanchedAlmond;
-
-Text t1 = new Text("Hochschule Bochum", 100, 230);
-t1.Color = Colors.SteelBlue;
-t1.HJust = 0.5;
-t1.VJust = 0.5;
-Circle tc1 = new Circle(100, 230, 1);
-tc1.FillColor = Colors.Red;
-
-Text t2 = new Text("Ein ganz einfaches Zeichenpaket", 10, 50, 18);
-Circle tc2 = new Circle(10, 50, 1);
-tc2.FillColor = Colors.Red;
-
-Image img1 = new Image("demo/BoDraw.App.Demo/assets/hs-bo_logo_en.png", -300, 200, 200);
-Image img2 = new Image("demo/BoDraw.App.Demo/assets/IMG_3755.jpeg", -300, 0, 100);
-img2.Height = 100;
+rectangle.LineThickness = 3;
+rectangle.FillColor = Colors.LightSkyBlue;
+rectangle.LineColor = Colors.DarkOrchid;
+text.Color = Colors.DarkOliveGreen;
 
 BoDrawApp bd = new BoDrawApp();
-bd.Add(
-    r1, r2, r3,
-    l1, l2,
-    pl1, pl2,
-    pg1,
-    e1,
-    t1, tc1,
-    t2, tc2,
-    img1, img2
-);
+bd.Add(text, rectangle, image);
 bd.Show();
