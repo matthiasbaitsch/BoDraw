@@ -9,6 +9,7 @@
     <PackageId>BoDraw</PackageId>
     <Authors>Matthias Baitsch</Authors>
     <Description>Simple library for drawings</Description>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageLicense>MIT</PackageLicense>
     <PackageProjectUrl>https://github.com/matthiasbaitsch/BoDraw</PackageProjectUrl>
     <RepositoryUrl>https://github.com/matthiasbaitsch/BoDraw</RepositoryUrl>
