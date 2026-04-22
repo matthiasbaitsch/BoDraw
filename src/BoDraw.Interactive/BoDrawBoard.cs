@@ -1,7 +1,6 @@
 using Avalonia;
 using Avalonia.Media.Imaging;
 using Microsoft.AspNetCore.Html;
-using System.Diagnostics.CodeAnalysis;
 
 
 namespace BoDraw;
@@ -15,7 +14,6 @@ public class BoDrawBoard : BoDrawBase
 
     public PixelSize Size = new PixelSize(600, 400);
 
-    [SetsRequiredMembers]
     public BoDrawBoard()
     {
         this.Canvas = new BoDrawCanvas();
