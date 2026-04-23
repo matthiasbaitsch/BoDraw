@@ -31,7 +31,32 @@ public abstract class AreaLikeShape : Shape
             }
             else
             {
+                var oldBrush = this.Brush;
                 this.Brush = new SolidColorBrush((Color)value);
+                if (oldBrush != null)
+                {
+                    this.Brush.Opacity = oldBrush.Opacity;
+                }
+            }
+        }
+    }
+
+    public double FillOpacity
+    {
+        get
+        {
+            if (this.Brush == null)
+            {
+                return double.NaN;
+            }
+            return this.Brush.Opacity;
+        }
+
+        set
+        {
+            if (this.Brush != null)
+            {
+                this.Brush.Opacity = value;
             }
         }
     }
