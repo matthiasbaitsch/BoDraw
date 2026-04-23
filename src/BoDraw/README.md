@@ -35,6 +35,7 @@ bd.Show();
 | `Polyline`    | Polyline through multiple points          |
 | `Polygon`     | Filled polygon                            |
 | `Rectangle`   | Rectangle                                 |
+| `Circle`      | Circle                                    |
 | `Ellipse`     | Ellipse                                   |
 | `Text`        | Text at a position                        |
 | `Image`       | Raster image loaded from a file           |
