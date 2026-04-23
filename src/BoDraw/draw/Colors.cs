@@ -7,6 +7,12 @@ namespace BoDraw;
 public sealed class Colors
 {
     /// <summary>
+    /// Creates a color from red, green, and blue values (0–255).
+    /// </summary>
+    public static Color FromRgb(byte r, byte g, byte b) => Color.FromRgb(r, g, b);
+
+
+    /// <summary>
     /// Gets a color with an ARGB value of #fff0f8ff.
     /// </summary>
     public static Color AliceBlue => KnownColor.AliceBlue.ToColor();

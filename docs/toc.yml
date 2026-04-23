@@ -1,2 +1,4 @@
 - name: Introduction
   href: index.md
+- name: Colors
+  href: colors.md
