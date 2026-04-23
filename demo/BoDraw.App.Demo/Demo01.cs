@@ -41,10 +41,11 @@ internal class Demo1
         bd.Add(
             text,
             rectangle,
-             star,
-             star.Copy(image.Width + 40, 0),
-             star.Copy(0, image.Height + 40),
-             star.Copy(image.Width + 40, image.Height + 40),
-             image);
+            star,
+            star.Copy(image.Width + 40, 0),
+            star.Copy(0, image.Height + 40),
+            star.Copy(image.Width + 40, image.Height + 40),
+            image
+        );
     }
 }

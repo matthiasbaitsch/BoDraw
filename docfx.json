@@ -21,6 +21,11 @@
         "files": ["docs/**.md", "docs/**/toc.yml", "toc.yml", "*.md"]
       }
     ],
+    "resource": [
+      {
+        "files": ["docs/images/**"]
+      }
+    ],
     "dest": "_site",
     "globalMetadata": {
       "_appName": "BoDraw",
