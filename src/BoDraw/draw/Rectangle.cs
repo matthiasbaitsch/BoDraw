@@ -21,6 +21,11 @@ public class Rectangle : AreaLikeShape
 
     public override Rect Bounds => this.rectangle;
 
+    public override void Scale(double factor)
+    {
+        this.rectangle = this.rectangle.Scale(factor);
+    }
+
     public override void Move(double dx, double dy)
     {
         this.rectangle = this.rectangle.Move(dx, dy);

@@ -17,6 +17,11 @@ public class Ellipse : AreaLikeShape
 
     public override Rect Bounds => this.rect;
 
+    public override void Scale(double factor)
+    {
+        this.rect = this.rect.Scale(factor);
+    }
+
     public override void Move(double dx, double dy)
     {
         this.rect = this.rect.Move(dx, dy);

@@ -28,11 +28,19 @@ star.AddPoint(-48, 0);
 star.AddPoint(-17, 7);
 star.AddPoint(-28, 28);
 star.AddPoint(-6, 15);
-star.Move(image.X + image.Width + 20, image.Y + image.Height + 20);
+star.Scale(0.25);
 star.FillColor = Colors.Yellow;
 star.LineColor = Colors.Red;
 star.LineThickness = 2;
+star.Move(-20, -20);
 
 BoDrawApp bd = new BoDrawApp();
-bd.Add(text, rectangle, star, image);
+bd.Add(
+    text,
+    rectangle,
+     star,
+     star.Copy(image.Width + 40, 0),
+     star.Copy(0, image.Height + 40),
+     star.Copy(image.Width + 40, image.Height + 40),
+     image);
 bd.Show();

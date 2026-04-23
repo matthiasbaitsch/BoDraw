@@ -25,9 +25,16 @@ public abstract class Shape
         );
     }
 
-    internal abstract void Draw(double scale, DrawingContext ctx);
-
     public abstract Rect Bounds { get; }
+
+    public Point Center
+    {
+        get
+        {
+            return this.Bounds.Center;
+        }
+    }
+
 
     /// <summary>
     /// Moves the shape by the given offset.
@@ -48,8 +55,17 @@ public abstract class Shape
         return copy;
     }
 
+    /// <summary>
+    /// Scales the shape by the given factor around its center.
+    /// </summary>
+    /// <param name="factor">Scale factor.</param>
+    public abstract void Scale(double factor);
+
     protected virtual Shape DeepClone()
     {
         return (Shape)this.MemberwiseClone();
     }
+
+    internal abstract void Draw(double scale, DrawingContext ctx);
 }
+

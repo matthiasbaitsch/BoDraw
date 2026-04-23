@@ -38,6 +38,11 @@ public class Text : SimpleShape
         }
     }
 
+    public override void Scale(double factor)
+    {
+        this.FontSize *= factor;
+    }
+
     public override void Move(double dx, double dy)
     {
         this.Position = new Point(this.Position.X + dx, this.Position.Y + dy);

@@ -69,6 +69,11 @@ public class Image : SimpleShape
         this.bounds = new Rect(x, y, width, height);
     }
 
+    public override void Scale(double factor)
+    {
+        this.bounds = this.bounds.Scale(factor);
+    }
+
     public override void Move(double dx, double dy)
     {
         this.bounds = this.bounds.Move(dx, dy);

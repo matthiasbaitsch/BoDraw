@@ -15,6 +15,11 @@ public class Polyline : LineLikeShape
 
     public void AddPoint(double x, double y) => this.helper.AddPoint(x, y);
 
+    public override void Scale(double factor)
+    {
+        this.helper.Scale(factor);
+    }
+
     public override void Move(double dx, double dy)
     {
         this.helper.Move(dx, dy);
