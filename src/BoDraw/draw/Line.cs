@@ -31,6 +31,12 @@ public class Line : LineLikeShape
         }
     }
 
+    public override void Move(double dx, double dy)
+    {
+        this.p1 = new Point(this.p1.X + dx, this.p1.Y + dy);
+        this.p2 = new Point(this.p2.X + dx, this.p2.Y + dy);
+    }
+
     protected override void Draw(DrawingContext ctx, Pen pen)
     {
         ctx.DrawLine(pen, this.p1, this.p2);

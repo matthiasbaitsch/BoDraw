@@ -28,4 +28,18 @@ public abstract class Shape
     internal abstract void Draw(double scale, DrawingContext ctx);
 
     public abstract Rect Bounds { get; }
+
+    public abstract void Move(double dx, double dy);
+
+    public Shape Copy(double dx, double dy)
+    {
+        var copy = this.DeepClone();
+        copy.Move(dx, dy);
+        return copy;
+    }
+
+    protected virtual Shape DeepClone()
+    {
+        return (Shape)this.MemberwiseClone();
+    }
 }

@@ -21,6 +21,11 @@ public class Rectangle : AreaLikeShape
 
     public override Rect Bounds => this.rectangle;
 
+    public override void Move(double dx, double dy)
+    {
+        this.rectangle = this.rectangle.Move(dx, dy);
+    }
+
     protected override void Draw(DrawingContext ctx, Brush? brush, Pen? pen)
     {
         ctx.DrawRectangle(brush, pen, this.rectangle);

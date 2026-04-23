@@ -8,7 +8,7 @@ namespace BoDraw;
 /// </summary>
 public class Ellipse : AreaLikeShape
 {
-    private readonly Rect rect;
+    private Rect rect;
 
     public Ellipse(double x, double y, double r1, double r2)
     {
@@ -16,6 +16,11 @@ public class Ellipse : AreaLikeShape
     }
 
     public override Rect Bounds => this.rect;
+
+    public override void Move(double dx, double dy)
+    {
+        this.rect = this.rect.Move(dx, dy);
+    }
 
     protected override void Draw(DrawingContext ctx, Brush? brush, Pen? pen)
     {

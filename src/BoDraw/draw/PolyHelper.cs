@@ -40,6 +40,18 @@ internal class PolyHelper
         this.points.Add(new Point(x, y));
     }
 
+    internal void Move(double dx, double dy)
+    {
+        for (int i = 0; i < this.points.Count; i++)
+            this.points[i] = new Point(this.points[i].X + dx, this.points[i].Y + dy);
+    }
+
+    internal void CopyFrom(PolyHelper source)
+    {
+        System.Diagnostics.Debug.Assert(this.points.Count == 0);
+        this.points.AddRange(source.points);
+    }
+
     internal void Draw(DrawingContext ctx, bool isPolygon, Brush? brush, Pen? pen)
     {
         // Quick return
