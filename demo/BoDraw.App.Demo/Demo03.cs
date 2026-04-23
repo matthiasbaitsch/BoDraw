@@ -44,9 +44,6 @@ internal class Demo3
             {
                 x += sx + dx;
             }
-
-
         }
-
     }
 }
