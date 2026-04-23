@@ -30,6 +30,8 @@ bd.Add(r1, r2, c);
 bd.Show();
 ```
 
+![](images/demo.png)
+
 ## Shape hierarchy
 
 ```raw
