@@ -25,7 +25,7 @@ public class Polyline : LineLikeShape
         this.helper.Move(dx, dy);
     }
 
-    protected override Shape DeepClone()
+    protected internal override Polyline DeepClone()
     {
         var copy = (Polyline)base.DeepClone();
         var fresh = new PolyHelper();

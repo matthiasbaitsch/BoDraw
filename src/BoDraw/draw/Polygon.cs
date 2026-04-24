@@ -25,7 +25,7 @@ public class Polygon : AreaLikeShape
         this.helper.Move(dx, dy);
     }
 
-    protected override Shape DeepClone()
+    protected internal override Polygon DeepClone()
     {
         var copy = (Polygon)base.DeepClone();
         var fresh = new PolyHelper();

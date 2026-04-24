@@ -44,24 +44,12 @@ public abstract class Shape
     public abstract void Move(double dx, double dy);
 
     /// <summary>
-    /// Returns a copy of the shape moved by the given offset.
-    /// </summary>
-    /// <param name="dx">Horizontal offset.</param>
-    /// <param name="dy">Vertical offset.</param>
-    public Shape Copy(double dx, double dy)
-    {
-        var copy = this.DeepClone();
-        copy.Move(dx, dy);
-        return copy;
-    }
-
-    /// <summary>
     /// Scales the shape by the given factor around its center.
     /// </summary>
     /// <param name="factor">Scale factor.</param>
     public abstract void Scale(double factor);
 
-    protected virtual Shape DeepClone()
+    protected internal virtual Shape DeepClone()
     {
         return (Shape)this.MemberwiseClone();
     }
