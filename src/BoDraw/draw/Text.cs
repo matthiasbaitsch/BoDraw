@@ -10,14 +10,30 @@ namespace BoDraw;
 /// </summary>
 public class Text : SimpleShape
 {
+    /// <summary>The text string to display.</summary>
     public string Content { get; set; }
+
+    /// <summary>The anchor point of the text in drawing coordinates.</summary>
     public Point Position { get; set; }
+
+    /// <summary>The font size.</summary>
     public double FontSize { get; set; }
-    public double HJust { get; set; } = 0; // 0: left, 0.5: center, 1: right
-    public double VJust { get; set; } = 0; // 0: bottom, 0.5: middle, 1: top
+
+    /// <summary>Horizontal justification: 0 = left, 0.5 = center, 1 = right.</summary>
+    public double HJust { get; set; } = 0;
+
+    /// <summary>Vertical justification: 0 = bottom, 0.5 = middle, 1 = top.</summary>
+    public double VJust { get; set; } = 0;
+
+    /// <summary>The typeface used to render the text.</summary>
     public Typeface Typeface { get; set; } = new Typeface("Arial");
+
+    /// <summary>The color of the text.</summary>
     public Color Color { get; set; } = Colors.Black;
 
+    /// <summary>Creates text at position (<paramref name="x"/>, <paramref name="y"/>) 
+    /// with the given <paramref name="content"/> and optional 
+    /// <paramref name="fontSize"/>.</summary>
     public Text(string content, double x, double y, double fontSize = 12)
     {
         this.Content = content;
@@ -34,7 +50,8 @@ public class Text : SimpleShape
                 this.Position.X - this.HJust * ft.Width,
                 this.Position.Y - this.VJust * ft.Height,
                 ft.Width,
-                ft.Height);
+                ft.Height
+            );
         }
     }
 
