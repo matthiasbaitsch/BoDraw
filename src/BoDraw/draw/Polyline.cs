@@ -11,9 +11,15 @@ public class Polyline : LineLikeShape
 {
     private PolyHelper helper = new PolyHelper();
 
-    public override Rect Bounds => this.helper.Bounds;
+    public override Rect Bounds
+    {
+        get { return this.helper.Bounds; }
+    }
 
-    public void AddPoint(double x, double y) => this.helper.AddPoint(x, y);
+    public void AddPoint(double x, double y)
+    {
+        this.helper.AddPoint(x, y);
+    }
 
     public override void Scale(double factor)
     {

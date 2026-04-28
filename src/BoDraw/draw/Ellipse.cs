@@ -15,7 +15,10 @@ public class Ellipse : AreaLikeShape
         this.rect = new Rect(x - r1, y - r2, 2 * r1, 2 * r2);
     }
 
-    public override Rect Bounds => this.rect;
+    public override Rect Bounds
+    {
+        get { return this.rect; }
+    }
 
     public override void Scale(double factor)
     {

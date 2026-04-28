@@ -56,7 +56,10 @@ public class Image : SimpleShape
         get { return this.bounds.Width / this.bounds.Height; }
     }
 
-    public override Rect Bounds => this.bounds;
+    public override Rect Bounds
+    {
+        get { return this.bounds; }
+    }
 
     public Image(string imagePath, double x, double y, double width, double height = 0)
     {

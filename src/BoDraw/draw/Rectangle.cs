@@ -19,7 +19,10 @@ public class Rectangle : AreaLikeShape
         this.rectangle = new Rect(x, y, w, h);
     }
 
-    public override Rect Bounds => this.rectangle;
+    public override Rect Bounds
+    {
+        get { return this.rectangle; }
+    }
 
     public override void Scale(double factor)
     {

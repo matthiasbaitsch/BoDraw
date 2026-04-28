@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using Avalonia;
 using Avalonia.Media;
 
@@ -26,9 +25,9 @@ public class Drawing
         return Math.Min(tw / sw, th / sh);
     }
 
-    public static Matrix CreateTransform(Rect sourceBounds, Rect targetBounds, double pf)
+    public static Matrix CreateTransform(Rect sourceBounds, Rect targetBounds, double paddingFactor)
     {
-        double scale = ComputeScalingFactor(sourceBounds, targetBounds, pf);
+        double scale = ComputeScalingFactor(sourceBounds, targetBounds, paddingFactor);
 
         // Transform: Move to center, scale, move to new center
         return
