@@ -65,3 +65,8 @@ using (ctx.PushTransform(transform)) { ... }
 ### Tests
 
 xUnit tests in `tests/BoDraw.Tests/`. Tests focus on `Bounds` calculation (pure math, no rendering context needed). Each shape class has a corresponding `*Tests.cs` file.
+
+## Preferences
+
+- Do not use `=>` expression-body syntax for methods or properties. Always use full block bodies.
+- Store memories in this CLAUDE.md file, not in the `~/.claude` folder.
