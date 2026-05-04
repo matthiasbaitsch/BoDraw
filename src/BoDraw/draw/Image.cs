@@ -82,6 +82,11 @@ public class Image : SimpleShape
         this.bounds = this.bounds.Move(dx, dy);
     }
 
+    public new Image Copy(double dx, double dy)
+    {
+        return (Image)base.Copy(dx, dy);
+    }
+
     protected override void Draw(DrawingContext ctx)
     {
         // Counter-transform the global Y-flip so the image renders right-side up

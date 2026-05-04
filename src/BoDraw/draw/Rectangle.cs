@@ -34,6 +34,11 @@ public class Rectangle : AreaLikeShape
         this.rectangle = this.rectangle.Move(dx, dy);
     }
 
+    public new Rectangle Copy(double dx, double dy)
+    {
+        return (Rectangle)base.Copy(dx, dy);
+    }
+
     protected override void Draw(DrawingContext ctx, Brush? brush, Pen? pen)
     {
         ctx.DrawRectangle(brush, pen, this.rectangle);

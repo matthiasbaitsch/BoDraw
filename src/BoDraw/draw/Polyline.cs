@@ -31,13 +31,18 @@ public class Polyline : LineLikeShape
         this.helper.Move(dx, dy);
     }
 
-    protected internal override Polyline DeepClone()
+    protected internal override Shape DeepClone()
     {
         var copy = (Polyline)base.DeepClone();
         var fresh = new PolyHelper();
         fresh.CopyFrom(this.helper);
         copy.helper = fresh;
         return copy;
+    }
+
+    public new Polyline Copy(double dx, double dy)
+    {
+        return (Polyline)base.Copy(dx, dy);
     }
 
     protected override void Draw(DrawingContext ctx, Pen pen)

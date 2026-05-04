@@ -31,13 +31,18 @@ public class Polygon : AreaLikeShape
         this.helper.Move(dx, dy);
     }
 
-    protected internal override Polygon DeepClone()
+    protected internal override Shape DeepClone()
     {
         var copy = (Polygon)base.DeepClone();
         var fresh = new PolyHelper();
         fresh.CopyFrom(this.helper);
         copy.helper = fresh;
         return copy;
+    }
+
+    public new Polygon Copy(double dx, double dy)
+    {
+        return (Polygon)base.Copy(dx, dy);
     }
 
     protected override void Draw(DrawingContext ctx, Brush? brush, Pen? pen)

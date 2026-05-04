@@ -44,6 +44,11 @@ public class Line : LineLikeShape
         this.p2 = new Point(this.p2.X + dx, this.p2.Y + dy);
     }
 
+    public new Line Copy(double dx, double dy)
+    {
+        return (Line)base.Copy(dx, dy);
+    }
+
     protected override void Draw(DrawingContext ctx, Pen pen)
     {
         ctx.DrawLine(pen, this.p1, this.p2);

@@ -45,6 +45,18 @@ public abstract class Shape
         return (Shape)this.MemberwiseClone();
     }
 
+    /// <summary>
+    /// Returns a copy of the shape moved by the given offset.
+    /// </summary>
+    /// <param name="dx">Horizontal offset.</param>
+    /// <param name="dy">Vertical offset.</param>
+    public Shape Copy(double dx, double dy)
+    {
+        var copy = this.DeepClone();
+        copy.Move(dx, dy);
+        return copy;
+    }
+
     internal abstract void Draw(double scale, DrawingContext ctx);
 }
 

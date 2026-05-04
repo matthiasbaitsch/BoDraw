@@ -60,6 +60,11 @@ public class Group : Shape
         return new Group([.. this.shapes], this.transform);
     }
 
+    public new Group Copy(double dx, double dy)
+    {
+        return (Group)base.Copy(dx, dy);
+    }
+
     internal override void Draw(double scale, DrawingContext ctx)
     {
         using (ctx.PushTransform(this.transform))

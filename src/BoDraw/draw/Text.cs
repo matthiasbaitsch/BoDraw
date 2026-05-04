@@ -76,6 +76,11 @@ public class Text : SimpleShape
         }
     }
 
+    public new Text Copy(double dx, double dy)
+    {
+        return (Text)base.Copy(dx, dy);
+    }
+
     private FormattedText CreateFormattedText()
     {
         return new FormattedText(

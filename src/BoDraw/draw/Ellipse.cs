@@ -30,6 +30,11 @@ public class Ellipse : AreaLikeShape
         this.rect = this.rect.Move(dx, dy);
     }
 
+    public new Ellipse Copy(double dx, double dy)
+    {
+        return (Ellipse)base.Copy(dx, dy);
+    }
+
     protected override void Draw(DrawingContext ctx, Brush? brush, Pen? pen)
     {
         ctx.DrawEllipse(brush, pen, this.rect);
@@ -42,4 +47,9 @@ public class Ellipse : AreaLikeShape
 public class Circle : Ellipse
 {
     public Circle(double x, double y, double r) : base(x, y, r, r) { }
+
+    public new Circle Copy(double dx, double dy)
+    {
+        return (Circle)base.Copy(dx, dy);
+    }
 }
