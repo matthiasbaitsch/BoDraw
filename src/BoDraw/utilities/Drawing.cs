@@ -13,7 +13,7 @@ internal class Drawing
 
     internal double PaddingFactor { set; get; } = 0.025;
 
-    internal Color Background { set; get; } = Colors.WhiteSmoke;
+    internal Color Background { set; get; } = Colors.White;
 
     internal void Add(Shape[] shapes) { this.shapes.Add(shapes); }
 
