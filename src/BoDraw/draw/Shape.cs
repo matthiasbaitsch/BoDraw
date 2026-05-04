@@ -27,15 +27,6 @@ public abstract class Shape
 
     public abstract Rect Bounds { get; }
 
-    public Point Center
-    {
-        get
-        {
-            return this.Bounds.Center;
-        }
-    }
-
-
     /// <summary>
     /// Moves the shape by the given offset.
     /// </summary>

@@ -33,7 +33,7 @@ public class Line : LineLikeShape
 
     public override void Scale(double factor)
     {
-        var c = this.Center;
+        var c = this.Bounds.Center;
         this.p1 = new Point(c.X + (this.p1.X - c.X) * factor, c.Y + (this.p1.Y - c.Y) * factor);
         this.p2 = new Point(c.X + (this.p2.X - c.X) * factor, c.Y + (this.p2.Y - c.Y) * factor);
     }
