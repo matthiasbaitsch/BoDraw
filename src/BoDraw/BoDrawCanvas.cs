@@ -11,32 +11,29 @@ namespace BoDraw;
 public class BoDrawCanvas : Control, IBoDraw
 {
 
-    public Drawing Drawing = new Drawing();
+    private Drawing drawing = new Drawing();
 
     public Color Background
     {
-        get { return this.Drawing.Background; }
-        set { this.Drawing.Background = value; }
+        get { return this.drawing.Background; }
+        set { this.drawing.Background = value; }
     }
 
     public void Add(params Shape[] shapes)
     {
-        foreach (Shape s in shapes)
-        {
-            this.Drawing.Shapes.Add(s);
-        }
+        this.drawing.Add(shapes);
         this.InvalidateVisual();
     }
 
     public void Clear()
     {
-        this.Drawing.Shapes.Clear();
+        this.drawing.Clear();
         this.InvalidateVisual();
     }
 
     public override void Render(DrawingContext ctx)
     {
         base.Render(ctx);
-        this.Drawing.Draw(ctx, this.Bounds);
+        this.drawing.Draw(ctx, this.Bounds);
     }
 }

@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using Avalonia;
 using Avalonia.Media;
 
@@ -9,32 +8,21 @@ namespace BoDraw;
 /// </summary>
 public class Group : Shape
 {
-    private readonly List<Shape> shapes;
+    private readonly ShapeCollection shapes = new ShapeCollection();
     private Matrix transform = Matrix.Identity;
 
     public Group(params Shape[] shapes)
     {
-        this.shapes = [.. shapes];
+        this.shapes.Add(shapes);
     }
 
-    private Group(List<Shape> shapes, Matrix transform)
+    private Group(Shape[] shapes, Matrix transform)
     {
-        this.shapes = shapes;
+        this.shapes.Add(shapes);
         this.transform = transform;
     }
 
-    private Rect LocalBounds
-    {
-        get
-        {
-            Rect b = new Rect(0, 0, 0, 0);
-            foreach (var s in this.shapes)
-            {
-                b = b.Union(s.Bounds);
-            }
-            return b;
-        }
-    }
+    private Rect LocalBounds { get { return this.shapes.Bounds; } }
 
     public override Rect Bounds
     {
@@ -57,7 +45,7 @@ public class Group : Shape
 
     protected internal override Shape DeepClone()
     {
-        return new Group([.. this.shapes], this.transform);
+        return new Group(this.shapes.ToArray(), this.transform);
     }
 
     public new Group Copy(double dx, double dy)
