@@ -16,6 +16,15 @@ public class Polygon : AreaLikeShape
         get { return this.helper.Bounds; }
     }
 
+    /// <summary>Creates a polygon from a flat coordinate list: x0, y0, x1, y1, …</summary>
+    public Polygon(params double[] coordinates)
+    {
+        for (int i = 0; i < coordinates.Length - 1; i += 2)
+        {
+            this.helper.AddPoint(coordinates[i], coordinates[i + 1]);
+        }
+    }
+
     public void AddPoint(double x, double y)
     {
         this.helper.AddPoint(x, y);

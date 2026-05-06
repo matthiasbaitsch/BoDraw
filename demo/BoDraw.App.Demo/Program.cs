@@ -1,5 +1,5 @@
 ﻿using BoDraw;
 
 BoDrawApp bd = new BoDrawApp();
-Demo2.Draw(bd);
+DimensioningDemo.Draw(bd);
 bd.Show();

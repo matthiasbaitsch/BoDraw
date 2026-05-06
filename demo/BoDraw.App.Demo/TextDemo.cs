@@ -20,7 +20,7 @@ internal class TextDemo
         Text t3 = new Text("Rechtsbündig: HJust = 1", 0, 2.6 * s, s);
         t3.HJust = 1;
 
-        Text t4 = new Text("Langer Text \nmit Zeilenumbrüchen \nist linksbündig ausgerichtet", 150, 0, s);
+        Text t4 = new Text("Langer Text \nmit Zeilenumbrüchen \nist linksbündig ausgerichtet <sup>33</sup>", 150, 0, s);
 
         Text t5 = new Text("Gedrehter Text", 150, 50, s);
         t5.Angle = 30;
