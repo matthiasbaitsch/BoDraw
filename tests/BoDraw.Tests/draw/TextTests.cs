@@ -14,6 +14,8 @@ public class TextTests
         // Left/bottom aligned: position is top-left corner of text
         Assert.Equal(5, bounds.X);
         Assert.Equal(10, bounds.Y);
+        Assert.Equal(5, t.X);
+        Assert.Equal(10, t.Y);
         Assert.True(bounds.Width > 0);
         Assert.True(bounds.Height > 0);
 

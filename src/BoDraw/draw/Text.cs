@@ -16,6 +16,12 @@ public class Text : SimpleShape
     /// <summary>The anchor point of the text in drawing coordinates.</summary>
     public Point Position { get; set; }
 
+    /// <summary>The X coordinate of the anchor point.</summary>
+    public double X { get { return this.Position.X; } }
+
+    /// <summary>The Y coordinate of the anchor point.</summary>
+    public double Y { get { return this.Position.Y; } }
+
     /// <summary>The font size.</summary>
     public double FontSize { get; set; }
 
@@ -24,6 +30,9 @@ public class Text : SimpleShape
 
     /// <summary>Vertical justification: 0 = bottom, 0.5 = middle, 1 = top.</summary>
     public double VJust { get; set; } = 0;
+
+    /// <summary>Rotation angle in degrees, measured counter-clockwise from the positive X-axis.</summary>
+    public double Angle { get; set; } = 0;
 
     /// <summary>The typeface used to render the text.</summary>
     public Typeface Typeface { get; set; } = new Typeface("Arial");
@@ -41,6 +50,7 @@ public class Text : SimpleShape
         this.FontSize = fontSize;
     }
 
+    /// <summary>The bounding box of the text, accounting for justification offsets.</summary>
     public override Rect Bounds
     {
         get
@@ -55,20 +65,28 @@ public class Text : SimpleShape
         }
     }
 
+    /// <summary>Scales the text by multiplying <see cref="FontSize"/> by <paramref name="factor"/>.</summary>
     public override void Scale(double factor)
     {
         this.FontSize *= factor;
     }
 
+    /// <summary>Translates the anchor point by (<paramref name="dx"/>, <paramref name="dy"/>).</summary>
     public override void Move(double dx, double dy)
     {
         this.Position = new Point(this.Position.X + dx, this.Position.Y + dy);
     }
 
+    /// <summary>Renders the text into <paramref name="ctx"/>, applying a counter-transform to
+    /// compensate for the drawing's flipped Y-axis and an optional rotation.</summary>
     protected override void Draw(DrawingContext ctx)
     {
         var bounds = this.Bounds;
-        var transform = Matrix.CreateTranslation(bounds.X, -bounds.Y - bounds.Height).Append(Matrix.CreateScale(1, -1));
+        var transform =
+                Matrix.CreateTranslation(bounds.X, -bounds.Y - bounds.Height).Append(
+                Matrix.CreateScale(1, -1)).Append(
+                Matrix.CreateRotation(this.Angle * Math.PI / 180, this.Position))
+            ;
 
         using (ctx.PushTransform(transform))
         {
@@ -76,6 +94,7 @@ public class Text : SimpleShape
         }
     }
 
+    /// <summary>Returns a copy of this text shifted by (<paramref name="dx"/>, <paramref name="dy"/>).</summary>
     public new Text Copy(double dx, double dy)
     {
         return (Text)base.Copy(dx, dy);
