@@ -2,4 +2,5 @@
 
 BoDrawApp bd = new BoDrawApp();
 GridDemo.Draw(bd);
+bd.SaveImage("test.png", 1200);
 bd.Show();

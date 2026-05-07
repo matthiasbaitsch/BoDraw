@@ -1,5 +1,6 @@
 using Avalonia.Controls;
 using System.Diagnostics.CodeAnalysis;
+using System.Runtime.CompilerServices;
 
 namespace BoDraw;
 
@@ -21,5 +22,11 @@ public class BoDrawApp : BoDrawBase
     public void Show()
     {
         ModuleInit.AppBuilder!.Instance!.Run(this.mw);
+    }
+
+    public void SaveImage(string path, int size = 800, [CallerFilePath] string callerFilePath = "")
+    {
+        string directory = Path.GetDirectoryName(callerFilePath) ?? ".";
+        this.Canvas.SaveImage(Path.Combine(directory, path), size);
     }
 }

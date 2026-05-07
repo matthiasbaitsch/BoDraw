@@ -1,6 +1,7 @@
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Media;
+using Avalonia.Media.Imaging;
 
 namespace BoDraw;
 
@@ -35,5 +36,26 @@ public class BoDrawCanvas : Control, IBoDraw
     {
         base.Render(ctx);
         this.drawing.Draw(ctx, this.Bounds);
+    }
+
+    public void SaveImage(string path, int size = 800)
+    {
+        var bounds = this.drawing.Bounds;
+        int width, height;
+        if (bounds.Width >= bounds.Height)
+        {
+            width = size;
+            height = bounds.Height > 0 ? Math.Max(1, (int)Math.Round(size * bounds.Height / bounds.Width)) : size;
+        }
+        else
+        {
+            height = size;
+            width = bounds.Width > 0 ? Math.Max(1, (int)Math.Round(size * bounds.Width / bounds.Height)) : size;
+        }
+        var pixelSize = new PixelSize(width, height);
+        using var bitmap = new RenderTargetBitmap(pixelSize);
+        this.Arrange(new Rect(0, 0, width, height));
+        bitmap.Render(this);
+        bitmap.Save(path);
     }
 }
