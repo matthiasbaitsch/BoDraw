@@ -22,6 +22,11 @@ public class Group : Shape
         this.transform = transform;
     }
 
+    public void Add(params Shape[] shapes)
+    {
+        this.shapes.Add(shapes);
+    }
+
     private Rect LocalBounds { get { return this.shapes.Bounds; } }
 
     public override Rect Bounds

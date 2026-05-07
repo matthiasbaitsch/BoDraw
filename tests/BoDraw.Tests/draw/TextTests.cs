@@ -30,5 +30,11 @@ public class TextTests
         Assert.Equal(10 - h / 2, bounds.Y, 1e-10);
         Assert.Equal(w, bounds.Width, 1e-10);
         Assert.Equal(h, bounds.Height, 1e-10);
+
+        // Font family name
+        Assert.Equal("Arial", t.FontFamilyName);
+
+        t.FontFamilyName = "Courier New";
+        Assert.Equal("Courier New", t.FontFamilyName);
     }
 }

@@ -1,6 +1,6 @@
 ﻿using BoDraw;
 
-internal class Demo1
+internal class PolygonDemo
 {
     internal static void Draw(BoDrawApp bd)
     {

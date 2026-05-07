@@ -6,10 +6,13 @@ namespace BoDraw;
 
 /// <summary>
 /// A text label placed at a given position. Supports horizontal and vertical justification
-/// via <see cref="HJust"/> and <see cref="VJust"/>.
+/// via <see cref="HJust"/> and <see cref="VJust"/>, rotation via <see cref="Angle"/>,
+/// and multi-line content via <see cref="AppendLine"/>.
 /// </summary>
 public class Text : SimpleShape
 {
+    private Typeface typeface = new Typeface("Arial");
+
     /// <summary>The text string to display.</summary>
     public string Content { get; set; }
 
@@ -35,7 +38,11 @@ public class Text : SimpleShape
     public double Angle { get; set; } = 0;
 
     /// <summary>The typeface used to render the text.</summary>
-    public Typeface Typeface { get; set; } = new Typeface("Arial");
+    public string FontFamilyName
+    {
+        get { return this.typeface.FontFamily.ToString(); }
+        set { this.typeface = new Typeface(value); }
+    }
 
     /// <summary>The color of the text.</summary>
     public Color Color { get; set; } = Colors.Black;
@@ -48,6 +55,21 @@ public class Text : SimpleShape
         this.Content = content;
         this.Position = new Point(x, y);
         this.FontSize = fontSize;
+    }
+
+    /// <summary>Creates text at position (<paramref name="x"/>, <paramref name="y"/>) with empty
+    /// content and optional <paramref name="fontSize"/>. Use <see cref="AppendLine"/> to add lines.</summary>
+    public Text(double x, double y, double fontSize = 12)
+    {
+        this.Content = "";
+        this.Position = new Point(x, y);
+        this.FontSize = fontSize;
+    }
+
+    /// <summary>Appends <paramref name="text"/> as a new line to <see cref="Content"/>.</summary>
+    public void AppendLine(string text)
+    {
+        this.Content += "\n" + text;
     }
 
     /// <summary>The bounding box of the text, accounting for justification offsets.</summary>
@@ -106,7 +128,7 @@ public class Text : SimpleShape
             this.Content,
             CultureInfo.CurrentCulture,
             FlowDirection.LeftToRight,
-            this.Typeface,
+            this.typeface,
             this.FontSize,
             new SolidColorBrush(this.Color)
         );
