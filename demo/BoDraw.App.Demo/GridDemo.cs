@@ -15,12 +15,14 @@ internal class GridDemo
         c.FillColor = Colors.FromRgb(20, 255, 140);
         c.FillOpacity = 0.3;
 
-        Grid gg = new Grid(new Group(r1, r2, c));
-        gg.Nx = 10;
-        gg.Dx = 1.6;
-        gg.Ny = 15;
-        gg.Dy = 1.1;
+        Group group = new Group(r1, r2, c);
 
-        bd.Add(gg);
+        Grid grid = new Grid(group);
+        grid.Nx = 10;
+        grid.Dx = 1.6;
+        grid.Ny = 15;
+        grid.Dy = 1.1;
+
+        bd.Add(grid);
     }
 }
