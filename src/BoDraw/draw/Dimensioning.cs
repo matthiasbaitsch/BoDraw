@@ -8,6 +8,7 @@ namespace BoDraw;
 /// scaling factor, and number format, and renders annotated tick lines along one or
 /// more chains of measured points.
 /// </summary>
+/// 
 /// <example>
 /// <code>
 /// using BoDraw;

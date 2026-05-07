@@ -21,7 +21,7 @@ public class Polygon : AreaLikeShape
     {
         for (int i = 0; i < coordinates.Length - 1; i += 2)
         {
-            this.helper.AddPoint(coordinates[i], coordinates[i + 1]);
+            this.AddPoint(coordinates[i], coordinates[i + 1]);
         }
     }
 
