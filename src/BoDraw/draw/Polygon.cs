@@ -11,11 +11,6 @@ public class Polygon : AreaLikeShape
 {
     private PolyHelper helper = new PolyHelper();
 
-    public override Rect Bounds
-    {
-        get { return this.helper.Bounds; }
-    }
-
     /// <summary>Creates a polygon from a flat coordinate list: x0, y0, x1, y1, …</summary>
     public Polygon(params double[] coordinates)
     {
@@ -54,9 +49,9 @@ public class Polygon : AreaLikeShape
         return (Polygon)base.Copy(dx, dy);
     }
 
-    protected override void Draw(DrawingContext ctx, Brush? brush, Pen? pen)
+    public override Geometry Geometry
     {
-        this.helper.Draw(ctx, true, brush, pen);
+        get { return this.helper.BuildGeometry(true) ?? new StreamGeometry(); }
     }
 }
 

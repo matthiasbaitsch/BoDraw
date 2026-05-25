@@ -1,3 +1,4 @@
+using Avalonia;
 using Avalonia.Media;
 
 namespace BoDraw;
@@ -101,11 +102,16 @@ public abstract class AreaLikeShape : Shape
         set { this.Pen!.Thickness = value; }
     }
 
-    internal override sealed void Draw(double scale, DrawingContext ctx)
+    public abstract Geometry Geometry { get; }
+
+    public override Rect Bounds
     {
-        this.Draw(ctx, this.Brush, Shape.ScalePen(scale, this.Pen));
+        get { return this.Geometry.Bounds; }
     }
 
-    protected abstract void Draw(DrawingContext ctx, Brush? brush, Pen? pen);
+    internal override sealed void Draw(double scale, DrawingContext ctx)
+    {
+        ctx.DrawGeometry(this.Brush, Shape.ScalePen(scale, this.Pen), this.Geometry);
+    }
 
 }

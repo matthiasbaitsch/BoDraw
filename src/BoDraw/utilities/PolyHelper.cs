@@ -65,12 +65,10 @@ internal class PolyHelper
         this.points.AddRange(source.points);
     }
 
-    internal void Draw(DrawingContext ctx, bool isPolygon, Brush? brush, Pen? pen)
+    internal StreamGeometry? BuildGeometry(bool isPolygon)
     {
-        // Quick return
-        if (this.points.Count < 2) { return; }
+        if (this.points.Count < 2) { return null; }
 
-        // Construct geometry
         var geo = new StreamGeometry();
         using (var sgc = geo.Open())
         {
@@ -81,8 +79,15 @@ internal class PolyHelper
             }
             sgc.EndFigure(isPolygon);
         }
+        return geo;
+    }
 
-        // Draw geometry
-        ctx.DrawGeometry(brush, pen, geo);
+    internal void Draw(DrawingContext ctx, bool isPolygon, Brush? brush, Pen? pen)
+    {
+        var geo = this.BuildGeometry(isPolygon);
+        if (geo != null)
+        {
+            ctx.DrawGeometry(brush, pen, geo);
+        }
     }
 }

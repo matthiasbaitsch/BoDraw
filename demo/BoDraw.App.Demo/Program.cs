@@ -1,6 +1,6 @@
 ﻿using BoDraw;
 
 BoDrawApp bd = new BoDrawApp();
-GridDemo.Draw(bd);
+ClipDemo.Draw(bd);
 bd.SaveImage("test.png", 1200);
 // bd.Show();

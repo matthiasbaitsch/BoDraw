@@ -15,11 +15,6 @@ public class Ellipse : AreaLikeShape
         this.rect = new Rect(x - r1, y - r2, 2 * r1, 2 * r2);
     }
 
-    public override Rect Bounds
-    {
-        get { return this.rect; }
-    }
-
     public override void Scale(double factor)
     {
         this.rect = this.rect.Scale(factor);
@@ -35,9 +30,9 @@ public class Ellipse : AreaLikeShape
         return (Ellipse)base.Copy(dx, dy);
     }
 
-    protected override void Draw(DrawingContext ctx, Brush? brush, Pen? pen)
+    public override Geometry Geometry
     {
-        ctx.DrawEllipse(brush, pen, this.rect);
+        get { return new EllipseGeometry(this.rect); }
     }
 }
 
