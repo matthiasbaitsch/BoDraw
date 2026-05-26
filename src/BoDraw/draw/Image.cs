@@ -27,40 +27,6 @@ public class Image : SimpleShape
     private Rect bounds;
     private readonly Bitmap bitmap;
 
-    public double X
-    {
-        get { return this.bounds.X; }
-        set { this.bounds = new Rect(value, this.bounds.Y, this.bounds.Width, this.bounds.Height); }
-    }
-
-    public double Y
-    {
-        get { return this.bounds.Y; }
-        set { this.bounds = new Rect(this.bounds.X, value, this.bounds.Width, this.bounds.Height); }
-    }
-
-    public double Width
-    {
-        get { return this.bounds.Width; }
-        set { this.bounds = new Rect(this.bounds.X, this.bounds.Y, value, 1 / this.Aspect * value); }
-    }
-
-    public double Height
-    {
-        get { return this.bounds.Height; }
-        set { this.bounds = new Rect(this.bounds.X, this.bounds.Y, this.Aspect * value, value); }
-    }
-
-    public double Aspect
-    {
-        get { return this.bounds.Width / this.bounds.Height; }
-    }
-
-    public override Rect Bounds
-    {
-        get { return this.bounds; }
-    }
-
     public Image(string imagePath, double x, double y, double width, double height = 0)
     {
         this.bitmap = new Bitmap(ResolveImage(imagePath));
@@ -70,6 +36,45 @@ public class Image : SimpleShape
             height = width * size.Height / size.Width;
         }
         this.bounds = new Rect(x, y, width, height);
+    }
+
+    /// <summary>The X coordinate of the lower-left corner.</summary>
+    public double X
+    {
+        get { return this.bounds.X; }
+        set { this.bounds = new Rect(value, this.bounds.Y, this.bounds.Width, this.bounds.Height); }
+    }
+
+    /// <summary>The Y coordinate of the lower-left corner.</summary>
+    public double Y
+    {
+        get { return this.bounds.Y; }
+        set { this.bounds = new Rect(this.bounds.X, value, this.bounds.Width, this.bounds.Height); }
+    }
+
+    /// <summary>The width in drawing units. Setting this also adjusts Height to preserve the aspect ratio.</summary>
+    public double Width
+    {
+        get { return this.bounds.Width; }
+        set { this.bounds = new Rect(this.bounds.X, this.bounds.Y, value, 1 / this.Aspect * value); }
+    }
+
+    /// <summary>The height in drawing units. Setting this also adjusts Width to preserve the aspect ratio.</summary>
+    public double Height
+    {
+        get { return this.bounds.Height; }
+        set { this.bounds = new Rect(this.bounds.X, this.bounds.Y, this.Aspect * value, value); }
+    }
+
+    /// <summary>The width-to-height ratio of the image.</summary>
+    public double Aspect
+    {
+        get { return this.bounds.Width / this.bounds.Height; }
+    }
+
+    public override Rect Bounds
+    {
+        get { return this.bounds; }
     }
 
     public override void Scale(double factor)

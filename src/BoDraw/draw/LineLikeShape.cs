@@ -10,18 +10,21 @@ public abstract class LineLikeShape : Shape
 {
     public Pen Pen = new Pen(new SolidColorBrush(Colors.Black), lineCap: PenLineCap.Round, lineJoin: PenLineJoin.Round);
 
+    /// <summary>The stroke color.</summary>
     public Color Color
     {
         get { return ((SolidColorBrush?)this.Pen.Brush)!.Color; }
         set { ((SolidColorBrush?)this.Pen.Brush)!.Color = value; }
     }
 
+    /// <summary>The opacity of the stroke in the range [0, 1].</summary>
     public double Opacity
     {
         get { return ((SolidColorBrush?)this.Pen.Brush)!.Opacity; }
         set { ((SolidColorBrush?)this.Pen.Brush)!.Opacity = value; }
     }
 
+    /// <summary>The stroke thickness in drawing units.</summary>
     public double Thickness
     {
         get { return this.Pen.Thickness; }

@@ -9,6 +9,7 @@ public abstract class BoDrawBase : IBoDraw
 {
     public required BoDrawCanvas Canvas;
 
+    /// <summary>Gets or sets the background color of the drawing surface.</summary>
     public Color Background
     {
         get { return this.Canvas.Background; }

@@ -25,6 +25,7 @@ public abstract class Shape
         );
     }
 
+    /// <summary>The axis-aligned bounding box of the shape in drawing coordinates.</summary>
     public abstract Rect Bounds { get; }
 
     /// <summary>
@@ -40,11 +41,6 @@ public abstract class Shape
     /// <param name="factor">Scale factor.</param>
     public abstract void Scale(double factor);
 
-    protected internal virtual Shape DeepClone()
-    {
-        return (Shape)this.MemberwiseClone();
-    }
-
     /// <summary>
     /// Returns a copy of the shape moved by the given offset.
     /// </summary>
@@ -55,6 +51,11 @@ public abstract class Shape
         var copy = this.DeepClone();
         copy.Move(dx, dy);
         return copy;
+    }
+
+    protected internal virtual Shape DeepClone()
+    {
+        return (Shape)this.MemberwiseClone();
     }
 
     internal abstract void Draw(double scale, DrawingContext ctx);

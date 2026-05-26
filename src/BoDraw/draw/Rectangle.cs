@@ -41,7 +41,7 @@ public class Rectangle : AreaLikeShape
         return (Rectangle)base.Copy(dx, dy);
     }
 
-    public override Geometry Geometry
+    internal override Geometry Geometry
     {
         get { return new RectangleGeometry(this.rectangle); }
     }

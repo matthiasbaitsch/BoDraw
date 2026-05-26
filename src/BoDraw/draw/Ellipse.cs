@@ -30,7 +30,7 @@ public class Ellipse : AreaLikeShape
         return (Ellipse)base.Copy(dx, dy);
     }
 
-    public override Geometry Geometry
+    internal override Geometry Geometry
     {
         get { return new EllipseGeometry(this.rect); }
     }

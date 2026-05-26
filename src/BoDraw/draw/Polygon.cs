@@ -49,7 +49,7 @@ public class Polygon : AreaLikeShape
         return (Polygon)base.Copy(dx, dy);
     }
 
-    public override Geometry Geometry
+    internal override Geometry Geometry
     {
         get { return this.helper.BuildGeometry(true) ?? new StreamGeometry(); }
     }

@@ -13,6 +13,7 @@ public abstract class AreaLikeShape : Shape
     public Brush? Brush = new SolidColorBrush(Colors.LightGray);
     public Pen? Pen = new Pen(new SolidColorBrush(Colors.Black), lineCap: PenLineCap.Round, lineJoin: PenLineJoin.Round);
 
+    /// <summary>The fill color. Set to null to render without a fill.</summary>
     public Color? FillColor
     {
         get
@@ -42,6 +43,7 @@ public abstract class AreaLikeShape : Shape
         }
     }
 
+    /// <summary>The opacity of the fill in the range [0, 1]. Returns NaN when there is no fill brush.</summary>
     public double FillOpacity
     {
         get
@@ -62,6 +64,7 @@ public abstract class AreaLikeShape : Shape
         }
     }
 
+    /// <summary>The stroke color. Set to null to render without an outline.</summary>
     public Color? LineColor
     {
         get
@@ -96,19 +99,22 @@ public abstract class AreaLikeShape : Shape
         }
     }
 
+    /// <summary>The stroke thickness in drawing units.</summary>
     public double LineThickness
     {
         get { return this.Pen!.Thickness; }
         set { this.Pen!.Thickness = value; }
     }
 
+    /// <summary>The opacity of the stroke in the range [0, 1].</summary>
     public double LineOpacity
     {
         get { return ((SolidColorBrush?)this.Pen!.Brush)!.Opacity; }
         set { ((SolidColorBrush?)this.Pen!.Brush)!.Opacity = value; }
     }
 
-    public abstract Geometry Geometry { get; }
+    /// <summary>The Avalonia geometry that defines the shape's outline.</summary>
+    internal abstract Geometry Geometry { get; }
 
     public override Rect Bounds
     {
