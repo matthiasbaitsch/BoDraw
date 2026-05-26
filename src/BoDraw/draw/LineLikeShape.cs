@@ -12,26 +12,20 @@ public abstract class LineLikeShape : Shape
 
     public Color Color
     {
-        get
-        {
-            return ((SolidColorBrush?)this.Pen.Brush)!.Color;
-        }
-        set
-        {
-            ((SolidColorBrush?)this.Pen.Brush)!.Color = value;
-        }
+        get { return ((SolidColorBrush?)this.Pen.Brush)!.Color; }
+        set { ((SolidColorBrush?)this.Pen.Brush)!.Color = value; }
+    }
+
+    public double Opacity
+    {
+        get { return ((SolidColorBrush?)this.Pen.Brush)!.Opacity; }
+        set { ((SolidColorBrush?)this.Pen.Brush)!.Opacity = value; }
     }
 
     public double Thickness
     {
-        get
-        {
-            return this.Pen.Thickness;
-        }
-        set
-        {
-            this.Pen.Thickness = value;
-        }
+        get { return this.Pen.Thickness; }
+        set { this.Pen.Thickness = value; }
     }
 
     internal override sealed void Draw(double scale, DrawingContext ctx)

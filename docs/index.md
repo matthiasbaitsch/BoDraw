@@ -46,18 +46,18 @@ Shape - Bounds, Move(dx, dy), Scale(a), Copy(dx, dy)
 ├── SimpleShape
 │   ├── Image
 │   └── Text
-├── LineLikeShape — Color, Thickness
+├── LineLikeShape — Color, Thickness, Opacity
 │   ├── Line
 │   └── Polyline
-└── AreaLikeShape — FillColor, FillOpacity, LineColor, LineThickness
+└── AreaLikeShape — FillColor, FillOpacity, LineColor, LineThickness, LineOpacity
     ├── Rectangle
     ├── Polygon
     ├── Ellipse
     └── Circle
 ```
 
-- **`LineLikeShape`** — open shapes defined by one or more line segments. Styled with `Color` and `Thickness`.
-- **`AreaLikeShape`** — closed shapes with an interior. Support both a fill (`FillColor`, `FillOpacity`) and an outline (`LineColor`, `LineThickness`).
+- **`LineLikeShape`** — open shapes defined by one or more line segments. Styled with `Color`, `Thickness`, and `Opacity`.
+- **`AreaLikeShape`** — closed shapes with an interior. Support both a fill (`FillColor`, `FillOpacity`) and an outline (`LineColor`, `LineThickness`, `LineOpacity`).
 - **`SimpleShape`** — `Text` renders a string at a given position; `Image` displays a raster image.
 
 ## Coordinate system

@@ -102,6 +102,12 @@ public abstract class AreaLikeShape : Shape
         set { this.Pen!.Thickness = value; }
     }
 
+    public double LineOpacity
+    {
+        get { return ((SolidColorBrush?)this.Pen!.Brush)!.Opacity; }
+        set { ((SolidColorBrush?)this.Pen!.Brush)!.Opacity = value; }
+    }
+
     public abstract Geometry Geometry { get; }
 
     public override Rect Bounds
