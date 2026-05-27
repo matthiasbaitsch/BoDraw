@@ -1,15 +1,59 @@
+using System.Reflection.Metadata.Ecma335;
+using System.Runtime.InteropServices;
 using Avalonia;
 using Avalonia.Media;
 using Avalonia.Media.Imaging;
+using Avalonia.Platform;
 
 namespace BoDraw;
 
 /// <summary>
-/// A raster image loaded from a file and placed at a given position with a specified width.
-/// The height is derived from the image's aspect ratio when not explicitly set.
+/// A raster image placed at a given position with a specified size.
+/// Can be loaded from a file or created programmatically via SetPixel.
 /// </summary>
 public class Image : SimpleShape
 {
+
+    public class Pixel
+    {
+        private Image image;
+        internal int row;
+        internal int col;
+
+        internal Pixel(Image image, int row, int col)
+        {
+            this.image = image;
+            this.row = row;
+            this.col = col;
+        }
+
+        public int Row => this.row;
+        public int Col => this.col;
+
+        public double X => this.image.bounds.X + this.NCol * this.image.bounds.Width;
+        public double Y => this.image.bounds.Y + this.NRow * this.image.bounds.Height;
+
+        internal double NRow => (this.row + 0.5) / this.image.bitmap.PixelSize.Height;
+        internal double NCol => (this.col + 0.5) / this.image.bitmap.PixelSize.Width;
+
+        public Color Color
+        {
+            get
+            {
+                return this.image.bitmap.ColorAt(this.col, this.image.PixelSize.Height - this.row - 1);
+            }
+
+            set
+            {
+                WriteableBitmap bitmap = (WriteableBitmap)this.image.bitmap;
+                using var fb = bitmap.Lock();
+                byte[] pixel = [value.R, value.G, value.B, value.A];
+                int bitmapRow = this.image.bitmap.PixelSize.Height - this.row - 1;
+                Marshal.Copy(pixel, 0, fb.Address + bitmapRow * fb.RowBytes + this.col * 4, 4);
+            }
+        }
+    }
+
     private static string ResolveImage(string imagePath)
     {
         string[] prefixes = ["../../../..", "../../..", "../..", ".."];
@@ -27,43 +71,55 @@ public class Image : SimpleShape
     private Rect bounds;
     private readonly Bitmap bitmap;
 
-    public Image(string imagePath, double x, double y, double width, double height = 0)
+    private Image(Bitmap bitmap, double x, double y, double width, double height)
     {
-        this.bitmap = new Bitmap(ResolveImage(imagePath));
-        if (height == 0)
-        {
-            var size = this.bitmap.Size;
-            height = width * size.Height / size.Width;
-        }
-        this.bounds = new Rect(x, y, width, height);
+        this.bitmap = bitmap;
+        this.bounds = new Rect(x, y, width, height == 0 ? width * bitmap.Size.Height / bitmap.Size.Width : height);
+    }
+
+    public Image(string imagePath, double x, double y, double width, double height = 0)
+        :
+        this(new Bitmap(ResolveImage(imagePath)), x, y, width, height)
+    {
+    }
+
+    public Image(int pixelWidth, int pixelHeight, double x, double y, double width, double height = 0)
+        :
+        this(
+            new WriteableBitmap(
+                new PixelSize(pixelWidth, pixelHeight), new(96, 96), PixelFormat.Rgba8888
+            ),
+            x, y, width, height
+        )
+    {
     }
 
     /// <summary>The X coordinate of the lower-left corner.</summary>
     public double X
     {
         get { return this.bounds.X; }
-        set { this.bounds = new Rect(value, this.bounds.Y, this.bounds.Width, this.bounds.Height); }
+        set { this.bounds = this.bounds.WithX(value); }
     }
 
     /// <summary>The Y coordinate of the lower-left corner.</summary>
     public double Y
     {
         get { return this.bounds.Y; }
-        set { this.bounds = new Rect(this.bounds.X, value, this.bounds.Width, this.bounds.Height); }
+        set { this.bounds = this.bounds.WithY(value); }
     }
 
-    /// <summary>The width in drawing units. Setting this also adjusts Height to preserve the aspect ratio.</summary>
+    /// <summary>The width in drawing units.</summary>
     public double Width
     {
         get { return this.bounds.Width; }
-        set { this.bounds = new Rect(this.bounds.X, this.bounds.Y, value, 1 / this.Aspect * value); }
+        set { this.bounds = this.bounds.WithWidth(value); }
     }
 
-    /// <summary>The height in drawing units. Setting this also adjusts Width to preserve the aspect ratio.</summary>
+    /// <summary>The height in drawing units.</summary>
     public double Height
     {
         get { return this.bounds.Height; }
-        set { this.bounds = new Rect(this.bounds.X, this.bounds.Y, this.Aspect * value, value); }
+        set { this.bounds = this.bounds.WithHeight(value); }
     }
 
     /// <summary>The width-to-height ratio of the image.</summary>
@@ -75,6 +131,11 @@ public class Image : SimpleShape
     public override Rect Bounds
     {
         get { return this.bounds; }
+    }
+
+    public PixelSize PixelSize
+    {
+        get { return this.bitmap.PixelSize; }
     }
 
     public override void Scale(double factor)
@@ -92,6 +153,25 @@ public class Image : SimpleShape
         return (Image)base.Copy(dx, dy);
     }
 
+    public Pixel PixelAt(int row, int col)
+    {
+        return new Pixel(this, row, col);
+    }
+
+    public IEnumerable<Pixel> Pixels
+    {
+        get
+        {
+            for (int row = 0; row < this.bitmap.PixelSize.Height; row++)
+            {
+                for (int col = 0; col < this.bitmap.PixelSize.Width; col++)
+                {
+                    yield return new Pixel(this, row, col);
+                }
+            }
+        }
+    }
+
     protected override void Draw(DrawingContext ctx)
     {
         // Counter-transform the global Y-flip so the image renders right-side up
@@ -101,7 +181,10 @@ public class Image : SimpleShape
 
         using (ctx.PushTransform(transform))
         {
-            ctx.DrawImage(this.bitmap, new Rect(0, 0, this.Bounds.Width, this.Bounds.Height));
+            ctx.DrawImage(
+                this.bitmap,
+                new Rect(0, 0, this.Bounds.Width, this.Bounds.Height)
+            );
         }
     }
 }

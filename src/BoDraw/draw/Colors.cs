@@ -9,7 +9,9 @@ public sealed class Colors
     /// <summary>
     /// Creates a color from red, green, and blue values (0–255).
     /// </summary>
-    public static Color FromRgb(byte r, byte g, byte b) => Color.FromRgb(r, g, b);
+    public static Color FromRgb(int r, int g, int b) => Color.FromRgb((byte)r, (byte)g, (byte)b);
+
+    public static Color FromArgb(int r, int g, int b, int a) => Color.FromArgb((byte)a, (byte)r, (byte)g, (byte)b);
 
 
     /// <summary>

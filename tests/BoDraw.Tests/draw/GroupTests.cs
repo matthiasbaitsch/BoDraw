@@ -1,10 +1,11 @@
 using Avalonia;
+using Avalonia.Headless.XUnit;
 
 namespace BoDraw.Tests;
 
 public class GroupTests
 {
-    [Fact]
+    [AvaloniaFact]
     public void TestBounds()
     {
         var g = new Group(new Rectangle(0, 0, 2, 2), new Rectangle(4, 4, 6, 6));
@@ -19,7 +20,7 @@ public class GroupTests
         Assert.Equal(new Rect(3, 4, 2, 2), g.Bounds);
     }
 
-    [Fact]
+    [AvaloniaFact]
     public void TestMoveDoesNotMutateChildren()
     {
         var r = new Rectangle(0, 0, 2, 2);
@@ -28,7 +29,7 @@ public class GroupTests
         Assert.Equal(new Rect(0, 0, 2, 2), r.Bounds);
     }
 
-    [Fact]
+    [AvaloniaFact]
     public void TestCopyIsShallow()
     {
         var r = new Rectangle(0, 0, 2, 2);
