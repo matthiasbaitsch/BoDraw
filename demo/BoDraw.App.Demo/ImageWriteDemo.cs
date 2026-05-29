@@ -4,7 +4,7 @@ internal class ImageWriteDemo
 {
     internal static void Draw(BoDrawApp bd)
     {
-        Image image = new Image(1500, 1500, -1.1, -1.1, 2.2);
+        Image image = new Image(-1.1, -1.1, 1.1, 1.1, 1500);
 
         foreach (var p in image.Pixels)
         {

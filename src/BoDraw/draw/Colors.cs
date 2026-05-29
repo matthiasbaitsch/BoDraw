@@ -1,3 +1,4 @@
+using System.Reflection;
 using Avalonia.Media;
 
 namespace BoDraw;
@@ -6,12 +7,45 @@ namespace BoDraw;
 
 public sealed class Colors
 {
+    private static readonly PropertyInfo[] _properties =
+        [.. typeof(Colors)
+            .GetProperties(BindingFlags.Public | BindingFlags.Static)
+            .Where(p => p.PropertyType == typeof(Color))];
+
+    public static int Count
+    {
+        get { return _properties.Length; }
+    }
+
+    /// <summary>
+    /// Returns a color by index.
+    /// </summary>
+    public static Color Get(int index)
+    {
+        return (Color)_properties[index].GetValue(null)!;
+    }
+
+    /// <summary>
+    /// Returns a color by name, or throws if the name is not found.
+    /// </summary>
+    public static Color Get(string name)
+    {
+        foreach (var p in _properties)
+        {
+            if (p.Name == name)
+            {
+                return (Color)p.GetValue(null)!;
+            }
+        }
+        throw new ArgumentException($"Unknown color '{name}'.");
+    }
+
     /// <summary>
     /// Creates a color from red, green, and blue values (0–255).
     /// </summary>
     public static Color FromRgb(int r, int g, int b) => Color.FromRgb((byte)r, (byte)g, (byte)b);
 
-    public static Color FromArgb(int r, int g, int b, int a) => Color.FromArgb((byte)a, (byte)r, (byte)g, (byte)b);
+    public static Color FromRgba(int r, int g, int b, int a) => Color.FromArgb((byte)a, (byte)r, (byte)g, (byte)b);
 
 
     /// <summary>

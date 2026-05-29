@@ -14,6 +14,7 @@ namespace BoDraw;
 public class Image : SimpleShape
 {
 
+    /// <summary>A single pixel within an image, identified by row and column.</summary>
     public class Pixel
     {
         private Image image;
@@ -27,15 +28,41 @@ public class Image : SimpleShape
             this.col = col;
         }
 
-        public int Row => this.row;
-        public int Col => this.col;
+        /// <summary>The zero-based row index, from bottom to top.</summary>
+        public int Row
+        {
+            get { return this.row; }
+        }
 
-        public double X => this.image.bounds.X + this.NCol * this.image.bounds.Width;
-        public double Y => this.image.bounds.Y + this.NRow * this.image.bounds.Height;
+        /// <summary>The zero-based column index, from left to right.</summary>
+        public int Col
+        {
+            get { return this.col; }
+        }
 
-        internal double NRow => (this.row + 0.5) / this.image.bitmap.PixelSize.Height;
-        internal double NCol => (this.col + 0.5) / this.image.bitmap.PixelSize.Width;
+        /// <summary>The X coordinate of the pixel center in drawing units.</summary>
+        public double X
+        {
+            get { return this.image.bounds.X + this.NCol * this.image.bounds.Width; }
+        }
 
+        /// <summary>The Y coordinate of the pixel center in drawing units.</summary>
+        public double Y
+        {
+            get { return this.image.bounds.Y + this.NRow * this.image.bounds.Height; }
+        }
+
+        internal double NRow
+        {
+            get { return (this.row + 0.5) / this.image.bitmap.PixelSize.Height; }
+        }
+
+        internal double NCol
+        {
+            get { return (this.col + 0.5) / this.image.bitmap.PixelSize.Width; }
+        }
+
+        /// <summary>The color of this pixel.</summary>
         public Color Color
         {
             get
@@ -77,22 +104,22 @@ public class Image : SimpleShape
         this.bounds = new Rect(x, y, width, height == 0 ? width * bitmap.Size.Height / bitmap.Size.Width : height);
     }
 
+    /// <summary>Loads an image from a file, placed within the rectangle from (x, y) with the given width. Height defaults to preserving the aspect ratio.</summary>
     public Image(string imagePath, double x, double y, double width, double height = 0)
         :
         this(new Bitmap(ResolveImage(imagePath)), x, y, width, height)
-    {
-    }
+    { }
 
-    public Image(int pixelWidth, int pixelHeight, double x, double y, double width, double height = 0)
+    /// <summary>Creates a blank writable image covering the rectangle defined by two corners, with the given pixel width.</summary>
+    public Image(double x1, double y1, double x2, double y2, int pixelWidth)
         :
         this(
             new WriteableBitmap(
-                new PixelSize(pixelWidth, pixelHeight), new(96, 96), PixelFormat.Rgba8888
+                new PixelSize(pixelWidth, (int)(Math.Abs(y2 - y1) / Math.Abs(x2 - x1) * pixelWidth)), new(96, 96), PixelFormat.Rgba8888
             ),
-            x, y, width, height
+            Math.Min(x1, x2), Math.Min(y1, y2), Math.Abs(x2 - x1), Math.Abs(y2 - y1)
         )
-    {
-    }
+    { }
 
     /// <summary>The X coordinate of the lower-left corner.</summary>
     public double X
@@ -128,11 +155,13 @@ public class Image : SimpleShape
         get { return this.bounds.Width / this.bounds.Height; }
     }
 
+    /// <summary>The bounding rectangle of the image in drawing units.</summary>
     public override Rect Bounds
     {
         get { return this.bounds; }
     }
 
+    /// <summary>The size of the image in pixels.</summary>
     public PixelSize PixelSize
     {
         get { return this.bitmap.PixelSize; }
@@ -148,25 +177,32 @@ public class Image : SimpleShape
         this.bounds = this.bounds.Move(dx, dy);
     }
 
+    /// <summary>Returns a copy of this image shifted by (dx, dy).</summary>
     public new Image Copy(double dx, double dy)
     {
         return (Image)base.Copy(dx, dy);
     }
 
+    /// <summary>Returns the pixel at the given row and column.</summary>
     public Pixel PixelAt(int row, int col)
     {
         return new Pixel(this, row, col);
     }
 
+    /// <summary>Enumerates all pixels row by row, from bottom to top.</summary>
+    /// <remarks>The same Pixel instance is reused on each iteration — do not keep references across iterations.</remarks>
     public IEnumerable<Pixel> Pixels
     {
         get
         {
+            var pixel = new Pixel(this, 0, 0);
             for (int row = 0; row < this.bitmap.PixelSize.Height; row++)
             {
                 for (int col = 0; col < this.bitmap.PixelSize.Width; col++)
                 {
-                    yield return new Pixel(this, row, col);
+                    pixel.row = row;
+                    pixel.col = col;
+                    yield return pixel;
                 }
             }
         }

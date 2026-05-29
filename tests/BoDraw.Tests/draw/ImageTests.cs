@@ -9,7 +9,7 @@ public class ImageTests
     [AvaloniaFact]
     public void TestPixel()
     {
-        Image image = new Image(3, 11, 0, 0, 15);
+        Image image = new Image(0, 0, 15, 55, 3);
         Image.Pixel p = image.PixelAt(5, 1);
 
         Assert.Equal(15, image.Width);
