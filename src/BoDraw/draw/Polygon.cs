@@ -11,6 +11,9 @@ public class Polygon : AreaLikeShape
 {
     private PolyHelper helper = new PolyHelper();
 
+    /// <summary>Creates an empty polygon</summary>
+    public Polygon() { }
+
     /// <summary>Creates a polygon from a flat coordinate list: x0, y0, x1, y1, …</summary>
     public Polygon(params double[] coordinates)
     {

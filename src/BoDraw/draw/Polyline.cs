@@ -11,6 +11,18 @@ public class Polyline : LineLikeShape
 {
     private PolyHelper helper = new PolyHelper();
 
+    /// <summary>Creates an empty polyline</summary>
+    public Polyline() { }
+
+    /// <summary>Creates a polyline from a flat coordinate list: x0, y0, x1, y1, …</summary>
+    public Polyline(params double[] coordinates)
+    {
+        for (int i = 0; i < coordinates.Length - 1; i += 2)
+        {
+            this.AddPoint(coordinates[i], coordinates[i + 1]);
+        }
+    }
+
     public override Rect Bounds
     {
         get { return this.helper.Bounds; }
