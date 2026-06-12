@@ -35,7 +35,7 @@ internal class ImageReadDemo
                     }
                 }
                 Circle cc = new Circle(x / NN, y / NN, D / 2.2);
-                cc.FillColor = Colors.FromArgb(a / NN, r / NN, g / NN, b / NN);
+                cc.FillColor = Colors.FromRgba(r / NN, g / NN, b / NN, a / NN);
                 cc.LineColor = null;
                 gg.Add(cc);
             }
