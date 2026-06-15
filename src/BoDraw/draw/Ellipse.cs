@@ -8,21 +8,21 @@ namespace BoDraw;
 /// </summary>
 public class Ellipse : AreaLikeShape
 {
-    private Rect rect;
+    private Rect rectangle;
 
     public Ellipse(double x, double y, double r1, double r2)
     {
-        this.rect = new Rect(x - r1, y - r2, 2 * r1, 2 * r2);
+        this.rectangle = new Rect(x - r1, y - r2, 2 * r1, 2 * r2);
     }
 
     public override void Scale(double factor)
     {
-        this.rect = this.rect.Scale(factor);
+        this.rectangle = this.rectangle.Scale(factor);
     }
 
     public override void Move(double dx, double dy)
     {
-        this.rect = this.rect.Move(dx, dy);
+        this.rectangle = this.rectangle.Move(dx, dy);
     }
 
     public new Ellipse Copy(double dx, double dy)
@@ -30,9 +30,14 @@ public class Ellipse : AreaLikeShape
         return (Ellipse)base.Copy(dx, dy);
     }
 
+    public override Rect Bounds
+    {
+        get { return this.rectangle; }
+    }
+
     internal override Geometry Geometry
     {
-        get { return new EllipseGeometry(this.rect); }
+        get { return new EllipseGeometry(this.rectangle); }
     }
 }
 
