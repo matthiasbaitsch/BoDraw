@@ -2,12 +2,12 @@
 using System.Reflection;
 using Avalonia.Media;
 
-internal class Demo3
+public class Demo3
 {
 
     const int NC = 8;
 
-    internal static void Draw(BoDrawApp bd)
+    public static void Draw(IBoDraw bd)
     {
         double sx = 20;
         double sy = 5;

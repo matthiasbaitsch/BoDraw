@@ -1,8 +1,8 @@
 ﻿using BoDraw;
 
-internal class TextDemo
+public class TextDemo
 {
-    internal static void Draw(BoDrawApp bd)
+    public static void Draw(IBoDraw bd)
     {
         static Shape dotit(Text t)
         {

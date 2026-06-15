@@ -1,8 +1,8 @@
 using BoDraw;
 
-internal class ArrowDemo
+public class ArrowDemo
 {
-    internal static void Draw(BoDrawApp bd)
+    public static void Draw(IBoDraw bd)
     {
         // Thin black arrows in various directions
         bd.Add(new Arrow(0, 0, 20, 0));

@@ -1,8 +1,8 @@
 ﻿using BoDraw;
 
-internal class DimensioningDemo
+public class DimensioningDemo
 {
-    internal static void Draw(BoDrawApp bd)
+    public static void Draw(IBoDraw bd)
     {
         Polygon p = new Polygon(0,0, 3,0, 5,1, 6,1, 6,6, 0,6);
 

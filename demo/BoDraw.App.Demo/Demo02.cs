@@ -1,8 +1,8 @@
 ﻿using BoDraw;
 
-internal class Demo2
+public class Demo2
 {
-    internal static void Draw(BoDrawApp bd)
+    public static void Draw(IBoDraw bd)
     {
         Rectangle r1 = new Rectangle(0, 0, 12, 8);
         r1.FillColor = Colors.HotPink;

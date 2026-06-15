@@ -1,8 +1,8 @@
 ﻿using BoDraw;
 
-internal class PolygonDemo
+public class PolygonDemo
 {
-    internal static void Draw(BoDrawApp bd)
+    public static void Draw(IBoDraw bd)
     {
         Image image = new Image("assets/hs-bo_logo_en.png", 0, 0, 400);
 

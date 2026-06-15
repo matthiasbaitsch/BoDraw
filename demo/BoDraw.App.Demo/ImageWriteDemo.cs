@@ -1,8 +1,8 @@
 using BoDraw;
 
-internal class ImageWriteDemo
+public class ImageWriteDemo
 {
-    internal static void Draw(BoDrawApp bd)
+    public static void Draw(IBoDraw bd)
     {
         Image image = new Image(-1.1, -1.1, 1.1, 1.1, 1500);
 

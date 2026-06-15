@@ -1,8 +1,8 @@
 using BoDraw;
 
-internal class ClipDemo
+public class ClipDemo
 {
-    internal static void Draw(BoDrawApp bd)
+    public static void Draw(IBoDraw bd)
     {
         Polyline p = new Polyline();
         for (int i = 0; i < 2000; i++)

@@ -1,8 +1,8 @@
 using BoDraw;
 
-internal class ImageReadDemo
+public class ImageReadDemo
 {
-    internal static void Draw(BoDrawApp bd)
+    public static void Draw(IBoDraw bd)
     {
         double W = 500;
         Image image = new Image("assets/hs-bo_logo_en.png", 0, 0, W);
