@@ -12,12 +12,14 @@
     <PackageReference Include="Avalonia.Skia" Version="12.*" />
     <PackageReference Include="coverlet.collector" Version="6.0.4" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.14.1" />
+    <PackageReference Include="Verify.XunitV3" Version="31.19.1" />
     <PackageReference Include="xunit.v3" Version="3.*" />
     <PackageReference Include="xunit.runner.visualstudio" Version="3.*" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="../../src/BoDraw/BoDraw.csproj" />
+    <ProjectReference Include="../../demo/BoDraw.App.Demo/BoDraw.App.Demo.csproj" />
   </ItemGroup>
 
   <ItemGroup>
