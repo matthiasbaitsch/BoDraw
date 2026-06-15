@@ -1,4 +1,5 @@
 [![CI](https://github.com/matthiasbaitsch/BoDraw/actions/workflows/test.yml/badge.svg)](https://github.com/matthiasbaitsch/BoDraw/actions/workflows/test.yml)
+[![Documentation](https://img.shields.io/badge/docs-github%20pages-blue)](https://matthiasbaitsch.github.io/BoDraw/)
 
 # BoDraw
 
