@@ -1,0 +1,10 @@
+- name: Test
+  run: dotnet test --logger trx --results-directory ./TestResults
+
+- name: Test Report
+  uses: dorny/test-reporter@v1
+  if: always()
+  with:
+    name: Test Results
+    path: ./TestResults/*.trx
+    reporter: dotnet-trx
