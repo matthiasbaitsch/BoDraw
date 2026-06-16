@@ -8,10 +8,9 @@ public class DemoTests
     private static readonly Assembly DemoAssembly = typeof(ArrowDemo).Assembly;
 
     // Demos excluded from reference tests:
-    // - ClipDemo: uses Random.Shared, produces non-deterministic output
     // - ImageReadDemo: requires assets/hs-bo_logo_en.png at runtime
     // - PolygonDemo: requires assets/hs-bo_logo_en.png at runtime
-    private static readonly HashSet<string> Excluded = ["ClipDemo", "ImageReadDemo", "PolygonDemo"];
+    private static readonly HashSet<string> Excluded = ["ImageReadDemo", "PolygonDemo"];
 
     public static IEnumerable<object[]> GetDemos()
     {

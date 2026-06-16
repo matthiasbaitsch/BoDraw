@@ -4,10 +4,12 @@ public class ClipDemo
 {
     public static void Draw(IBoDraw bd)
     {
+        Random random = new Random(0);
+
         Polyline p = new Polyline();
         for (int i = 0; i < 2000; i++)
         {
-            p.AddPoint(Random.Shared.NextDouble() * 100, Random.Shared.NextDouble() * 100);
+            p.AddPoint(random.NextDouble() * 100, random.NextDouble() * 100);
         }
 
         AreaLikeShape c = new Circle(50, 50, 30);
