@@ -1,6 +1,6 @@
 ﻿using BoDraw;
 
 BoDrawApp bd = new BoDrawApp();
-Demo03.Draw(bd);
+PolygonDemo.Draw(bd);
 bd.SaveImage("test.png", 1200);
 // bd.Show();

@@ -7,18 +7,14 @@ public class DemoTests
 {
     private static readonly Assembly DemoAssembly = typeof(ArrowDemo).Assembly;
 
-    // Demos excluded from reference tests:
-    // - ImageReadDemo: requires assets/hs-bo_logo_en.png at runtime
-    // - PolygonDemo: requires assets/hs-bo_logo_en.png at runtime
-    private static readonly HashSet<string> Excluded = ["ImageReadDemo", "PolygonDemo"];
-
     public static IEnumerable<object[]> GetDemos()
     {
         return DemoAssembly
             .GetTypes()
-            .Where(t => t.GetMethod("Draw", BindingFlags.Public | BindingFlags.Static,
-                                    null, [typeof(IBoDraw)], null) != null
-                     && !Excluded.Contains(t.Name))
+            .Where(t => t.GetMethod(
+                    "Draw", BindingFlags.Public | BindingFlags.Static, null, [typeof(IBoDraw)], null
+                ) != null
+            )
             .OrderBy(t => t.Name)
             .Select(t => new object[] { t.Name });
     }

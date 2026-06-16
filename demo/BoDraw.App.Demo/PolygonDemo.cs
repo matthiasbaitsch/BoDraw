@@ -4,48 +4,31 @@ public class PolygonDemo
 {
     public static void Draw(IBoDraw bd)
     {
-        Image image = new Image("assets/hs-bo_logo_en.png", 0, 0, 400);
+        Rectangle rectangle = new Rectangle(-20, -20, 420, 220);
 
-        Rectangle rectangle = new Rectangle(-20, -20, image.Width + 20, image.Height + 20);
-        rectangle.LineThickness = 3;
-        rectangle.FillColor = Colors.LightSkyBlue;
-        rectangle.LineColor = null;
+        // Construct with some points
+        Polygon s1 = new Polygon(0, 55, 7, 17, 27, 27, 14, 6, 50, 0, 18, -9);
 
-        Text text = new Text("BoDraw ist ein einfaches Zeichenpaket...", -20, -40);
-        text.Color = Colors.DarkOliveGreen;
-        text.FontSize = 8;
+        // Add some more points
+        s1.AddPoint(27, -32);
+        s1.AddPoint(4, -11);
+        s1.AddPoint(-5, -52);
+        s1.AddPoint(-7, -15);
+        s1.AddPoint(-25, -25);
+        s1.AddPoint(-14, -6);
+        s1.AddPoint(-48, 0);
+        s1.AddPoint(-17, 7);
+        s1.AddPoint(-28, 28);
+        s1.AddPoint(-6, 15);
 
-        Polygon star = new Polygon();
-        star.AddPoint(0, 55);
-        star.AddPoint(7, 17);
-        star.AddPoint(27, 27);
-        star.AddPoint(14, 6);
-        star.AddPoint(50, 0);
-        star.AddPoint(18, -9);
-        star.AddPoint(27, -32);
-        star.AddPoint(4, -11);
-        star.AddPoint(-5, -52);
-        star.AddPoint(-7, -15);
-        star.AddPoint(-25, -25);
-        star.AddPoint(-14, -6);
-        star.AddPoint(-48, 0);
-        star.AddPoint(-17, 7);
-        star.AddPoint(-28, 28);
-        star.AddPoint(-6, 15);
-        star.Scale(0.25);
-        star.FillColor = Colors.Yellow;
-        star.LineColor = Colors.Red;
-        star.LineThickness = 2;
-        star.Move(-20, -20);
+        // Configure
+        s1.Scale(0.25);
+        s1.Move(-20, -20);
+        s1.LineThickness = 2;
+        s1.LineColor = Colors.Red;
+        s1.FillColor = Colors.Yellow;
 
-        bd.Add(
-            text,
-            rectangle,
-            star,
-            star.Copy(image.Width + 40, 0),
-            star.Copy(0, image.Height + 40),
-            star.Copy(image.Width + 40, image.Height + 40),
-            image
-        );
+        // Add
+        bd.Add(rectangle, s1, s1.Copy(440, 0), s1.Copy(0, 240), s1.Copy(440, 240));
     }
 }
