@@ -20,7 +20,7 @@ public sealed class Colors
     /// <summary>
     /// Returns a color by index.
     /// </summary>
-    public static Color Get(int index)
+    public static Color Color(int index)
     {
         return (Color)_properties[index].GetValue(null)!;
     }
@@ -28,7 +28,7 @@ public sealed class Colors
     /// <summary>
     /// Returns a color by name, or throws if the name is not found.
     /// </summary>
-    public static Color Get(string name)
+    public static Color Color(string name)
     {
         foreach (var p in _properties)
         {
@@ -41,11 +41,19 @@ public sealed class Colors
     }
 
     /// <summary>
+    /// Returns the name of a color by index.
+    /// </summary>
+    public static string Name(int index)
+    {
+        return _properties[index].Name;
+    }
+
+    /// <summary>
     /// Creates a color from red, green, and blue values (0–255).
     /// </summary>
-    public static Color FromRgb(int r, int g, int b) => Color.FromRgb((byte)r, (byte)g, (byte)b);
+    public static Color FromRgb(int r, int g, int b) => Avalonia.Media.Color.FromRgb((byte)r, (byte)g, (byte)b);
 
-    public static Color FromRgba(int r, int g, int b, int a) => Color.FromArgb((byte)a, (byte)r, (byte)g, (byte)b);
+    public static Color FromRgba(int r, int g, int b, int a) => Avalonia.Media.Color.FromArgb((byte)a, (byte)r, (byte)g, (byte)b);
 
 
     /// <summary>

@@ -1,49 +1,25 @@
 ﻿using BoDraw;
-using System.Reflection;
-using Avalonia.Media;
 
-public class Demo3
+public class Demo03
 {
 
     const int NC = 8;
+    const double SX = 20;
+    const double SY = 5;
+    const double DX = 2;
+    const double DY = 5;
 
     public static void Draw(IBoDraw bd)
     {
-        double sx = 20;
-        double sy = 5;
-        double dx = 2;
-        double dy = 5;
-
-        var colors = typeof(BoDraw.Colors)
-            .GetProperties(BindingFlags.Public | BindingFlags.Static)
-            .Where(p => p.PropertyType == typeof(Color))
-            .Select(p => (Name: p.Name, Color: (Color)p.GetValue(null)!))
-            .ToArray();
-
-        int cnt = 0;
-        double x = 0;
-        double y = 0;
-
-        foreach (var c in colors)
+        for (int i = 0; i < Colors.Count; i++)
         {
-            var r = new Rectangle(x, y, x + sx, y + sy);
-            r.FillColor = c.Color;
+            double x = i % NC * (SX + DX);
+            double y = -i / NC * (SY + DY);
+            var r = new Rectangle(x, y, x + SX, y + SY);
+            var t = new Text(Colors.Name(i), x, y - 3, 2);
 
-            var t = new Text(c.Name, x, y - 3, 2);
-
+            r.FillColor = Colors.Color(i);
             bd.Add(r, t);
-
-            cnt++;
-            if (cnt == NC)
-            {
-                cnt = 0;
-                x = 0;
-                y -= sy + dy;
-            }
-            else
-            {
-                x += sx + dx;
-            }
         }
     }
 }
