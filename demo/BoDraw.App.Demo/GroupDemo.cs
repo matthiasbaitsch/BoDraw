@@ -1,6 +1,6 @@
 ﻿using BoDraw;
 
-public class Demo04
+public class GroupDemo
 {
     public static void Draw(IBoDraw bd)
     {

@@ -1,6 +1,6 @@
 ﻿using BoDraw;
 
-public class Demo03
+public class ColorTableDemo
 {
 
     const int NC = 8;
