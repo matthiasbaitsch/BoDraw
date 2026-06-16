@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using Avalonia;
 using Avalonia.Skia;
 using Avalonia.Headless;
@@ -15,6 +16,12 @@ public class TestAppBuilder
         return AppBuilder.Configure<TestApp>()
             .UseSkia()
             .UseHeadless(new AvaloniaHeadlessPlatformOptions { UseHeadlessDrawing = false });
+    }
+
+    [ModuleInitializer]
+    public static void InitializeVerify()
+    {
+        VerifierSettings.UseSsimForPng(0.95);
     }
 }
 

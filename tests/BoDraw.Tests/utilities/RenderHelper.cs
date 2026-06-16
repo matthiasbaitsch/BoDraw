@@ -28,6 +28,6 @@ public static class RenderHelper
         var path = Path.ChangeExtension(Path.GetTempFileName(), ".png");
         bitmap.Save(path);
 
-        return VerifyFile(path).UseDirectory("Snapshots");
+        return VerifyFile(path).UseDirectory("../assets/snapshots");
     }
 }
