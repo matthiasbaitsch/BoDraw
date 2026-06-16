@@ -6,3 +6,6 @@
 _site/
 api/
 demo/BoDraw.App.Demo/test.png
+
+# Verify
+*.received.*

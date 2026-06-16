@@ -6,7 +6,8 @@ namespace BoDraw.Tests;
 
 public static class RenderHelper
 {
-    public static SettingsTask VerifyRendering(Action<BoDrawCanvas> setup, int size = 400)
+    public static SettingsTask
+    VerifyRendering(Action<BoDrawCanvas> setup, int size = 400)
     {
         var canvas = new BoDrawCanvas();
         setup(canvas);
@@ -27,6 +28,6 @@ public static class RenderHelper
         var path = Path.ChangeExtension(Path.GetTempFileName(), ".png");
         bitmap.Save(path);
 
-        return VerifyFile(path);
+        return VerifyFile(path).UseDirectory("Snapshots");
     }
 }
