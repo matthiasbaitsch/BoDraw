@@ -1,8 +1,10 @@
 using Avalonia;
 using Avalonia.Skia;
 using Avalonia.Headless;
+using Xunit;
 
 [assembly: AvaloniaTestApplication(typeof(TestAppBuilder))]
+[assembly: CollectionBehavior(DisableTestParallelization = true)]
 
 public class TestApp : Application { }
 
