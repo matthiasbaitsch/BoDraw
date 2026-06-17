@@ -40,6 +40,38 @@ internal class PolyHelper
         this.points.Add(new Point(x, y));
     }
 
+    internal void AddPoints(double[] coordinates)
+    {
+        for (int i = 0; i < coordinates.Length - 1; i += 2)
+        {
+            this.AddPoint(coordinates[i], coordinates[i + 1]);
+        }
+    }
+
+    internal void AddPoints(IEnumerable<double> xs, IEnumerable<double> ys, Rectangle? bounds)
+    {
+        if (bounds == null)
+        {
+            foreach (var (x, y) in xs.Zip(ys))
+            {
+                this.AddPoint(x, y);
+            }
+        }
+        else
+        {
+            double xMin = xs.Min(), xMax = xs.Max();
+            double yMin = ys.Min(), yMax = ys.Max();
+
+            var r = bounds.Bounds;
+            foreach (var (x, y) in xs.Zip(ys))
+            {
+                double tx = xMax == xMin ? 0.5 : (x - xMin) / (xMax - xMin);
+                double ty = yMax == yMin ? 0.5 : (y - yMin) / (yMax - yMin);
+                this.AddPoint(r.X + tx * r.Width, r.Y + ty * r.Height);
+            }
+        }
+    }
+
     internal void Scale(double factor)
     {
         double cx = this.Bounds.X + this.Bounds.Width / 2;

@@ -17,10 +17,17 @@ public class Polygon : AreaLikeShape
     /// <summary>Creates a polygon from a flat coordinate list: x0, y0, x1, y1, …</summary>
     public Polygon(params double[] coordinates)
     {
-        for (int i = 0; i < coordinates.Length - 1; i += 2)
-        {
-            this.AddPoint(coordinates[i], coordinates[i + 1]);
-        }
+        this.helper.AddPoints(coordinates);
+    }
+
+    /// <summary>
+    /// Creates a polygon from data sequences. When <paramref name="bounds"/> is provided,
+    /// values are mapped from their natural range into the rectangle; otherwise the data
+    /// values are used directly as drawing coordinates.
+    /// </summary>
+    public Polygon(IEnumerable<double> xs, IEnumerable<double> ys, Rectangle? bounds = null)
+    {
+        this.helper.AddPoints(xs, ys, bounds);
     }
 
     public void AddPoint(double x, double y)
