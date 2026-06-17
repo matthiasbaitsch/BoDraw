@@ -13,6 +13,30 @@ public abstract class AreaLikeShape : Shape
     public Brush? Brush = new SolidColorBrush(Colors.LightGray);
     public Pen? Pen = new Pen(new SolidColorBrush(Colors.Black), lineCap: PenLineCap.Round, lineJoin: PenLineJoin.Round);
 
+    public AreaLikeShape WithFillColor(Color color)
+    {
+        this.FillColor = color;
+        return this;
+    }
+
+    public AreaLikeShape WithFillOpacity(double opacity)
+    {
+        this.FillOpacity = opacity;
+        return this;
+    }
+
+    public AreaLikeShape WithLineColor(Color color)
+    {
+        this.LineColor = color;
+        return this;
+    }
+
+    public AreaLikeShape WithLineThickness(double thickness)
+    {
+        this.LineThickness = thickness;
+        return this;
+    }
+
     /// <summary>The fill color. Set to null to render without a fill.</summary>
     public Color? FillColor
     {

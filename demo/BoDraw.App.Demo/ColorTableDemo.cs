@@ -1,8 +1,7 @@
-﻿using BoDraw;
+using BoDraw;
 
 public class ColorTableDemo
 {
-
     const int NC = 8;
     const double SX = 20;
     const double SY = 5;
@@ -15,11 +14,11 @@ public class ColorTableDemo
         {
             double x = i % NC * (SX + DX);
             double y = -i / NC * (SY + DY);
-            var r = new Rectangle(x, y, x + SX, y + SY);
-            var t = new Text(Colors.Name(i), x, y - 3, 2);
 
-            r.FillColor = Colors.Color(i);
-            bd.Add(r, t);
+            bd.Add(
+                new Rectangle(x, y, x + SX, y + SY).WithFillColor(Colors.Color(i)),
+                new Text(Colors.Name(i), x, y - 3, 2)
+            );
         }
     }
 }
