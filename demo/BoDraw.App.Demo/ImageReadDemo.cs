@@ -12,8 +12,6 @@ public class ImageReadDemo
         int NN = NP * NP;
 
         Group gg = new Group();
-        gg.Move(0, 1.1 * image.Height);
-
         for (int col = 0; col < image.PixelSize.Width - NP; col += NP)
         {
             for (int row = 0; row < image.PixelSize.Height - NP; row += NP)
@@ -40,6 +38,7 @@ public class ImageReadDemo
                 gg.Add(cc);
             }
         }
+        gg.Move(0, 1.1 * image.Height);
 
         bd.Add(image, gg);
     }

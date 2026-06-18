@@ -9,17 +9,10 @@ namespace BoDraw;
 public class Group : Shape
 {
     private readonly ShapeCollection shapes = new ShapeCollection();
-    private Matrix transform = Matrix.Identity;
 
     public Group(params Shape[] shapes)
     {
         this.shapes.Add(shapes);
-    }
-
-    private Group(Shape[] shapes, Matrix transform)
-    {
-        this.shapes.Add(shapes);
-        this.transform = transform;
     }
 
     public void Add(params Shape[] shapes)
@@ -27,21 +20,24 @@ public class Group : Shape
         this.shapes.Add(shapes);
     }
 
-    private Rect LocalBounds { get { return this.shapes.Bounds; } }
-
-    public override Rect Bounds
-    {
-        get { return this.LocalBounds.TransformToAABB(this.transform); }
-    }
+    public override Rect Bounds { get { return this.shapes.Bounds; } }
 
     public override void ApplyTransform(Matrix t)
     {
-        this.transform = this.transform.Append(t);
+        foreach (Shape s in this.shapes)
+        {
+            s.ApplyTransform(t);
+        }
     }
 
     protected internal override Shape DeepClone()
     {
-        return new Group(this.shapes.ToArray(), this.transform);
+        Shape[] shapes = new Shape[this.shapes.Count];
+        for (int i = 0; i < shapes.Length; i++)
+        {
+            shapes[i] = this.shapes.Get(i).Copy();
+        }
+        return new Group(shapes);
     }
 
     public new Group Copy(double dx, double dy)
@@ -51,12 +47,9 @@ public class Group : Shape
 
     internal override void Draw(double scale, DrawingContext ctx)
     {
-        using (ctx.PushTransform(this.transform))
+        foreach (var s in this.shapes)
         {
-            foreach (var s in this.shapes)
-            {
-                s.Draw(scale, ctx);
-            }
+            s.Draw(scale, ctx);
         }
     }
 }

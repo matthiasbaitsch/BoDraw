@@ -20,24 +20,14 @@ public class GroupTests
         Assert.Equal(new Rect(3, 4, 2, 2), g.Bounds);
     }
 
-    [AvaloniaFact]
-    public void TestMoveDoesNotMutateChildren()
+    [Fact]
+    public void TestCopy()
     {
         var r = new Rectangle(0, 0, 2, 2);
-        var g = new Group(r);
-        g.Move(3, 4);
-        Assert.Equal(new Rect(0, 0, 2, 2), r.Bounds);
-    }
-
-    [AvaloniaFact]
-    public void TestCopyIsShallow()
-    {
-        var r = new Rectangle(0, 0, 2, 2);
-        var g = new Group(r);
-        var copy = g.Copy(1, 0);
-        Assert.Equal(new Rect(1, 0, 2, 2), copy.Bounds);
-        Assert.Equal(new Rect(0, 0, 2, 2), g.Bounds);
-        // both groups reference the same child
+        var g1 = new Group(r);
+        var g2 = g1.Copy(1, 0);
         Assert.Equal(r.Bounds, new Rect(0, 0, 2, 2));
+        Assert.Equal(new Rect(1, 0, 2, 2), g2.Bounds);
+        Assert.Equal(new Rect(0, 0, 2, 2), g1.Bounds);
     }
 }
