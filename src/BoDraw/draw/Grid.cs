@@ -81,12 +81,12 @@ public class Grid : Shape
         this.transform = this.transform.Append(Matrix.CreateTranslation(dx, dy));
     }
 
-    public override void Scale(double factor)
+    public override void Scale(double sx, double sy)
     {
         var c = this.Bounds.Center;
         this.transform = this.transform
             .Append(Matrix.CreateTranslation(-c.X, -c.Y))
-            .Append(Matrix.CreateScale(factor, factor))
+            .Append(Matrix.CreateScale(sx, sy))
             .Append(Matrix.CreateTranslation(c.X, c.Y));
     }
 

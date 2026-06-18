@@ -219,7 +219,7 @@ public class Dimensioning : LineLikeShape
     }
 
     /// <summary>Not implemented.</summary>
-    public override void Scale(double factor)
+    public override void Scale(double sx, double sy)
     {
         throw new NotImplementedException();
     }

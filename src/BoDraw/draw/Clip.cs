@@ -28,10 +28,10 @@ public class Clip : Shape
         this.clipShape.Move(dx, dy);
     }
 
-    public override void Scale(double factor)
+    public override void Scale(double sx, double sy)
     {
-        this.shape.Scale(factor);
-        this.clipShape.Scale(factor);
+        this.shape.Scale(sx, sy);
+        this.clipShape.Scale(sx, sy);
     }
 
     protected internal override Shape DeepClone()

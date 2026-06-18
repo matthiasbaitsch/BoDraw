@@ -56,17 +56,22 @@ internal class PolyHelper
         }
     }
 
-    internal void Scale(double factor)
+    internal void Scale(double sx, double sy)
     {
         double cx = this.Bounds.X + this.Bounds.Width / 2;
         double cy = this.Bounds.Y + this.Bounds.Height / 2;
         for (int i = 0; i < this.points.Count; i++)
         {
             this.points[i] = new Point(
-                cx + (this.points[i].X - cx) * factor,
-                cy + (this.points[i].Y - cy) * factor
+                cx + (this.points[i].X - cx) * sx,
+                cy + (this.points[i].Y - cy) * sy
             );
         }
+    }
+
+    internal void Scale(double factor)
+    {
+        this.Scale(factor, factor);
     }
 
     internal void Move(double dx, double dy)

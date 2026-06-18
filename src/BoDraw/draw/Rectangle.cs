@@ -26,9 +26,9 @@ public class Rectangle : AreaLikeShape
         this.rectangle = new Rect(x, y, w, h);
     }
 
-    public override void Scale(double factor)
+    public override void Scale(double sx, double sy)
     {
-        this.rectangle = this.rectangle.Scale(factor);
+        this.rectangle = this.rectangle.Scale(sx, sy);
     }
 
     public override void Move(double dx, double dy)

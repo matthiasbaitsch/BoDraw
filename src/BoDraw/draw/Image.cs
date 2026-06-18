@@ -167,9 +167,9 @@ public class Image : SimpleShape
         get { return this.bitmap.PixelSize; }
     }
 
-    public override void Scale(double factor)
+    public override void Scale(double sx, double sy)
     {
-        this.bounds = this.bounds.Scale(factor);
+        this.bounds = this.bounds.Scale(sx, sy);
     }
 
     public override void Move(double dx, double dy)

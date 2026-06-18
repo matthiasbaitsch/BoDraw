@@ -9,13 +9,18 @@ internal static class RectExtensions
         return new Rect(r.X + dx, r.Y + dy, r.Width, r.Height);
     }
 
-    internal static Rect Scale(this Rect r, double factor)
+    internal static Rect Scale(this Rect r, double sx, double sy)
     {
         double cx = r.X + r.Width / 2;
         double cy = r.Y + r.Height / 2;
-        double w = r.Width * factor;
-        double h = r.Height * factor;
+        double w = r.Width * sx;
+        double h = r.Height * sy;
         return new Rect(cx - w / 2, cy - h / 2, w, h);
+    }
+
+    internal static Rect Scale(this Rect r, double factor)
+    {
+        return r.Scale(factor, factor);
     }
 
     internal static Rect Pad(this Rect r, double factor)

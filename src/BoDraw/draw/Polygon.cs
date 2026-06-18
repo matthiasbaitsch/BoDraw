@@ -33,9 +33,9 @@ public class Polygon : AreaLikeShape
         this.helper.AddPoint(x, y);
     }
 
-    public override void Scale(double factor)
+    public override void Scale(double sx, double sy)
     {
-        this.helper.Scale(factor);
+        this.helper.Scale(sx, sy);
     }
 
     public override void Move(double dx, double dy)

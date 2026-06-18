@@ -87,10 +87,16 @@ public class Text : SimpleShape
         }
     }
 
-    /// <summary>Scales the text by multiplying <see cref="FontSize"/> by <paramref name="factor"/>.</summary>
-    public override void Scale(double factor)
+    /// <summary>Scales the text around its bounding-box center: moves the anchor point and multiplies
+    /// <see cref="FontSize"/> by the geometric mean of <paramref name="sx"/> and <paramref name="sy"/>.</summary>
+    public override void Scale(double sx, double sy)
     {
-        this.FontSize *= factor;
+        var c = this.Bounds.Center;
+        this.Position = new Point(
+            c.X + (this.Position.X - c.X) * sx,
+            c.Y + (this.Position.Y - c.Y) * sy
+        );
+        this.FontSize *= Math.Sqrt(sx * sy);
     }
 
     /// <summary>Translates the anchor point by (<paramref name="dx"/>, <paramref name="dy"/>).</summary>
