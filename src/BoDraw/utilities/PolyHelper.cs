@@ -48,27 +48,11 @@ internal class PolyHelper
         }
     }
 
-    internal void AddPoints(IEnumerable<double> xs, IEnumerable<double> ys, Rectangle? bounds)
+    internal void AddPoints(IEnumerable<double> xs, IEnumerable<double> ys)
     {
-        if (bounds == null)
+        foreach (var (x, y) in xs.Zip(ys))
         {
-            foreach (var (x, y) in xs.Zip(ys))
-            {
-                this.AddPoint(x, y);
-            }
-        }
-        else
-        {
-            double xMin = xs.Min(), xMax = xs.Max();
-            double yMin = ys.Min(), yMax = ys.Max();
-
-            var r = bounds.Bounds;
-            foreach (var (x, y) in xs.Zip(ys))
-            {
-                double tx = xMax == xMin ? 0.5 : (x - xMin) / (xMax - xMin);
-                double ty = yMax == yMin ? 0.5 : (y - yMin) / (yMax - yMin);
-                this.AddPoint(r.X + tx * r.Width, r.Y + ty * r.Height);
-            }
+            this.AddPoint(x, y);
         }
     }
 

@@ -21,13 +21,11 @@ public class Polygon : AreaLikeShape
     }
 
     /// <summary>
-    /// Creates a polygon from data sequences. When <paramref name="bounds"/> is provided,
-    /// values are mapped from their natural range into the rectangle; otherwise the data
-    /// values are used directly as drawing coordinates.
+    /// Creates a polygon from data sequences.
     /// </summary>
-    public Polygon(IEnumerable<double> xs, IEnumerable<double> ys, Rectangle? bounds = null)
+    public Polygon(IEnumerable<double> xs, IEnumerable<double> ys)
     {
-        this.helper.AddPoints(xs, ys, bounds);
+        this.helper.AddPoints(xs, ys);
     }
 
     public void AddPoint(double x, double y)

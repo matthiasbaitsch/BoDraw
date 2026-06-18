@@ -21,13 +21,11 @@ public class Polyline : LineLikeShape
     }
 
     /// <summary>
-    /// Creates a polyline from data sequences. When <paramref name="bounds"/> is provided,
-    /// values are mapped from their natural range into the rectangle; otherwise the data
-    /// values are used directly as drawing coordinates.
+    /// Creates a polyline from data sequences. 
     /// </summary>
-    public Polyline(IEnumerable<double> xs, IEnumerable<double> ys, Rectangle? bounds = null)
+    public Polyline(IEnumerable<double> xs, IEnumerable<double> ys)
     {
-        this.helper.AddPoints(xs, ys, bounds);
+        this.helper.AddPoints(xs, ys);
     }
 
     public override Rect Bounds
