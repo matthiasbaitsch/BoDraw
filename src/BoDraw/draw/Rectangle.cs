@@ -26,14 +26,9 @@ public class Rectangle : AreaLikeShape
         this.rectangle = new Rect(x, y, w, h);
     }
 
-    public override void Scale(double sx, double sy)
+    public override void ApplyTransform(Matrix t)
     {
-        this.rectangle = this.rectangle.Scale(sx, sy);
-    }
-
-    public override void Move(double dx, double dy)
-    {
-        this.rectangle = this.rectangle.Move(dx, dy);
+        this.rectangle = this.rectangle.ApplyTransform(t);
     }
 
     public new Rectangle Copy(double dx, double dy)

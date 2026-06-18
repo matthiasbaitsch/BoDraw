@@ -15,14 +15,9 @@ public class Ellipse : AreaLikeShape
         this.rectangle = new Rect(x - r1, y - r2, 2 * r1, 2 * r2);
     }
 
-    public override void Scale(double sx, double sy)
+    public override void ApplyTransform(Matrix t)
     {
-        this.rectangle = this.rectangle.Scale(sx, sy);
-    }
-
-    public override void Move(double dx, double dy)
-    {
-        this.rectangle = this.rectangle.Move(dx, dy);
+        this.rectangle = this.rectangle.ApplyTransform(t);
     }
 
     public new Ellipse Copy(double dx, double dy)

@@ -31,17 +31,10 @@ public class Line : LineLikeShape
         }
     }
 
-    public override void Scale(double sx, double sy)
+    public override void ApplyTransform(Matrix t)
     {
-        var c = this.Bounds.Center;
-        this.p1 = new Point(c.X + (this.p1.X - c.X) * sx, c.Y + (this.p1.Y - c.Y) * sy);
-        this.p2 = new Point(c.X + (this.p2.X - c.X) * sx, c.Y + (this.p2.Y - c.Y) * sy);
-    }
-
-    public override void Move(double dx, double dy)
-    {
-        this.p1 = new Point(this.p1.X + dx, this.p1.Y + dy);
-        this.p2 = new Point(this.p2.X + dx, this.p2.Y + dy);
+        this.p1 = this.p1.Transform(t);
+        this.p2 = this.p2.Transform(t);
     }
 
     public new Line Copy(double dx, double dy)

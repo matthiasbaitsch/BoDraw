@@ -87,22 +87,12 @@ public class Text : SimpleShape
         }
     }
 
-    /// <summary>Scales the text around its bounding-box center: moves the anchor point and multiplies
-    /// <see cref="FontSize"/> by the geometric mean of <paramref name="sx"/> and <paramref name="sy"/>.</summary>
-    public override void Scale(double sx, double sy)
+    public override void ApplyTransform(Matrix t)
     {
-        var c = this.Bounds.Center;
-        this.Position = new Point(
-            c.X + (this.Position.X - c.X) * sx,
-            c.Y + (this.Position.Y - c.Y) * sy
-        );
-        this.FontSize *= Math.Sqrt(sx * sy);
-    }
-
-    /// <summary>Translates the anchor point by (<paramref name="dx"/>, <paramref name="dy"/>).</summary>
-    public override void Move(double dx, double dy)
-    {
-        this.Position = new Point(this.Position.X + dx, this.Position.Y + dy);
+        this.Position = this.Position.Transform(t);
+        double scaleX = Math.Sqrt(t.M11 * t.M11 + t.M12 * t.M12);
+        double scaleY = Math.Sqrt(t.M21 * t.M21 + t.M22 * t.M22);
+        this.FontSize *= Math.Sqrt(scaleX * scaleY);
     }
 
     /// <summary>Renders the text into <paramref name="ctx"/>, applying a counter-transform to

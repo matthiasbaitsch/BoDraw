@@ -213,13 +213,7 @@ public class Dimensioning : LineLikeShape
     }
 
     /// <summary>Not implemented.</summary>
-    public override void Move(double dx, double dy)
-    {
-        throw new NotImplementedException();
-    }
-
-    /// <summary>Not implemented.</summary>
-    public override void Scale(double sx, double sy)
+    public override void ApplyTransform(Matrix t)
     {
         throw new NotImplementedException();
     }

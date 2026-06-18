@@ -167,15 +167,11 @@ public class Image : SimpleShape
         get { return this.bitmap.PixelSize; }
     }
 
-    public override void Scale(double sx, double sy)
+    public override void ApplyTransform(Matrix t)
     {
-        this.bounds = this.bounds.Scale(sx, sy);
+        this.bounds = this.bounds.ApplyTransform(t);
     }
 
-    public override void Move(double dx, double dy)
-    {
-        this.bounds = this.bounds.Move(dx, dy);
-    }
 
     /// <summary>Returns a copy of this image shifted by (dx, dy).</summary>
     public new Image Copy(double dx, double dy)

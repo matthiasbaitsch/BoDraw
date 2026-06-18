@@ -101,18 +101,9 @@ public class GridLayout : Shape
         }
     }
 
-    public override void Move(double dx, double dy)
+    public override void ApplyTransform(Matrix t)
     {
-        this.transform = this.transform.Append(Matrix.CreateTranslation(dx, dy));
-    }
-
-    public override void Scale(double sx, double sy)
-    {
-        var c = this.Bounds.Center;
-        this.transform = this.transform
-            .Append(Matrix.CreateTranslation(-c.X, -c.Y))
-            .Append(Matrix.CreateScale(sx, sy))
-            .Append(Matrix.CreateTranslation(c.X, c.Y));
+        this.transform = this.transform.Append(t);
     }
 
     protected internal override Shape DeepClone()

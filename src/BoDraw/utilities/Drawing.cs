@@ -33,7 +33,7 @@ internal class Drawing
         Rect bounds = this.Bounds;
         Rect paddedTarget = targetBounds.Pad(this.PaddingFactor);
         double scale = Math.Min(paddedTarget.Width / bounds.Width, paddedTarget.Height / bounds.Height);
-        Matrix m = bounds.TransformInto(paddedTarget);
+        Matrix m = bounds.TransformInto(paddedTarget, flipY: true);
 
         // Draw shapes
         using (ctx.PushTransform(m))

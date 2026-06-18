@@ -38,14 +38,9 @@ public class Polyline : LineLikeShape
         this.helper.AddPoint(x, y);
     }
 
-    public override void Scale(double sx, double sy)
+    public override void ApplyTransform(Matrix t)
     {
-        this.helper.Scale(sx, sy);
-    }
-
-    public override void Move(double dx, double dy)
-    {
-        this.helper.Move(dx, dy);
+        this.helper.ApplyTransform(t);
     }
 
     protected internal override Shape DeepClone()

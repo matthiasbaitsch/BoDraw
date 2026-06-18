@@ -56,28 +56,12 @@ internal class PolyHelper
         }
     }
 
-    internal void Scale(double sx, double sy)
+    internal void ApplyTransform(Matrix t)
     {
-        double cx = this.Bounds.X + this.Bounds.Width / 2;
-        double cy = this.Bounds.Y + this.Bounds.Height / 2;
         for (int i = 0; i < this.points.Count; i++)
         {
-            this.points[i] = new Point(
-                cx + (this.points[i].X - cx) * sx,
-                cy + (this.points[i].Y - cy) * sy
-            );
+            this.points[i] = this.points[i].Transform(t);
         }
-    }
-
-    internal void Scale(double factor)
-    {
-        this.Scale(factor, factor);
-    }
-
-    internal void Move(double dx, double dy)
-    {
-        for (int i = 0; i < this.points.Count; i++)
-            this.points[i] = new Point(this.points[i].X + dx, this.points[i].Y + dy);
     }
 
     internal void CopyFrom(PolyHelper source)
