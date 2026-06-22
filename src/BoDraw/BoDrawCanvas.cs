@@ -35,7 +35,12 @@ public class BoDrawCanvas : Control, IBoDraw
     public override void Render(DrawingContext ctx)
     {
         base.Render(ctx);
-        this.drawing.Draw(ctx, this.Bounds);
+        this.drawing.Draw(ctx, new Rect(this.Bounds.Size));
+    }
+
+    public void Animate(double duration, Action<double> frame)
+    {
+        throw new NotImplementedException();
     }
 
     public void SaveImage(string path, int size = 800)

@@ -21,6 +21,8 @@ public abstract class BoDrawBase : IBoDraw
         this.Canvas.Add(shapes);
     }
 
+    public abstract void Animate(double duration, Action<double> frame);
+
     public void Clear()
     {
         this.Canvas.Clear();

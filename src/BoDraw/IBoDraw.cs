@@ -23,6 +23,8 @@ public interface IBoDraw
     /// <param name="shapes">The shapes to add.</param>
     void Add(params Shape[] shapes);
 
+    void Animate(double duration, Action<double> frame);
+
     /// <summary>Removes all shapes from the drawing.</summary>
     void Clear();
 }

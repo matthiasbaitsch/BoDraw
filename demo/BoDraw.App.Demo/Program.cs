@@ -1,6 +1,5 @@
 ﻿using BoDraw;
 
 BoDrawApp bd = new BoDrawApp();
-FitIntoDemo.Draw(bd);
-bd.SaveImage("test.png", 1200);
-// bd.Show();
+AnimateDemo.Draw(bd);
+bd.Show();

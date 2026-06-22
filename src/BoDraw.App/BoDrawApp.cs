@@ -19,6 +19,11 @@ public class BoDrawApp : BoDrawBase
         this.Canvas = this.mw.Canvas;
     }
 
+    public override void Animate(double duration, Action<double> frame)
+    {
+        this.mw.Animate(duration, frame);
+    }
+
     public void Show()
     {
         ModuleInit.AppBuilder!.Instance!.Run(this.mw);
