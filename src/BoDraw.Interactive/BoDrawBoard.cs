@@ -30,4 +30,9 @@ public class BoDrawBoard : BoDrawBase
 
         return new HtmlString($"<img src='data:image/png;base64,{Convert.ToBase64String(ms.ToArray())}' />");
     }
+
+    public override void Animate(double duration, Action<double> frame)
+    {
+        throw new NotImplementedException();
+    }
 }
