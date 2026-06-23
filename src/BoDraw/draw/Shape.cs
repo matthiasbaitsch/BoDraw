@@ -65,7 +65,7 @@ public abstract class Shape
     /// </summary>
     public Shape Rotate(double angle)
     {
-        this.ApplyTransform(MatrixExtensions.CreateRotation(angle * Math.PI / 180.0, this.ScalingCenter));
+        this.ApplyTransform(Matrix.CreateRotation(angle * Math.PI / 180.0, this.ScalingCenter));
         return this;
     }
 
