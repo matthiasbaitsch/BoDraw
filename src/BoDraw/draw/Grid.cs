@@ -76,9 +76,22 @@ public class Grid : Shape
         }
     }
 
-    public override Shape ApplyTransform(Matrix t)
+    public override void ApplyTransform(Matrix t)
     {
         this.transform = this.transform.Append(t);
+    }
+
+    public Grid WithX(int n, double d)
+    {
+        this.Nx = n;
+        this.Dx = d;
+        return this;
+    }
+
+    public Grid WithY(int n, double d)
+    {
+        this.Ny = n;
+        this.Dy = d;
         return this;
     }
 

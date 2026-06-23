@@ -15,15 +15,9 @@ public class Ellipse : AreaLikeShape
         this.rectangle = new Rect(x - r1, y - r2, 2 * r1, 2 * r2);
     }
 
-    public override Shape ApplyTransform(Matrix t)
+    public override void ApplyTransform(Matrix t)
     {
         this.rectangle = this.rectangle.ApplyTransform(t);
-        return this;
-    }
-
-    public new Ellipse Copy(double dx, double dy)
-    {
-        return (Ellipse)base.Copy(dx, dy);
     }
 
     public override Rect Bounds
@@ -44,8 +38,4 @@ public class Circle : Ellipse
 {
     public Circle(double x, double y, double r) : base(x, y, r, r) { }
 
-    public new Circle Copy(double dx, double dy)
-    {
-        return (Circle)base.Copy(dx, dy);
-    }
 }

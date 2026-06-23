@@ -38,10 +38,9 @@ public class Polyline : LineLikeShape
         this.helper.AddPoint(x, y);
     }
 
-    public override Shape ApplyTransform(Matrix t)
+    public override void ApplyTransform(Matrix t)
     {
         this.helper.ApplyTransform(t);
-        return this;
     }
 
     protected internal override Shape DeepClone()
@@ -51,11 +50,6 @@ public class Polyline : LineLikeShape
         fresh.CopyFrom(this.helper);
         copy.helper = fresh;
         return copy;
-    }
-
-    public new Polyline Copy(double dx, double dy)
-    {
-        return (Polyline)base.Copy(dx, dy);
     }
 
     protected override void Draw(DrawingContext ctx, Pen pen)

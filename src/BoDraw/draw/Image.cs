@@ -167,18 +167,11 @@ public class Image : SimpleShape
         get { return this.bitmap.PixelSize; }
     }
 
-    public override Shape ApplyTransform(Matrix t)
+    public override void ApplyTransform(Matrix t)
     {
         this.bounds = this.bounds.ApplyTransform(t);
-        return this;
     }
 
-
-    /// <summary>Returns a copy of this image shifted by (dx, dy).</summary>
-    public new Image Copy(double dx, double dy)
-    {
-        return (Image)base.Copy(dx, dy);
-    }
 
     /// <summary>Returns the pixel at the given row and column.</summary>
     public Pixel PixelAt(int row, int col)

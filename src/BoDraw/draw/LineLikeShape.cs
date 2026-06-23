@@ -10,18 +10,6 @@ public abstract class LineLikeShape : Shape
 {
     public Pen Pen = new Pen(new SolidColorBrush(Colors.Black), lineCap: PenLineCap.Round, lineJoin: PenLineJoin.Round);
 
-    public LineLikeShape WithColor(Color color)
-    {
-        this.Color = color;
-        return this;
-    }
-
-    public LineLikeShape WithThickness(double thickness)
-    {
-        this.Thickness = thickness;
-        return this;
-    }
-
     /// <summary>The stroke color.</summary>
     public Color Color
     {

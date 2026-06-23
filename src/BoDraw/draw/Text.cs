@@ -44,7 +44,7 @@ public class Text : SimpleShape
         set { this.typeface = new Typeface(value); }
     }
 
-    internal override Point ScalingCenter { get { return this.Position; } }
+    internal override Point TransformationCenter { get { return this.Position; } }
 
     /// <summary>The color of the text.</summary>
     public Color Color { get; set; } = Colors.Black;
@@ -89,11 +89,10 @@ public class Text : SimpleShape
         }
     }
 
-    public override Shape ApplyTransform(Matrix t)
+    public override void ApplyTransform(Matrix t)
     {
         this.Position = this.Position.Transform(t);
         this.FontSize *= Math.Sqrt(t.M11 * t.M22);
-        return this;
     }
 
     public Text WithColor(Color c)
@@ -124,12 +123,6 @@ public class Text : SimpleShape
         {
             ctx.DrawText(this.CreateFormattedText(), new Point(0, 0));
         }
-    }
-
-    /// <summary>Returns a copy of this text shifted by (<paramref name="dx"/>, <paramref name="dy"/>).</summary>
-    public new Text Copy(double dx, double dy)
-    {
-        return (Text)base.Copy(dx, dy);
     }
 
     private FormattedText CreateFormattedText()

@@ -33,10 +33,9 @@ public class Polygon : AreaLikeShape
         this.helper.AddPoint(x, y);
     }
 
-    public override Shape ApplyTransform(Matrix t)
+    public override void ApplyTransform(Matrix t)
     {
         this.helper.ApplyTransform(t);
-        return this;
     }
 
     protected internal override Shape DeepClone()
@@ -46,11 +45,6 @@ public class Polygon : AreaLikeShape
         fresh.CopyFrom(this.helper);
         copy.helper = fresh;
         return copy;
-    }
-
-    public new Polygon Copy(double dx, double dy)
-    {
-        return (Polygon)base.Copy(dx, dy);
     }
 
     internal override Geometry Geometry

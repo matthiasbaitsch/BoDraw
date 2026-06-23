@@ -101,10 +101,9 @@ public class GridLayout : Shape
         }
     }
 
-    public override Shape ApplyTransform(Matrix t)
+    public override void ApplyTransform(Matrix t)
     {
         this.transform = this.transform.Append(t);
-        return this;
     }
 
     protected internal override Shape DeepClone()
