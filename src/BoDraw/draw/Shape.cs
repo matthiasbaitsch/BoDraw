@@ -61,6 +61,15 @@ public abstract class Shape
     }
 
     /// <summary>
+    /// Rotates the shape by <paramref name="angle"/> degrees counterclockwise around its center.
+    /// </summary>
+    public Shape Rotate(double angle)
+    {
+        this.ApplyTransform(MatrixExtensions.CreateRotation(angle * Math.PI / 180.0, this.ScalingCenter));
+        return this;
+    }
+
+    /// <summary>
     /// Scales and moves the shape so its bounds fit inside <paramref name="target"/>.
     /// When <paramref name="keepAspect"/> is false the shape is stretched to fill the target exactly;
     /// when true the aspect ratio is preserved and the shape is centered within the target.
