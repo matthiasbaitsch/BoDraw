@@ -64,9 +64,7 @@ internal class AnimationController
             double next = this.currentTime + dt;
             if (next >= this.duration)
             {
-                this.Render(this.duration);
-                this.Pause();
-                return;
+                next -= this.duration;
             }
             this.Render(next);
         }

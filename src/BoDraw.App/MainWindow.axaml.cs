@@ -23,7 +23,6 @@ public partial class MainWindow : Window
         });
         this.animation.TimeChanged += t =>
         {
-            this.TimeLabel.Text = $"{t:F1} / {duration:F1}";
             this.updatingSlider = true;
             this.TimeSlider.Value = t;
             this.updatingSlider = false;
