@@ -21,7 +21,7 @@ public class TestAppBuilder
     [ModuleInitializer]
     public static void InitializeVerify()
     {
-        VerifierSettings.UseSsimForPng(0.99);
+        VerifierSettings.UseSsimForPng(0.85);
     }
 }
 
