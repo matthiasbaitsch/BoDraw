@@ -31,15 +31,13 @@ public class TextDemo
         t6.Content = "Courier New Schrift";
         t6.FontFamilyName = "Courier New";
 
-        Text t7 = new Text("Text mit Kopie", 0, 50, s);
-        Shape t8 = t7.Copy(0, 0);
-        t8.Scale(1.5);
-        t7.Color = Colors.SteelBlue;
+        Text t7 = new Text("Text mit Kopie", 0, 50, s).WithColor(Colors.SteelBlue);
+        Text t8 = ((Text)t7.Copy().Scale(2)).WithColor(Colors.Orange);
 
         bd.Add(
-            dotit(t1), dotit(t2), dotit(t3), dotit(t4), dotit(t5),
-            dotit(t6), dotit(t7),
-            t8
+            dotit(t1), dotit(t2), dotit(t3),
+            dotit(t4), dotit(t5), dotit(t6),
+            dotit(t8), dotit(t7)
         );
     }
 }

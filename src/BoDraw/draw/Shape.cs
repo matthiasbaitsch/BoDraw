@@ -33,6 +33,8 @@ public abstract class Shape
     /// </summary>
     public abstract Shape ApplyTransform(Matrix t);
 
+    internal virtual Point ScalingCenter { get { return this.Bounds.Center; } }
+
     /// <summary>
     /// Moves the shape by the given offset.
     /// </summary>
@@ -46,12 +48,7 @@ public abstract class Shape
     /// </summary>
     public Shape Scale(double sx, double sy)
     {
-        var c = this.Bounds.Center;
-        this.ApplyTransform(
-            Matrix.CreateTranslation(-c.X, -c.Y)
-                .Append(Matrix.CreateScale(sx, sy))
-                .Append(Matrix.CreateTranslation(c.X, c.Y))
-        );
+        this.ApplyTransform(MatrixExtensions.CreateScale(sx, sy, this.ScalingCenter));
         return this;
     }
 

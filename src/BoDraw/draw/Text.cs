@@ -44,6 +44,8 @@ public class Text : SimpleShape
         set { this.typeface = new Typeface(value); }
     }
 
+    internal override Point ScalingCenter { get { return this.Position; } }
+
     /// <summary>The color of the text.</summary>
     public Color Color { get; set; } = Colors.Black;
 
@@ -91,6 +93,12 @@ public class Text : SimpleShape
     {
         this.Position = this.Position.Transform(t);
         this.FontSize *= Math.Sqrt(t.M11 * t.M22);
+        return this;
+    }
+
+    public Text WithColor(Color c)
+    {
+        this.Color = c;
         return this;
     }
 
