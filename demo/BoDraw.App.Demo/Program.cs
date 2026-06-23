@@ -1,5 +1,6 @@
 ﻿using BoDraw;
 
 BoDrawApp bd = new BoDrawApp();
-AnimateDemo.Draw(bd);
-bd.Show();
+GroupDemo.Draw(bd);
+// bd.Show();
+bd.SaveImage("test.png", 1200);
