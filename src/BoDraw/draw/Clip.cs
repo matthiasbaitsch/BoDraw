@@ -22,10 +22,11 @@ public class Clip : Shape
         get { return this.clipShape.Bounds; }
     }
 
-    public override void ApplyTransform(Matrix t)
+    public override Shape ApplyTransform(Matrix t)
     {
         this.shape.ApplyTransform(t);
         this.clipShape.ApplyTransform(t);
+        return this;
     }
 
     protected internal override Shape DeepClone()

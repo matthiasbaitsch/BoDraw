@@ -31,10 +31,11 @@ public class Line : LineLikeShape
         }
     }
 
-    public override void ApplyTransform(Matrix t)
+    public override Shape ApplyTransform(Matrix t)
     {
         this.p1 = this.p1.Transform(t);
         this.p2 = this.p2.Transform(t);
+        return this;
     }
 
     public new Line Copy(double dx, double dy)

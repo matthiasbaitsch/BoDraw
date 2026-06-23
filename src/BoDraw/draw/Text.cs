@@ -87,12 +87,18 @@ public class Text : SimpleShape
         }
     }
 
-    public override void ApplyTransform(Matrix t)
+    public override Shape ApplyTransform(Matrix t)
     {
         this.Position = this.Position.Transform(t);
-        double scaleX = Math.Sqrt(t.M11 * t.M11 + t.M12 * t.M12);
-        double scaleY = Math.Sqrt(t.M21 * t.M21 + t.M22 * t.M22);
-        this.FontSize *= Math.Sqrt(scaleX * scaleY);
+        this.FontSize *= Math.Sqrt(t.M11 * t.M22);
+        return this;
+    }
+
+    public Text WithJust(double hjust, double vjust)
+    {
+        this.HJust = hjust;
+        this.VJust = vjust;
+        return this;
     }
 
     /// <summary>Renders the text into <paramref name="ctx"/>, applying a counter-transform to
@@ -100,13 +106,13 @@ public class Text : SimpleShape
     protected override void Draw(DrawingContext ctx)
     {
         var bounds = this.Bounds;
-        var transform =
+        var t =
                 Matrix.CreateTranslation(bounds.X, -bounds.Y - bounds.Height).Append(
                 Matrix.CreateScale(1, -1)).Append(
                 Matrix.CreateRotation(this.Angle * Math.PI / 180, this.Position))
             ;
 
-        using (ctx.PushTransform(transform))
+        using (ctx.PushTransform(t))
         {
             ctx.DrawText(this.CreateFormattedText(), new Point(0, 0));
         }

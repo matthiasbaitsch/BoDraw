@@ -22,12 +22,13 @@ public class Group : Shape
 
     public override Rect Bounds { get { return this.shapes.Bounds; } }
 
-    public override void ApplyTransform(Matrix t)
+    public override Shape ApplyTransform(Matrix t)
     {
         foreach (Shape s in this.shapes)
         {
             s.ApplyTransform(t);
         }
+        return this;
     }
 
     protected internal override Shape DeepClone()

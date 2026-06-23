@@ -167,9 +167,10 @@ public class Image : SimpleShape
         get { return this.bitmap.PixelSize; }
     }
 
-    public override void ApplyTransform(Matrix t)
+    public override Shape ApplyTransform(Matrix t)
     {
         this.bounds = this.bounds.ApplyTransform(t);
+        return this;
     }
 
 

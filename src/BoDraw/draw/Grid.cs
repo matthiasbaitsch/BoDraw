@@ -76,9 +76,10 @@ public class Grid : Shape
         }
     }
 
-    public override void ApplyTransform(Matrix t)
+    public override Shape ApplyTransform(Matrix t)
     {
         this.transform = this.transform.Append(t);
+        return this;
     }
 
     internal override void Draw(double scale, DrawingContext ctx)

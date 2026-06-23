@@ -31,20 +31,20 @@ public abstract class Shape
     /// <summary>
     /// Applies a matrix transform to all defining points of the shape.
     /// </summary>
-    public abstract void ApplyTransform(Matrix t);
+    public abstract Shape ApplyTransform(Matrix t);
 
     /// <summary>
     /// Moves the shape by the given offset.
     /// </summary>
-    public void Move(double dx, double dy)
+    public Shape Move(double dx, double dy)
     {
-        this.ApplyTransform(Matrix.CreateTranslation(dx, dy));
+        return this.ApplyTransform(Matrix.CreateTranslation(dx, dy));
     }
 
     /// <summary>
     /// Scales the shape by independent factors along each axis around its center.
     /// </summary>
-    public void Scale(double sx, double sy)
+    public Shape Scale(double sx, double sy)
     {
         var c = this.Bounds.Center;
         this.ApplyTransform(
@@ -52,14 +52,15 @@ public abstract class Shape
                 .Append(Matrix.CreateScale(sx, sy))
                 .Append(Matrix.CreateTranslation(c.X, c.Y))
         );
+        return this;
     }
 
     /// <summary>
     /// Scales the shape uniformly around its center.
     /// </summary>
-    public void Scale(double factor)
+    public Shape Scale(double factor)
     {
-        this.Scale(factor, factor);
+        return this.Scale(factor, factor);
     }
 
     /// <summary>

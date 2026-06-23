@@ -38,9 +38,10 @@ public class Polyline : LineLikeShape
         this.helper.AddPoint(x, y);
     }
 
-    public override void ApplyTransform(Matrix t)
+    public override Shape ApplyTransform(Matrix t)
     {
         this.helper.ApplyTransform(t);
+        return this;
     }
 
     protected internal override Shape DeepClone()

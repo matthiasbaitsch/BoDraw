@@ -213,7 +213,7 @@ public class Dimensioning : LineLikeShape
     }
 
     /// <summary>Not implemented.</summary>
-    public override void ApplyTransform(Matrix t)
+    public override Shape ApplyTransform(Matrix t)
     {
         throw new NotImplementedException();
     }
