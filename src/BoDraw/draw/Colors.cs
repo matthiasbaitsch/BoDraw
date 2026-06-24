@@ -5,6 +5,10 @@ namespace BoDraw;
 
 // Copied from Avalonia to avoid confusion for students
 
+/// <summary>
+/// Provides named color constants and factory methods, mirroring Avalonia's color palette
+/// so students do not need to import <c>Avalonia.Media</c> directly.
+/// </summary>
 public sealed class Colors
 {
     private static readonly PropertyInfo[] _properties =
@@ -12,6 +16,7 @@ public sealed class Colors
             .GetProperties(BindingFlags.Public | BindingFlags.Static)
             .Where(p => p.PropertyType == typeof(Color))];
 
+    /// <summary>The number of named color constants.</summary>
     public static int Count
     {
         get { return _properties.Length; }
@@ -53,6 +58,7 @@ public sealed class Colors
     /// </summary>
     public static Color FromRgb(int r, int g, int b) => Avalonia.Media.Color.FromRgb((byte)r, (byte)g, (byte)b);
 
+    /// <summary>Creates a color from red, green, blue, and alpha values (0–255).</summary>
     public static Color FromRgba(int r, int g, int b, int a) => Avalonia.Media.Color.FromArgb((byte)a, (byte)r, (byte)g, (byte)b);
 
 

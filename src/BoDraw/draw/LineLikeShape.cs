@@ -31,6 +31,12 @@ public abstract class LineLikeShape : Shape
         set { this.Pen.Thickness = value; }
     }
 
+    // TODO doc, demo
+    public double[] DashStyle
+    {
+        set { this.Pen.DashStyle = new DashStyle(value, 0); }
+    }
+
     internal override sealed void Draw(double scale, DrawingContext ctx)
     {
         this.Draw(ctx, Shape.ScalePen(scale, this.Pen)!);

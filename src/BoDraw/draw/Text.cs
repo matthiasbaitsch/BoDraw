@@ -89,18 +89,21 @@ public class Text : SimpleShape
         }
     }
 
+    /// <summary>Applies transform <paramref name="t"/> to the anchor point and scales the font size accordingly.</summary>
     public override void ApplyTransform(Matrix t)
     {
-        this.Position = this.Position.Transform(t);
+        this.Position = ((Point)this.Position).Transform(t);
         this.FontSize *= Math.Sqrt(t.M11 * t.M22);
     }
 
+    /// <summary>Sets <see cref="Color"/> to <paramref name="c"/> and returns this instance.</summary>
     public Text WithColor(Color c)
     {
         this.Color = c;
         return this;
     }
 
+    /// <summary>Sets <see cref="HJust"/> and <see cref="VJust"/> and returns this instance.</summary>
     public Text WithJust(double hjust, double vjust)
     {
         this.HJust = hjust;

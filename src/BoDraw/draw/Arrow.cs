@@ -13,7 +13,7 @@ public class Arrow : LineLikeShape
     private Point p2;
 
     // Arrowhead length = pen.Thickness (already scale-adjusted) * this factor
-    private const double ArrowLengthFactor = 10.0;
+    private const double ArrowLengthFactor = 8.0;
 
     // tan(20°)
     private const double Tan20 = 0.36397023426620099;

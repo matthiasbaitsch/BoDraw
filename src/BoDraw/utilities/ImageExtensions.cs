@@ -4,9 +4,11 @@ using Avalonia.Media.Imaging;
 
 namespace BoDraw;
 
+/// <summary>Extension methods for Avalonia <see cref="Bitmap"/>.</summary>
 internal static class ImageExtensions
 {
 
+    /// <summary>Reads the color of the pixel at column <paramref name="x"/>, row <paramref name="y"/>.</summary>
     internal static Color ColorAt(this Bitmap bitmap, int x, int y)
     {
         byte[] buffer = new byte[4];

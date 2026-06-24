@@ -30,23 +30,30 @@ public class GridLayout : Shape
 
     private record Layout(double[] ColWidths, double[] RowHeights, double[] ColX, double[] RowY);
 
-    private Matrix transform;
-    private readonly List<Entry> entries;
+    private Matrix transform = Matrix.Identity;
+
+    private readonly List<Entry> entries = [];
 
     /// <summary>Horizontal gap between columns in drawing units.</summary>
-    public double HGap { get; set; } = 0;
+    public double HGap { get; set; }
 
     /// <summary>Vertical gap between rows in drawing units.</summary>
-    public double VGap { get; set; } = 0;
+    public double VGap { get; set; }
 
-    public GridLayout() : this([], Matrix.Identity, 0, 0) { }
+    /// <summary>Creates a grid layout with no gaps between cells.</summary>
+    public GridLayout() : this(0, 0) { }
 
-    private GridLayout(List<Entry> entries, Matrix transform, double hGap, double vGap)
+    /// <summary>Creates a grid layout with the given horizontal and vertical gaps between cells.</summary>
+    public GridLayout(double hGap, double vGap)
+    {
+        this.HGap = hGap;
+        this.VGap = vGap;
+    }
+
+    private GridLayout(List<Entry> entries, Matrix transform, double hGap, double vGap) : this(hGap, vGap)
     {
         this.entries = entries;
         this.transform = transform;
-        this.HGap = hGap;
-        this.VGap = vGap;
     }
 
     /// <summary>Places <paramref name="s"/> in the cell at the given row and column.</summary>
