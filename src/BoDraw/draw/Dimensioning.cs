@@ -78,7 +78,7 @@ public class Dimensioning : LineLikeShape
     /// <summary>Typeface used to render the dimension labels.</summary>
     public Typeface Typeface { get; set; } = new Typeface("Arial");
 
-    private List<List<Point>> points = [];
+    internal List<List<Point>> points = [];
 
     /// <summary>The bounding box enclosing all dimension chains, padded by half the tick height.</summary>
     public override Rect Bounds
@@ -215,6 +215,30 @@ public class Dimensioning : LineLikeShape
     /// <summary>Not implemented.</summary>
     public override void ApplyTransform(Matrix t)
     {
-        throw new NotImplementedException();
+        foreach (var row in this.points)
+        {
+            for (int i = 0; i < row.Count; i++)
+            {
+                row[i] = row[i].Transform(t);
+            }
+        }
+    }
+
+    protected internal override Shape DeepClone()
+    {
+        List<List<Point>> points = [];
+        foreach (var row in this.points)
+        {
+            List<Point> rowcopy = [];
+            foreach (var point in row)
+            {
+                rowcopy.Add(point);
+            }
+            points.Add(rowcopy);
+        }
+
+        Dimensioning copy = (Dimensioning)this.MemberwiseClone();
+        copy.points = points;
+        return copy;
     }
 }
