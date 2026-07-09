@@ -24,9 +24,9 @@ See `docs/index.md` for the shape hierarchy and coordinate system overview.
 
 The Y-axis is flipped (mathematical convention, Y points up). `Drawing` applies a global `scale/-scale` transform, so shapes that render text or images must push a local counter-transform — see `Text.cs` and `Image.cs`.
 
-### IBoDraw / BoDrawBase
+### IBoDraw
 
-`IBoDraw` defines `Add(params Shape[])`, `Clear()`, and `Background`. `BoDrawBase` implements it by delegating to a `BoDrawCanvas`. Both `BoDrawApp` and `BoDrawBoard` extend `BoDrawBase`.
+`IBoDraw` defines `Add(params Shape[])`, `Clear()`, and `Background`. 
 
 ### Colors
 

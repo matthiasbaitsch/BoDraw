@@ -10,7 +10,7 @@
         <Panel x:Name="AnimationControls" DockPanel.Dock="Top" IsVisible="False">
             <StackPanel Orientation="Horizontal" Margin="6,0" Spacing="6">
                 <Button x:Name="PlayPauseButton" Content="⏵"  MinWidth="32" HorizontalAlignment="Center"  Click="OnPlayPause" />
-                <Button x:Name="StopButton"      Content="⏹"  MinWidth="32" HorizontalAlignment="Center"  Click="OnStop" />
+                <Button x:Name="StopButton" Content="⏹"  MinWidth="32" HorizontalAlignment="Center"  Click="OnStop" />
                 <Slider x:Name="TimeSlider" Width="300" Minimum="0" Maximum="1" ValueChanged="OnSliderChanged" />
             </StackPanel>
         </Panel>

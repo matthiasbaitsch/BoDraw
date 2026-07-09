@@ -1,4 +1,5 @@
 using Avalonia.Controls;
+using Avalonia.Media;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 
@@ -8,9 +9,28 @@ namespace BoDraw;
 /// Desktop application entry point. Opens an Avalonia <see cref="MainWindow"/> and runs the
 /// event loop when <see cref="Show"/> is called.
 /// </summary>
-public class BoDrawApp : BoDrawBase
+public class BoDrawApp : IBoDraw
 {
     private MainWindow mw;
+
+    public required BoDrawCanvas Canvas;
+
+    /// <summary>Gets or sets the background color of the drawing surface.</summary>
+    public Color Background
+    {
+        get { return this.Canvas.Background; }
+        set { this.Canvas.Background = value; }
+    }
+
+    public void Add(params Shape[] shapes)
+    {
+        this.Canvas.Add(shapes);
+    }
+
+    public void Clear()
+    {
+        this.Canvas.Clear();
+    }
 
     /// <summary>Creates a new application instance and initializes the main window.</summary>
     [SetsRequiredMembers]
@@ -21,7 +41,7 @@ public class BoDrawApp : BoDrawBase
     }
 
     /// <summary>Runs an animation by repeatedly invoking <paramref name="frame"/> over <paramref name="duration"/> seconds.</summary>
-    public override void Animate(double duration, Action<double> frame)
+    public void Animate(double duration, Action<double> frame)
     {
         this.mw.Animate(duration, frame);
     }
