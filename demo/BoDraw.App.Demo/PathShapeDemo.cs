@@ -10,7 +10,10 @@ public class PathShapeDemo
         rounded.LineColor = Colors.Magenta;
         rounded.LineThickness = 3;
 
-        PathShape wave = new PathShape("M 0,0 Q 30,60 60,0 T 120,120");
+        PathShape wave = new PathShape();
+        wave.MoveTo(0, 0);
+        wave.QuadTo(30, 60, 60, 0);
+        wave.QuadTo(90, -60, 120, 120);
         wave.LineColor = Colors.DarkMagenta;
         wave.LineThickness = 5;
         wave.FillColor = null;
