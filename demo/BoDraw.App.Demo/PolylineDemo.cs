@@ -4,6 +4,7 @@ public class PolylineDemo
 {
     public static void Draw(IBoDraw bd)
     {
+        #region snippet
         // AddPoint
         var p1 = new Polyline();
         p1.AddPoint(0, 0);
@@ -20,5 +21,6 @@ public class PolylineDemo
         var p3 = new Polyline(xs, ys).WithColor(Colors.Red);
 
         bd.Add(p1, p2, p3);
+        #endregion
     }
 }

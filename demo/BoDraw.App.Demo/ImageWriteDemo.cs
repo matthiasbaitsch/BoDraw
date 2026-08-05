@@ -4,6 +4,7 @@ public class ImageWriteDemo
 {
     public static void Draw(IBoDraw bd)
     {
+        #region snippet
         Image image = new Image(-1.1, -1.1, 1.1, 1.1, 1500);
 
         foreach (var p in image.Pixels)
@@ -33,5 +34,6 @@ public class ImageWriteDemo
         }
 
         bd.Add(image);
+        #endregion
     }
 }

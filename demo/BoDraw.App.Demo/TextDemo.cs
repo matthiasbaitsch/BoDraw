@@ -4,6 +4,7 @@ public class TextDemo
 {
     public static void Draw(IBoDraw bd)
     {
+        #region snippet
         static Shape dotit(Text t)
         {
             Circle c = new Circle(t.X, t.Y, 0.06 * t.FontSize);
@@ -39,5 +40,6 @@ public class TextDemo
             dotit(t4), dotit(t5), dotit(t6),
             dotit(t8), dotit(t7)
         );
+        #endregion
     }
 }

@@ -4,6 +4,7 @@ public class GridDemo
 {
     public static void Draw(IBoDraw bd)
     {
+        #region snippet
         Rectangle r1 = new Rectangle(0, 0, 1.5, 2.0 / 3.0);
         r1.FillColor = Colors.HotPink;
 
@@ -24,5 +25,6 @@ public class GridDemo
         grid.Dy = 1.1;
 
         bd.Add(grid);
+        #endregion
     }
 }

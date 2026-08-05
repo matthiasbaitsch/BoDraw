@@ -24,6 +24,9 @@
     "resource": [
       {
         "files": ["docs/images/**"]
+      },
+      {
+        "files": ["tests/BoDraw.Tests/assets/snapshots/**.png"]
       }
     ],
     "dest": "_site",

@@ -4,6 +4,7 @@ public class PolygonDemo
 {
     public static void Draw(IBoDraw bd)
     {
+        #region snippet
         Rectangle rectangle = new Rectangle(-20, -20, 420, 220);
 
         // Construct with some points
@@ -30,5 +31,6 @@ public class PolygonDemo
 
         // Add
         bd.Add(rectangle, s1, s1.Copy(440, 0), s1.Copy(0, 240), s1.Copy(440, 240));
+        #endregion
     }
 }

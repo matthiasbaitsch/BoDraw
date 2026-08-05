@@ -4,6 +4,7 @@ public class ArrowDemo
 {
     public static void Draw(IBoDraw bd)
     {
+        #region snippet
         // Thin black arrows in various directions
         bd.Add(new Arrow(0, 0, 20, 0));
         bd.Add(new Arrow(0, 0, 0, 15));
@@ -24,5 +25,6 @@ public class ArrowDemo
         a3.Thickness = 0.5;
 
         bd.Add(a1, a2, a3);
+        #endregion
     }
 }

@@ -4,6 +4,7 @@ public class ImageReadDemo
 {
     public static void Draw(IBoDraw bd)
     {
+        #region snippet
         double W = 500;
         Image image = new Image("assets/hs-bo_logo_en.png", 0, 0, W);
 
@@ -41,5 +42,6 @@ public class ImageReadDemo
         gg.Move(0, 1.1 * image.Height);
 
         bd.Add(image, gg);
+        #endregion
     }
 }

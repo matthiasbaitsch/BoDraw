@@ -24,7 +24,7 @@ namespace BoDraw;
 /// path.LineTo(0, 5);
 /// bd.Add(path);
 /// </code>
-/// See <see href="../../demo/BoDraw.App.Demo/GLogoDemo.cs">GLogoDemo</see> for the full multi-ring version.
+/// See <see href="../../demo/BoDraw.App.Demo/GoLogoDemo.cs">GoLogoDemo</see> for the full multi-ring version.
 /// </example>
 public class PathShape : AreaLikeShape
 {

@@ -4,6 +4,7 @@ public class GridLayoutDemo
 {
     public static void Draw(IBoDraw bd)
     {
+        #region snippet
         GridLayout g = new GridLayout();
         g.HGap = 0.5;
         g.VGap = 0.3;
@@ -22,5 +23,6 @@ public class GridLayoutDemo
         g.Add(2, 2, new Circle(0, 0, 3).WithFillColor(Colors.LightSalmon));
 
         bd.Add(g);
+        #endregion
     }
 }

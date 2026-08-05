@@ -4,6 +4,7 @@ public class FitIntoDemo
 {
     public static void Draw(IBoDraw bd)
     {
+        #region snippet
         Rectangle r1 = new Rectangle(6, -1.8, 8, 6);
         Rectangle r2 = new Rectangle(9, -1.8, 11, 6);
 
@@ -19,5 +20,6 @@ public class FitIntoDemo
         bd.Add(star);
         bd.Add(star.Copy().FitInto(r1));
         bd.Add(star.Copy().FitInto(r2, keepAspect: true));
+        #endregion
     }
 }

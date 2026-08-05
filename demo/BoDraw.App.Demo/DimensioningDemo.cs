@@ -4,7 +4,8 @@ public class DimensioningDemo
 {
     public static void Draw(IBoDraw bd)
     {
-        // First 
+        #region snippet
+        // First
         Group g1 = new Group();
         Dimensioning dim = new Dimensioning(0.5);
         g1.Add(dim, new Polygon(0, 0, 3, 0, 5, 1, 6, 1, 6, 6, 0, 6));
@@ -23,5 +24,6 @@ public class DimensioningDemo
         Group g2 = g1.Copy(10, 0);
 
         bd.Add(g1, g2);
+        #endregion
     }
 }

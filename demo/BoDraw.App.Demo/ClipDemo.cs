@@ -4,6 +4,7 @@ public class ClipDemo
 {
     public static void Draw(IBoDraw bd)
     {
+        #region snippet
         Random random = new Random(0);
 
         Polyline p = new Polyline();
@@ -20,5 +21,6 @@ public class ClipDemo
         c.FillColor = null;
 
         bd.Add(clip, c);
+        #endregion
     }
 }

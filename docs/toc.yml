@@ -1,4 +1,6 @@
 - name: Introduction
   href: index.md
+- name: Gallery
+  href: gallery.md
 - name: Colors
   href: colors.md

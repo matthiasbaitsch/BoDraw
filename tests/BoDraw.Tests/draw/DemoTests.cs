@@ -7,15 +7,13 @@ public class DemoTests
 {
     private static readonly Assembly DemoAssembly = typeof(ArrowDemo).Assembly;
 
-    private static readonly HashSet<string> Excluded = ["AnimateDemo"];
-
     public static IEnumerable<object[]> GetDemos()
     {
         return DemoAssembly
             .GetTypes()
             .Where(t => t.GetMethod(
                     "Draw", BindingFlags.Public | BindingFlags.Static, null, [typeof(IBoDraw)], null
-                ) != null && !Excluded.Contains(t.Name)
+                ) != null
             )
             .OrderBy(t => t.Name)
             .Select(t => new object[] { t.Name });
