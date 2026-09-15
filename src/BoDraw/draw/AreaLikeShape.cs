@@ -106,6 +106,13 @@ public abstract class AreaLikeShape : Shape
         set { this.Pen!.Thickness = value; }
     }
 
+    /// <summary>How the stroke's open ends are drawn. Defaults to <see cref="PenLineCap.Round"/>.</summary>
+    public PenLineCap LineCap
+    {
+        get { return this.Pen!.LineCap; }
+        set { this.Pen!.LineCap = value; }
+    }
+
     /// <summary>The opacity of the stroke in the range [0, 1].</summary>
     public double LineOpacity
     {

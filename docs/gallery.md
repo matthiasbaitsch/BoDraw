@@ -135,6 +135,23 @@ SVG-style path data with lines, arcs, and quadratic curves.
 </div>
 </div>
 
+## Line cap
+
+Comparing flat, round, and square line caps on the same open path.
+
+<div class="gallery-item">
+<div class="gallery-image">
+
+![](../tests/BoDraw.Tests/assets/snapshots/DemoTests.VerifyDemo_demoName=LineCapDemo.verified.png)
+
+</div>
+<div class="gallery-code">
+
+[!code-csharp[](../demo/BoDraw.App.Demo/LineCapDemo.cs?name=snippet)]
+
+</div>
+</div>
+
 ## Go logo
 
 Repeated arcs and lines with `PathShape` used to draw a stylized logo.

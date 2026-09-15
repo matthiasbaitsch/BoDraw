@@ -31,6 +31,13 @@ public abstract class LineLikeShape : Shape
         set { this.Pen.Thickness = value; }
     }
 
+    /// <summary>How the stroke's open ends are drawn. Defaults to <see cref="PenLineCap.Round"/>.</summary>
+    public PenLineCap LineCap
+    {
+        get { return this.Pen.LineCap; }
+        set { this.Pen.LineCap = value; }
+    }
+
     // TODO doc, demo
     public double[] DashStyle
     {

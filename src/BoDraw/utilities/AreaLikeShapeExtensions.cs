@@ -31,4 +31,11 @@ public static class AreaLikeShapeExtensions
         shape.LineThickness = thickness;
         return shape;
     }
+
+    /// <summary>Sets <see cref="AreaLikeShape.LineCap"/> to <paramref name="cap"/> and returns <paramref name="shape"/>.</summary>
+    public static T WithLineCap<T>(this T shape, PenLineCap cap) where T : AreaLikeShape
+    {
+        shape.LineCap = cap;
+        return shape;
+    }
 }
