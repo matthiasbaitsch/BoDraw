@@ -6,7 +6,7 @@ namespace BoDraw;
 /// <summary>
 /// A shape built from line, curve, and arc segments — either parsed from Avalonia's path mini-language
 /// (e.g. "M 0,0 L 10,0 L 10,10 Z") or added programmatically via <see cref="MoveTo"/>, <see cref="LineTo"/>,
-/// <see cref="CurveTo"/>, <see cref="QuadTo"/>, <see cref="ArcTo"/>, and <see cref="Close"/>.
+/// <see cref="CurveTo"/>, <see cref="QuadTo"/>, <see cref="ArcTo(double, double, double)"/>, and <see cref="Close"/>.
 /// See <see href="https://docs.avaloniaui.net/docs/graphics-animation/shapes-and-geometries#path-mini-language">
 /// Avalonia's path mini-language documentation</see> for the grammar.
 /// </summary>
