@@ -1,5 +1,6 @@
 using Avalonia.Controls;
 using Avalonia.Headless;
+using Avalonia.Media.Imaging;
 using Avalonia.Threading;
 
 namespace BoDraw.Tests;
@@ -26,7 +27,7 @@ public static class RenderHelper
             ?? throw new InvalidOperationException("CaptureRenderedFrame returned null");
 
         var path = Path.ChangeExtension(Path.GetTempFileName(), ".png");
-        bitmap.Save(path);
+        bitmap.Save(path, PngBitmapEncoderOptions.Default);
 
         return VerifyFile(path).UseDirectory("../assets/snapshots");
     }

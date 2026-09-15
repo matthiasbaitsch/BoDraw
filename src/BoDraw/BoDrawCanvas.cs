@@ -61,6 +61,6 @@ public class BoDrawCanvas : Control, IBoDraw
         using var bitmap = new RenderTargetBitmap(pixelSize);
         this.Arrange(new Rect(0, 0, width, height));
         bitmap.Render(this);
-        bitmap.Save(path);
+        bitmap.Save(path, PngBitmapEncoderOptions.Default);
     }
 }
