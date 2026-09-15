@@ -17,7 +17,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Avalonia" Version="12.*" />
+    <PackageReference Include="Avalonia" />
   </ItemGroup>
 
   <ItemGroup>

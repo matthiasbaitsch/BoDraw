@@ -40,3 +40,5 @@ xUnit tests in `tests/BoDraw.Tests/`. Tests focus on `Bounds` calculation (pure 
 
 - Do not use `=>` expression-body syntax for methods or properties. Always use full block bodies.
 - Store memories in this CLAUDE.md file, not in the `~/.claude` folder.
+- Don't treat casual reactions/observations (e.g. "puh, still a lot of code", "hmm, nasty") as implicit instructions to keep coding. Stop and ask what's wanted, or ask a clarifying question, instead of assuming a remark is a command to act. Only explicit requests ("can we use polymorphism instead", "please simplify X") or confirmations should trigger edits.
+- In `Directory.Packages.props` (or similar shared version files), when several `PackageVersion`/`PackageReference` entries share one product's version (e.g. all `Avalonia.*` packages), factor it into an MSBuild property (e.g. `<AvaloniaVersion>12.1.1</AvaloniaVersion>`) and reference it via `$(AvaloniaVersion)` from the start, rather than repeating the literal version string per entry and only extracting it after being asked.
