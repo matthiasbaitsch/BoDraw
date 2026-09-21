@@ -74,8 +74,15 @@ public class Text : SimpleShape
         this.Content += "\n" + text;
     }
 
-    /// <summary>The bounding box of the text, accounting for justification offsets.</summary>
+    /// <summary>The axis-aligned bounding box of the text, accounting for justification offsets
+    /// and the rotation by <see cref="Angle"/> around <see cref="Position"/>.</summary>
     public override Rect Bounds
+    {
+        get { return this.UnrotatedBounds.TransformToAABB(this.Rotation); }
+    }
+
+    /// <summary>The bounding box of the text before rotation.</summary>
+    private Rect UnrotatedBounds
     {
         get
         {
@@ -89,11 +96,19 @@ public class Text : SimpleShape
         }
     }
 
-    /// <summary>Applies transform <paramref name="t"/> to the anchor point and scales the font size accordingly.</summary>
+    /// <summary>The rotation by <see cref="Angle"/> around <see cref="Position"/>.</summary>
+    private Matrix Rotation
+    {
+        get { return Matrix.CreateRotation(this.Angle * Math.PI / 180, this.Position); }
+    }
+
+    /// <summary>Applies transform <paramref name="t"/> to the anchor point, adds its rotation to
+    /// <see cref="Angle"/> and scales the font size accordingly.</summary>
     public override void ApplyTransform(Matrix t)
     {
-        this.Position = ((Point)this.Position).Transform(t);
-        this.FontSize *= Math.Sqrt(t.M11 * t.M22);
+        this.Position = this.Position.Transform(t);
+        this.Angle += Math.Atan2(t.M12, t.M11) * 180 / Math.PI;
+        this.FontSize *= Math.Sqrt(Math.Abs(t.GetDeterminant()));
     }
 
     /// <summary>Sets <see cref="Color"/> to <paramref name="c"/> and returns this instance.</summary>
@@ -115,11 +130,11 @@ public class Text : SimpleShape
     /// compensate for the drawing's flipped Y-axis and an optional rotation.</summary>
     protected override void Draw(DrawingContext ctx)
     {
-        var bounds = this.Bounds;
+        var bounds = this.UnrotatedBounds;
         var t =
                 Matrix.CreateTranslation(bounds.X, -bounds.Y - bounds.Height).Append(
                 Matrix.CreateScale(1, -1)).Append(
-                Matrix.CreateRotation(this.Angle * Math.PI / 180, this.Position))
+                this.Rotation)
             ;
 
         using (ctx.PushTransform(t))
